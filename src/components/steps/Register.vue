@@ -40,7 +40,7 @@
 					@blur="getAddress">
 				<input type="text" name="address_street" v-model="address_street" placeholder="Endereço">
 				<input type="text" name="address_number" v-model="address_number" placeholder="Número">
-				<input type="text" name="address_comp" v-model="address_comp" placeholder="Complemento">
+				<input type="text" name="address_observation" v-model="address_observation" placeholder="Complemento">
 				<input
 					type="text"
 					name="address_neighbourhood"
@@ -67,6 +67,8 @@
 </template>
 
 <script>
+/* eslint-disable camelcase */
+
 import axios from 'axios';
 // eslint-disable-next-line
 import { validate } from '../../utilities';
@@ -87,9 +89,14 @@ export default {
 			address_number: '',
 			address_state: '',
 			address_street: '',
-			address_comp: '',
+			address_observation: '',
 			address_zip: '',
 		};
+	},
+	computed: {
+		merchant() {
+			return this.$store.state.merchant;
+		},
 	},
 	methods: {
 		changeType(event) {
@@ -99,7 +106,6 @@ export default {
 		getAddress() {
 			if (this.address_zip !== '') {
 				axios.get(`https://api.postmon.com.br/v1/cep/${this.address_zip}`).then((response) => {
-					// eslint-disable-next-line camelcase
 					const { bairro, cidade, estado_info, logradouro } = response.data;
 					this.address_neighbourhood = bairro;
 					this.address_state = estado_info.nome;
@@ -111,15 +117,61 @@ export default {
 			}
 		},
 		validateForm() {
-			console.log('foi');
+			const {
+				first_name,
+				last_name,
+				cpf,
+				email,
+				password,
+				password_confirm,
+				cellphone_number,
+				address_city,
+				address_neighbourhood,
+				address_number,
+				address_state,
+				address_street,
+				address_observation,
+				address_zip,
+			} = this;
 
-			/* const validation = validate(values);
+			const fields = {
+				first_name,
+				last_name,
+				cpf,
+				email,
+				password,
+				password_confirm,
+				cellphone_number: this.cleanPhone(cellphone_number),
+				address_city,
+				address_neighbourhood,
+				address_number,
+				address_state,
+				address_street,
+				address_zip,
+			};
+
+			const validation = validate(fields);
 
 			if (validation.valid) {
-				this.saveStep(values);
+				fields.address_observation = address_observation;
+				fields.merchant_id = this.merchant.id;
+				this.registerUser(fields);
 			} else {
 				console.error('formulario contem erros', validation.errors);
-			} */
+			}
+		},
+		cleanPhone(phone) {
+			return `+55${phone
+				.trim()
+				.replace(/\W+/g, '')
+				.replace(/\D+/g, '')}`;
+		},
+		registerUser(data) {
+			console.log(data);
+			this.$store.dispatch('CREATE_USER', data)
+				.then(() => {
+					this.$router.push({ path: '/payment' });
+				});
 		},
 	},
 };
