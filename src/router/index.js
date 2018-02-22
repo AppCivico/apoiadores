@@ -3,6 +3,7 @@ import Router from 'vue-router';
 
 import Home from '@/components/Home';
 import Program from '@/components/steps/Program';
+import IsRegistered from '@/components/steps/IsRegistered';
 
 Vue.use(Router);
 
@@ -18,6 +19,11 @@ export default new Router({
 			name: 'Program',
 			component: Program,
 			props: true,
+		},
+		{
+			path: '/is-registered',
+			name: 'IsRegistered',
+			component: IsRegistered,
 		},
 	],
 });
