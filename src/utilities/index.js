@@ -1,17 +1,20 @@
 function validate(fields) {
 	const keys = Object.keys(fields);
+	const errors = [];
+	let valid = true;
 
 	// eslint-disable-next-line
-	const errors = keys.map((item) => {
+	keys.map((item) => {
 		if (fields[item] === '') {
-			return {
+			valid = false;
+			errors.push({
 				field: item,
 				error: 'Campo obrigatório',
-			};
+			});
 		}
 	});
 
-	return errors;
+	return { valid, errors };
 }
 
 // eslint-disable-next-line
