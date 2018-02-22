@@ -20,4 +20,8 @@ export default {
 	max-width: 960px;
 	margin: 60px auto 0;
 }
+
+input {
+	display: block;
+}
 </style>
