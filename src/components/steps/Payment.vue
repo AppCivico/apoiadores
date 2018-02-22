@@ -123,7 +123,12 @@ export default {
 			if (validation.valid) {
 				fields.address_observation = address_observation;
 				fields.brand = this.getBrand(number);
-				console.log(fields);
+				this.saveCard({
+					name_on_card,
+					csc,
+					number,
+					validity,
+				});
 			} else {
 				console.error('formulario contem erros', validation.errors);
 			}
@@ -147,6 +152,15 @@ export default {
 			}
 
 			return result[0].type.replace('-', '');
+		},
+		saveCard(card) {
+			this.$store.dispatch('GET_FLOTUM')
+				.then(() => {
+					this.$store.dispatch('REGISTER_CARD', card)
+						.then(() => {
+							this.$router.push({ path: '/finish' });
+						});
+				});
 		},
 	},
 };
