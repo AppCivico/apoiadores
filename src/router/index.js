@@ -27,21 +27,25 @@ export default new Router({
 			path: '/is-registered',
 			name: 'IsRegistered',
 			component: IsRegistered,
+			meta: { requiresProgram: true },
 		},
 		{
 			path: '/register',
 			name: 'Register',
 			component: Register,
+			meta: { requiresProgram: true },
 		},
 		{
 			path: '/payment',
 			name: 'Payment',
 			component: Payment,
+			meta: { requiresProgram: true },
 		},
 		{
 			path: '/finish',
 			name: 'Finish',
 			component: Finish,
+			meta: { requiresProgram: true },
 		},
 	],
 });
