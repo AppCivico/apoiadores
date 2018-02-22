@@ -70,7 +70,6 @@
 /* eslint-disable camelcase */
 
 import axios from 'axios';
-// eslint-disable-next-line
 import { validate } from '../../utilities';
 
 export default {
@@ -167,7 +166,6 @@ export default {
 				.replace(/\D+/g, '')}`;
 		},
 		registerUser(data) {
-			console.log(data);
 			this.$store.dispatch('CREATE_USER', data)
 				.then(() => {
 					this.$router.push({ path: '/payment' });
