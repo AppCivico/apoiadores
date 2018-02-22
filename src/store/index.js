@@ -13,6 +13,7 @@ const store = new Vuex.Store({
 		programs: [],
 		selectedProgram: {},
 		donation: {},
+		flotum: '',
 	},
 	actions: {
 		LOAD_MERCHANTS({ commit }) {
@@ -69,6 +70,37 @@ const store = new Vuex.Store({
 					});
 			});
 		},
+		GET_FLOTUM({ commit, state }) {
+			return new Promise((resolve) => {
+				axios({
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					url: `${config.api}/user/${state.user.id}/credit-cards?api_key=${state.apiKey}`,
+				})
+					.then((response) => {
+						commit('SET_FLOTUM', { data: response.data });
+						resolve();
+					}, (err) => {
+						console.error(err);
+					});
+			});
+		},
+		// eslint-disable-next-line
+		REGISTER_CARD({ state }, data) {
+			return new Promise((resolve) => {
+				axios({
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					url: state.flotum,
+					data,
+				})
+					.then(() => {
+						resolve();
+					}, (err) => {
+						console.error(err);
+					});
+			});
+		},
 	},
 	mutations: {
 		SET_PROGRAMS(state, { res }) {
@@ -90,6 +122,9 @@ const store = new Vuex.Store({
 				sessionStorage.setItem('api-key', data.api_key);
 				sessionStorage.setItem('user', JSON.stringify(data.user));
 			}
+		},
+		SET_FLOTUM(state, { data }) {
+			state.flotum = data.href;
 		},
 	},
 });
