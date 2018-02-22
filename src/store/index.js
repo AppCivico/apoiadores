@@ -53,6 +53,22 @@ const store = new Vuex.Store({
 					});
 			});
 		},
+		LOGIN({ commit }, data) {
+			return new Promise((resolve) => {
+				axios({
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					url: `${config.api}/login`,
+					data,
+				})
+					.then((response) => {
+						commit('SET_USER', { data: response.data });
+						resolve();
+					}, (err) => {
+						console.error(err);
+					});
+			});
+		},
 	},
 	mutations: {
 		SET_PROGRAMS(state, { res }) {
