@@ -61,6 +61,8 @@
 
 <script>
 /* eslint-disable camelcase */
+import creditCardType from 'credit-card-type';
+
 import { validate, getAddress } from '../../utilities';
 
 export default {
@@ -90,7 +92,6 @@ export default {
 				csc,
 				number,
 				validity,
-				brand,
 				cpf,
 				cellphone_number,
 				address_city,
@@ -107,7 +108,6 @@ export default {
 				csc,
 				number,
 				validity,
-				brand,
 				cpf,
 				cellphone_number,
 				address_city,
@@ -122,6 +122,8 @@ export default {
 
 			if (validation.valid) {
 				fields.address_observation = address_observation;
+				fields.brand = this.getBrand(number);
+				console.log(fields);
 			} else {
 				console.error('formulario contem erros', validation.errors);
 			}
@@ -137,6 +139,14 @@ export default {
 						this.address_city = cidade;
 					});
 			}
+		},
+		getBrand(number) {
+			const result = creditCardType(number);
+			if (result.length < 1) {
+				return 'No brand found';
+			}
+
+			return result[0].type.replace('-', '');
 		},
 	},
 };
