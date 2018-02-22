@@ -5,12 +5,60 @@
 		<form @submit.prevent="validateForm">
 			<fieldset>
 				<h2>Dados pessoais</h2>
-				<input type="text" name="name" v-model="name" placeholder="Name">
-				<input type="text" name="surname" v-model="surname" placeholder="Surname">
-				<input type="text" name="surname" v-model="cpf" placeholder="CPF">
-				<input type="email" name="surname" v-model="email" placeholder="Email">
-				<input type="text" name="surname" v-model="password" placeholder="Senha" @focus="changeType">
-				<input type="text" name="surname" v-model="confirmPassword" placeholder="Confirmar senha">
+				<input type="text" name="first_name" v-model="first_name" placeholder="Name">
+				<input type="text" name="last_name" v-model="last_name" placeholder="Surname">
+				<input type="text" name="cpf" v-model="cpf" placeholder="CPF">
+				<input type="email" name="email" v-model="email" placeholder="Email">
+				<input
+					type="text"
+					name="password"
+					ref="password"
+					v-model="password"
+					placeholder="Senha"
+					@focus="changeType">
+				<input
+					type="text"
+					name="password_confirm"
+					ref="password_confirm"
+					v-model="password_confirm"
+					placeholder="Confirmar senha"
+					@focus="changeType">
+			</fieldset>
+
+			<fieldset>
+				<h2>Dados de contato</h2>
+				<input
+					type="text"
+					name="cellphone_number"
+					v-model="cellphone_number"
+					placeholder="Telefone">
+				<input
+					type="text"
+					name="address_zip"
+					v-model="address_zip"
+					placeholder="CEP"
+					@blur="getAddress">
+				<input type="text" name="address_street" v-model="address_street" placeholder="Endereço">
+				<input type="text" name="address_number" v-model="address_number" placeholder="Número">
+				<input type="text" name="address_comp" v-model="address_comp" placeholder="Complemento">
+				<input
+					type="text"
+					name="address_neighbourhood"
+					v-model="address_neighbourhood"
+					placeholder="Bairro"
+					disabled>
+				<input
+					type="text"
+					name="address_state"
+					v-model="address_state"
+					placeholder="Estado"
+					disabled>
+				<input
+					type="text"
+					name="address_city"
+					v-model="address_city"
+					placeholder="Estado"
+					disabled>
 			</fieldset>
 
 			<button type="submit">Continuar</button>
