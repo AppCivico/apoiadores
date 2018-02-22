@@ -4,10 +4,8 @@
 
 		<h2>Programs</h2>
 		<ul>
-			<li v-for="program in programs" :key="program.id">
-				<router-link :to="`/program/${program.id}`">
-					{{ program.name}}
-				</router-link>
+			<li v-for="program in programs" :key="program.id" @click="setCurrentProgram(program)">
+				{{ program.name}}
 			</li>
 		</ul>
 	</div>
@@ -23,6 +21,14 @@ export default {
 	},
 	mounted() {
 		this.$store.dispatch('LOAD_MERCHANTS');
+	},
+	methods: {
+		setCurrentProgram(program) {
+			this.$store.dispatch('CHANGE_SELECTED_PROGRAM', program)
+				.then(() => {
+					this.$router.push({ path: `/program/${program.id}` });
+				});
+		},
 	},
 };
 </script>
