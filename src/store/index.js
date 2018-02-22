@@ -14,15 +14,16 @@ const store = new Vuex.Store({
 	actions: {
 		LOAD_MERCHANTS({ commit }) {
 			axios.get(`${config.api}/public/merchant-programs`).then((response) => {
-				commit('SET_MERCHANTS', { res: response.data });
+				commit('SET_PROGRAMS', { res: response.data });
 			}, (err) => {
 				console.error(err);
 			});
 		},
 	},
 	mutations: {
-		SET_MERCHANTS(state, { res }) {
-			state.programs = res[0].merchant_programs;
+		SET_PROGRAMS(state, { res }) {
+			const merchant = res.merchants.find(item => item.domain === config.domain);
+			state.programs = merchant.merchant_programs;
 		},
 	},
 });
