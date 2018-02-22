@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<h1>Login component</h1>
-
+		<h3>Login component</h3>
+		<p>Soon</p>
 	</div>
 </template>
 
