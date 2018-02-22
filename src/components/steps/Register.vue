@@ -37,7 +37,7 @@
 					name="address_zip"
 					v-model="address_zip"
 					placeholder="CEP"
-					@blur="getAddress">
+					@blur="setAddress">
 				<input type="text" name="address_street" v-model="address_street" placeholder="Endereço">
 				<input type="text" name="address_number" v-model="address_number" placeholder="Número">
 				<input type="text" name="address_observation" v-model="address_observation" placeholder="Complemento">
@@ -70,7 +70,7 @@
 /* eslint-disable camelcase */
 
 import axios from 'axios';
-import { validate } from '../../utilities';
+import { validate, getAddress } from '../../utilities';
 
 export default {
 	name: 'Register',
@@ -102,17 +102,16 @@ export default {
 			const ref = event.target.getAttribute('name');
 			this.$refs[ref].setAttribute('type', 'password');
 		},
-		getAddress() {
+		setAddress() {
 			if (this.address_zip !== '') {
-				axios.get(`https://api.postmon.com.br/v1/cep/${this.address_zip}`).then((response) => {
-					const { bairro, cidade, estado_info, logradouro } = response.data;
-					this.address_neighbourhood = bairro;
-					this.address_state = estado_info.nome;
-					this.address_street = logradouro;
-					this.address_city = cidade;
-				}, (err) => {
-					console.error(err);
-				});
+				getAddress(this.address_zip)
+					.then((res) => {
+						const { bairro, cidade, estado_info, logradouro } = res;
+						this.address_neighbourhood = bairro;
+						this.address_state = estado_info.nome;
+						this.address_street = logradouro;
+						this.address_city = cidade;
+					});
 			}
 		},
 		validateForm() {
