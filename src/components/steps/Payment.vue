@@ -10,9 +10,9 @@
 				<label for="cpf">CPF do titular</label>
 				<input type="text" v-model="cpf" name="cpf">
 				<label for="number">Número do cartão de crédito</label>
-				<input type="text" v-model="number" name="number">
+				<input type="text" v-model="number" name="number" placeholder="numero sem pontos">
 				<label for="validity">Data expiração</label>
-				<input type="text" v-model="validity" name="validity">
+				<input type="text" v-model="validity" name="validity" placeholder="201808">
 				<label for="csc">Cód. Segurança</label>
 				<input type="text" v-model="csc" name="csc" maxlength="3">
 			</fieldset>
