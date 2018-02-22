@@ -11,6 +11,7 @@ const store = new Vuex.Store({
 	state: {
 		programs: [],
 		selectedProgram: {},
+		donation: {},
 	},
 	actions: {
 		LOAD_MERCHANTS({ commit }) {
@@ -29,6 +30,12 @@ const store = new Vuex.Store({
 				resolve();
 			});
 		},
+		CHANGE_DONATION({ commit }, data) {
+			return new Promise((resolve) => {
+				commit('SET_DONATION', { data });
+				resolve();
+			});
+		},
 	},
 	mutations: {
 		SET_PROGRAMS(state, { res }) {
@@ -37,6 +44,9 @@ const store = new Vuex.Store({
 		},
 		SET_SELECTED_PROGRAM(state, { program }) {
 			state.selectedProgram = program;
+		},
+		SET_DONATION(state, { data }) {
+			state.donation = data;
 		},
 	},
 });
