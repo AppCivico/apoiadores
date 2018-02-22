@@ -9,6 +9,7 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
 	state: {
+		merchant: {},
 		programs: [],
 		selectedProgram: {},
 		donation: {},
@@ -36,10 +37,27 @@ const store = new Vuex.Store({
 				resolve();
 			});
 		},
+		CREATE_USER({ commit }, data) {
+			return new Promise((resolve) => {
+				axios({
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					url: `${config.api}/signup`,
+					data,
+				})
+					.then((response) => {
+						commit('SET_USER', { data: response.data });
+						resolve();
+					}, (err) => {
+						console.error(err);
+					});
+			});
+		},
 	},
 	mutations: {
 		SET_PROGRAMS(state, { res }) {
 			const merchant = res.merchants.find(item => item.domain === config.domain);
+			state.merchant = merchant;
 			state.programs = merchant.merchant_programs;
 		},
 		SET_SELECTED_PROGRAM(state, { program }) {
@@ -47,6 +65,15 @@ const store = new Vuex.Store({
 		},
 		SET_DONATION(state, { data }) {
 			state.donation = data;
+		},
+		SET_USER(state, { data }) {
+			state.apiKey = data.api_key;
+			state.user = data.user;
+
+			if (window.sessionStorage) {
+				sessionStorage.setItem('api-key', data.api_key);
+				sessionStorage.setItem('user', JSON.stringify(data.user));
+			}
 		},
 	},
 });
