@@ -4,6 +4,7 @@ import Router from 'vue-router';
 import Home from '@/components/Home';
 import Program from '@/components/steps/Program';
 import IsRegistered from '@/components/steps/IsRegistered';
+import Register from '@/components/steps/Register';
 
 Vue.use(Router);
 
@@ -24,6 +25,11 @@ export default new Router({
 			path: '/is-registered',
 			name: 'IsRegistered',
 			component: IsRegistered,
+		},
+		{
+			path: '/register',
+			name: 'Register',
+			component: Register,
 		},
 	],
 });
