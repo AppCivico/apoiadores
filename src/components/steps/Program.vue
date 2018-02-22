@@ -78,8 +78,26 @@ export default {
 	methods: {
 		validateForm() {
 			const { amount, frequency, other } = this;
-			const values = { amount, frequency, other };
-			console.log(validate(values));
+			const values = amount === 'other' ? { amount, frequency, other } : { amount, frequency };
+			const validation = validate(values);
+
+			if (validation.valid) {
+				this.saveStep(values);
+			} else {
+				console.error('formulario contem erros', validation.errors);
+			}
+		},
+		saveStep(values) {
+			const data = {
+				amount: values.amount !== 'other' ? values.amount : values.other,
+				is_recurring: values.frequency !== 'once' ? 1 : 0,
+				merchant_program_id: this.program.id,
+			};
+
+			this.$store.dispatch('CHANGE_DONATION', data)
+				.then(() => {
+					this.$router.push({ path: '/is-registered' });
+				});
 		},
 	},
 };
