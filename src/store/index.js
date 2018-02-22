@@ -10,13 +10,23 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
 	state: {
 		programs: [],
+		selectedProgram: {},
 	},
 	actions: {
 		LOAD_MERCHANTS({ commit }) {
-			axios.get(`${config.api}/public/merchant-programs`).then((response) => {
-				commit('SET_PROGRAMS', { res: response.data });
-			}, (err) => {
-				console.error(err);
+			return new Promise((resolve) => {
+				axios.get(`${config.api}/public/merchant-programs`).then((response) => {
+					commit('SET_PROGRAMS', { res: response.data });
+					resolve();
+				}, (err) => {
+					console.error(err);
+				});
+			});
+		},
+		CHANGE_SELECTED_PROGRAM({ commit }, program) {
+			return new Promise((resolve) => {
+				commit('SET_SELECTED_PROGRAM', { program });
+				resolve();
 			});
 		},
 	},
@@ -24,6 +34,9 @@ const store = new Vuex.Store({
 		SET_PROGRAMS(state, { res }) {
 			const merchant = res.merchants.find(item => item.domain === config.domain);
 			state.programs = merchant.merchant_programs;
+		},
+		SET_SELECTED_PROGRAM(state, { program }) {
+			state.selectedProgram = program;
 		},
 	},
 });
