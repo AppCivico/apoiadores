@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 // eslint-disable-next-line
 import { validate } from '../../utilities';
 
@@ -26,18 +27,40 @@ export default {
 	name: 'Register',
 	data() {
 		return {
-			name: '',
-			surname: '',
+			first_name: '',
+			last_name: '',
 			cpf: '',
 			email: '',
 			password: '',
-			confirmPassword: '',
+			password_confirm: '',
+			cellphone_number: '',
+			address_city: '',
+			address_neighbourhood: '',
+			address_number: '',
+			address_state: '',
+			address_street: '',
+			address_comp: '',
+			address_zip: '',
 		};
 	},
 	methods: {
-		changeType() {
-			this.type = 'password';
-			console.log(this);
+		changeType(event) {
+			const ref = event.target.getAttribute('name');
+			this.$refs[ref].setAttribute('type', 'password');
+		},
+		getAddress() {
+			if (this.address_zip !== '') {
+				axios.get(`https://api.postmon.com.br/v1/cep/${this.address_zip}`).then((response) => {
+					// eslint-disable-next-line camelcase
+					const { bairro, cidade, estado_info, logradouro } = response.data;
+					this.address_neighbourhood = bairro;
+					this.address_state = estado_info.nome;
+					this.address_street = logradouro;
+					this.address_city = cidade;
+				}, (err) => {
+					console.error(err);
+				});
+			}
 		},
 		validateForm() {
 			console.log('foi');
