@@ -5,6 +5,7 @@ import Home from '@/components/Home';
 import Program from '@/components/steps/Program';
 import IsRegistered from '@/components/steps/IsRegistered';
 import Register from '@/components/steps/Register';
+import Payment from '@/components/steps/Payment';
 
 Vue.use(Router);
 
@@ -30,6 +31,11 @@ export default new Router({
 			path: '/register',
 			name: 'Register',
 			component: Register,
+		},
+		{
+			path: '/payment',
+			name: 'Payment',
+			component: Payment,
 		},
 	],
 });
