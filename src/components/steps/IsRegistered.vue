@@ -2,7 +2,7 @@
 	<div>
 		<h1>Is Registered</h1>
 
-		<Login />
+		<Login route="/payment"/>
 
 		<hr>
 
