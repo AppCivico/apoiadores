@@ -68,8 +68,6 @@
 
 <script>
 /* eslint-disable camelcase */
-
-import axios from 'axios';
 import { validate, getAddress } from '../../utilities';
 
 export default {
