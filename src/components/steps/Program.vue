@@ -39,9 +39,6 @@
 
 				<input type="radio" id="frequency2" name="frequency" v-model="frequency" value="monthly">
 				<label for="frequency2">Mensal</label>
-
-				<input type="radio" id="frequency3" name="frequency" v-model="frequency" value="semester">
-				<label for="frequency3">Semestral</label>
 			</fieldset>
 			<button type="submit">Quero doar</button>
 		</form>
