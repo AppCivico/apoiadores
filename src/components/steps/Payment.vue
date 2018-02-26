@@ -5,16 +5,26 @@
 		<form @submit.prevent="validateForm">
 			<fieldset>
 				<h2>Preencha os dados de pagamento</h2>
-				<label for="name_on_card">Nome completo do titular do cartão</label>
-				<input type="text" v-model="name_on_card" name="name_on_card">
-				<label for="cpf">CPF do titular</label>
-				<input type="text" v-model="cpf" name="cpf">
-				<label for="number">Número do cartão de crédito</label>
-				<input type="text" v-model="number" name="number" placeholder="numero sem pontos">
-				<label for="validity">Data expiração</label>
-				<input type="text" v-model="validity" name="validity" placeholder="201808">
-				<label for="csc">Cód. Segurança</label>
-				<input type="text" v-model="csc" name="csc" maxlength="3">
+				<template v-if="!useRegisteredCard">
+					<label for="name_on_card">Nome completo do titular do cartão</label>
+					<input type="text" v-model="name_on_card" name="name_on_card">
+					<label for="cpf">CPF do titular</label>
+					<input type="text" v-model="cpf" name="cpf">
+					<label for="number">Número do cartão de crédito</label>
+					<input type="text" v-model="number" name="number" placeholder="numero sem pontos">
+					<label for="validity">Data expiração</label>
+					<input type="text" v-model="validity" name="validity" placeholder="201808">
+					<label for="csc">Cód. Segurança</label>
+					<input type="text" v-model="csc" name="csc" maxlength="3">
+				</template>
+
+				<div v-if="user.credit_cards">
+					<h3>Utilizar um cartão já cadastrado</h3>
+					<select name="credit_cards" id="credit_cards" v-model="selectedCard" @change="useCard">
+						<option value="">Selecionar cartão</option>
+						<option :value="card.id" v-for="card in user.credit_cards" :v-key="card.id">{{ niceType(card.brand) }} com final {{ endNumber(card.mask) }}</option>
+					</select>
+				</div>
 			</fieldset>
 
 			<fieldset>
@@ -95,6 +105,8 @@ export default {
 			address_street: '',
 			address_observation: '',
 			address_zip: '',
+			selectedCard: '',
+			useRegisteredCard: false,
 		};
 	},
 	computed: {
@@ -199,6 +211,21 @@ export default {
 			this.address_state = address_state;
 			this.address_street = address_street;
 			this.address_zip = address_zip;
+		},
+		endNumber(num) {
+			return num.slice(num.length - 3, num.length);
+		},
+		niceType(type) {
+			const types = creditCardType('');
+			const nice = types.find(item => item.type.replace('-', '') === type);
+			if (nice) {
+				return nice.niceType;
+			}
+			return type;
+		},
+		useCard() {
+			// eslint-disable-next-line
+			this.useRegisteredCard = this.selectedCard !== '' ? true : false;
 		},
 	},
 };
