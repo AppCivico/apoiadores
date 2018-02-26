@@ -6,7 +6,7 @@
 			<input type="email" v-model.trim="email" name="email">
 			<label for="password">Senha</label>
 			<input type="password" v-model.trim="password" name="password">
-			<button type="submit">Entrar</button>
+			<button type="submit" :disabled="loading">Entrar</button>
 		</form>
 	</div>
 </template>
@@ -21,6 +21,7 @@ export default {
 	},
 	data() {
 		return {
+			loading: false,
 			email: '',
 			password: '',
 		};
@@ -31,7 +32,11 @@ export default {
 		},
 	},
 	methods: {
+		toggleLoading() {
+			this.loading = !this.loading;
+		},
 		validateForm() {
+			this.toggleLoading();
 			const { email, password } = this;
 			const fields = { email, password };
 			const validation = validate(fields);
@@ -40,6 +45,7 @@ export default {
 				fields.merchant_id = this.merchant.id;
 				this.login(fields);
 			} else {
+				this.toggleLoading();
 				console.error('formulario contem erros', validation.errors);
 			}
 		},
@@ -47,6 +53,10 @@ export default {
 			this.$store.dispatch('LOGIN', data)
 				.then(() => {
 					this.$router.push({ path: this.route });
+				})
+				.catch((err) => {
+					console.err('Erro no login', err);
+					this.toggleLoading();
 				});
 		},
 	},
