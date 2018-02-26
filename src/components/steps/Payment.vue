@@ -132,12 +132,15 @@ export default {
 				address_zip,
 			} = this;
 
-			const fields = {
+			const fieldsCard = {
 				name_on_card,
 				csc,
 				number,
 				validity,
 				cpf,
+			};
+
+			const fieldsContact = {
 				cellphone_number,
 				address_city,
 				address_neighbourhood,
@@ -147,19 +150,29 @@ export default {
 				address_zip,
 			};
 
-			const validation = validate(fields);
+			const validationContact = validate(fieldsContact);
+			let validationCard = { valid: true };
 
-			if (validation.valid) {
-				fields.address_observation = address_observation;
-				fields.brand = this.getBrand(number);
-				this.saveCard({
-					name_on_card,
-					csc,
-					number,
-					validity,
-				});
+			if (!this.useRegisteredCard) {
+				validationCard = validate(fieldsCard);
+			}
+
+			if (validationContact.valid && validationCard.valid) {
+				fieldsContact.address_observation = address_observation;
+				if (this.useRegisteredCard) {
+					this.sendSubscription();
+				} else {
+					fieldsCard.brand = this.getBrand(number);
+
+					this.saveCard({
+						name_on_card,
+						csc,
+						number,
+						validity,
+					});
+				}
 			} else {
-				console.error('formulario contem erros', validation.errors);
+				console.error('formulario contem erros', validationContact, validationCard);
 			}
 		},
 		setAddress() {
@@ -190,6 +203,9 @@ export default {
 							this.$router.push({ path: '/finish' });
 						});
 				});
+		},
+		sendSubscription() {
+			console.log('create subscription here');
 		},
 		copyData() {
 			const {
