@@ -38,9 +38,21 @@
 					v-model="address_zip"
 					placeholder="CEP"
 					@blur="setAddress">
-				<input type="text" name="address_street" v-model="address_street" placeholder="Endereço">
-				<input type="text" name="address_number" v-model="address_number" placeholder="Número">
-				<input type="text" name="address_observation" v-model="address_observation" placeholder="Complemento">
+				<input
+					type="text"
+					name="address_street"
+					v-model="address_street"
+					placeholder="Endereço">
+				<input
+					type="text"
+					name="address_number"
+					v-model="address_number"
+					placeholder="Número">
+				<input
+					type="text"
+					name="address_observation"
+					v-model="address_observation"
+					placeholder="Complemento">
 				<input
 					type="text"
 					name="address_neighbourhood"
