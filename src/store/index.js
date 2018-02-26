@@ -14,6 +14,7 @@ const store = new Vuex.Store({
 		selectedProgram: {},
 		donation: {},
 		flotum: '',
+		newCard: {},
 	},
 	actions: {
 		LOAD_MERCHANTS({ commit }) {
@@ -95,6 +96,7 @@ const store = new Vuex.Store({
 					data,
 				})
 					.then(() => {
+						commit('SET_NEW_CARD', { data: response.data });
 						resolve();
 					}, (err) => {
 						console.error(err);
@@ -125,6 +127,9 @@ const store = new Vuex.Store({
 		},
 		SET_FLOTUM(state, { data }) {
 			state.flotum = data.href;
+		},
+		SET_NEW_CARD(state, { data }) {
+			state.newCard = data;
 		},
 	},
 });

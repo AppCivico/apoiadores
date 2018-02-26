@@ -113,6 +113,9 @@ export default {
 		user() {
 			return this.$store.state.user;
 		},
+		newCard() {
+			return this.$store.state.newCard;
+		},
 	},
 	methods: {
 		validateForm() {
