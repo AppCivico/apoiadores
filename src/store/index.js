@@ -18,11 +18,12 @@ const store = new Vuex.Store({
 	},
 	actions: {
 		LOAD_MERCHANTS({ commit }) {
-			return new Promise((resolve) => {
+			return new Promise((resolve, reject) => {
 				axios.get(`${config.api}/public/merchant-programs`).then((response) => {
 					commit('SET_PROGRAMS', { res: response.data });
 					resolve();
 				}, (err) => {
+					reject(err);
 					console.error(err);
 				});
 			});
@@ -52,11 +53,12 @@ const store = new Vuex.Store({
 						resolve();
 					}, (err) => {
 						console.error(err);
+						reject(err);
 					});
 			});
 		},
 		LOGIN({ commit }, data) {
-			return new Promise((resolve) => {
+			return new Promise((resolve, reject) => {
 				axios({
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },
@@ -67,12 +69,13 @@ const store = new Vuex.Store({
 						commit('SET_USER', { data: response.data });
 						resolve();
 					}, (err) => {
+						reject(err);
 						console.error(err);
 					});
 			});
 		},
 		GET_FLOTUM({ commit, state }) {
-			return new Promise((resolve) => {
+			return new Promise((resolve, reject) => {
 				axios({
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },
@@ -82,12 +85,13 @@ const store = new Vuex.Store({
 						commit('SET_FLOTUM', { data: response.data });
 						resolve();
 					}, (err) => {
+						reject(err);
 						console.error(err);
 					});
 			});
 		},
 		REGISTER_CARD({ commit, state }, data) {
-			return new Promise((resolve) => {
+			return new Promise((resolve, reject) => {
 				axios({
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },
@@ -98,12 +102,13 @@ const store = new Vuex.Store({
 						commit('SET_NEW_CARD', { data: response.data });
 						resolve();
 					}, (err) => {
+						reject(err);
 						console.error(err);
 					});
 			});
 		},
 		SEND_SUBSCRIPTION({ state }, data) {
-			return new Promise((resolve) => {
+			return new Promise((resolve, reject) => {
 				axios({
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },
@@ -113,6 +118,7 @@ const store = new Vuex.Store({
 					.then(() => {
 						resolve();
 					}, (err) => {
+						reject(err);
 						console.error(err);
 					});
 			});
