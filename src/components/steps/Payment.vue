@@ -19,7 +19,7 @@
 
 			<fieldset>
 				<h2>Dados de contato do titular</h2>
-				<a href="#">usar os dados já cadastrados</a>
+				<a href="#" @click.prevent="copyData">usar os dados já cadastrados</a>
 				<input
 					type="text"
 					name="cellphone_number"
@@ -31,9 +31,21 @@
 					v-model="address_zip"
 					placeholder="CEP"
 					@blur="setAddress">
-				<input type="text" name="address_street" v-model="address_street" placeholder="Endereço">
-				<input type="text" name="address_number" v-model="address_number" placeholder="Número">
-				<input type="text" name="address_observation" v-model="address_observation" placeholder="Complemento">
+				<input
+					type="text"
+					name="address_street"
+					v-model="address_street"
+					placeholder="Endereço">
+				<input
+					type="text"
+					name="address_number"
+					v-model="address_number"
+					placeholder="Número">
+				<input
+					type="text"
+					name="address_observation"
+					v-model="address_observation"
+					placeholder="Complemento">
 				<input
 					type="text"
 					name="address_neighbourhood"
@@ -84,6 +96,11 @@ export default {
 			address_observation: '',
 			address_zip: '',
 		};
+	},
+	computed: {
+		user() {
+			return this.$store.state.user;
+		},
 	},
 	methods: {
 		validateForm() {
@@ -161,6 +178,27 @@ export default {
 							this.$router.push({ path: '/finish' });
 						});
 				});
+		},
+		copyData() {
+			const {
+				cellphone_number,
+				address_city,
+				address_neighbourhood,
+				address_observation,
+				address_number,
+				address_state,
+				address_street,
+				address_zip,
+			} = this.user;
+
+			this.cellphone_number = cellphone_number;
+			this.address_city = address_city;
+			this.address_neighbourhood = address_neighbourhood;
+			this.address_observation = address_observation;
+			this.address_number = address_number;
+			this.address_state = address_state;
+			this.address_street = address_street;
+			this.address_zip = address_zip;
 		},
 	},
 };
