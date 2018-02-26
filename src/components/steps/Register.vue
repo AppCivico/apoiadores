@@ -5,10 +5,27 @@
 		<form @submit.prevent="validateForm">
 			<fieldset>
 				<h2>Dados pessoais</h2>
-				<input type="text" name="first_name" v-model="first_name" placeholder="Name">
-				<input type="text" name="last_name" v-model="last_name" placeholder="Surname">
-				<input type="text" name="cpf" v-model="cpf" placeholder="CPF">
-				<input type="email" name="email" v-model="email" placeholder="Email">
+				<input
+					type="text"
+					name="first_name"
+					v-model="first_name"
+					placeholder="Name">
+				<input
+					type="text"
+					name="last_name"
+					v-model="last_name"
+					placeholder="Surname">
+				<input
+					type="text"
+					name="cpf"
+					v-model="cpf"
+					placeholder="CPF"
+					v-mask="'###.###.###-##'">
+				<input
+					type="email"
+					name="email"
+					v-model="email"
+					placeholder="Email">
 				<input
 					type="text"
 					name="password"
@@ -31,13 +48,15 @@
 					type="text"
 					name="cellphone_number"
 					v-model="cellphone_number"
-					placeholder="Telefone">
+					placeholder="Telefone"
+					v-mask="['(##)####-####', '(##)#####-####']">
 				<input
 					type="text"
 					name="address_zip"
 					v-model="address_zip"
 					placeholder="CEP"
-					@blur="setAddress">
+					@blur="setAddress"
+					v-mask="'#####-###'">
 				<input
 					type="text"
 					name="address_street"
@@ -80,10 +99,14 @@
 
 <script>
 /* eslint-disable camelcase */
+import { mask } from 'vue-the-mask';
 import { validate, getAddress } from '../../utilities';
 
 export default {
 	name: 'Register',
+	directives: {
+		mask,
+	},
 	data() {
 		return {
 			first_name: '',
@@ -155,7 +178,7 @@ export default {
 				address_number,
 				address_state,
 				address_street,
-				address_zip,
+				address_zip: this.cleanZip(address_zip),
 			};
 
 			const validation = validate(fields);
@@ -163,6 +186,9 @@ export default {
 			if (validation.valid) {
 				fields.address_observation = address_observation;
 				fields.merchant_id = this.merchant.id;
+
+				console.log('fields', fields);
+
 				this.registerUser(fields);
 			} else {
 				console.error('formulario contem erros', validation.errors);
@@ -179,6 +205,9 @@ export default {
 				.then(() => {
 					this.$router.push({ path: '/payment' });
 				});
+		},
+		cleanZip(zip) {
+			return zip.replace(/\D+/g, '');
 		},
 	},
 };

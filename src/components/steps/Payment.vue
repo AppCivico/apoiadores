@@ -7,15 +7,36 @@
 				<h2>Preencha os dados de pagamento</h2>
 				<template v-if="!useRegisteredCard">
 					<label for="name_on_card">Nome completo do titular do cartão</label>
-					<input type="text" v-model="name_on_card" name="name_on_card">
+					<input
+						type="text"
+						v-model="name_on_card"
+						name="name_on_card">
 					<label for="cpf">CPF do titular</label>
-					<input type="text" v-model="cpf" name="cpf">
+					<input
+						type="text"
+						v-model="cpf"
+						name="cpf"
+						v-mask="'###.###.###-##'">
 					<label for="number">Número do cartão de crédito</label>
-					<input type="text" v-model="number" name="number" placeholder="numero sem pontos">
+					<input
+						type="text"
+						v-model="number"
+						name="number"
+						placeholder="numero sem pontos"
+						v-mask="'#### #### #### #### ####'">
 					<label for="validity">Data expiração</label>
-					<input type="text" v-model="validity" name="validity" placeholder="201808">
+					<input
+						type="text"
+						v-model="validity"
+						name="validity"
+						placeholder="MM/AAAA"
+						v-mask="'##/####'">
 					<label for="csc">Cód. Segurança</label>
-					<input type="text" v-model="csc" name="csc" maxlength="3">
+					<input
+						type="text"
+						v-model="csc"
+						name="csc"
+						maxlength="3">
 				</template>
 
 				<div v-if="user.credit_cards.length > 0">
@@ -34,13 +55,15 @@
 					type="text"
 					name="cellphone_number"
 					v-model="cellphone_number"
-					placeholder="Telefone">
+					placeholder="Telefone"
+					v-mask="['(##)####-####', '(##)#####-####']">
 				<input
 					type="text"
 					name="address_zip"
 					v-model="address_zip"
 					placeholder="CEP"
-					@blur="setAddress">
+					@blur="setAddress"
+					v-mask="'#####-###'">
 				<input
 					type="text"
 					name="address_street"
@@ -82,6 +105,7 @@
 </template>
 
 <script>
+import { mask } from 'vue-the-mask';
 /* eslint-disable camelcase */
 import creditCardType from 'credit-card-type';
 
@@ -89,6 +113,9 @@ import { validate, getAddress } from '../../utilities';
 
 export default {
 	name: 'Payment',
+	directives: {
+		mask,
+	},
 	data() {
 		return {
 			name_on_card: '',
@@ -147,13 +174,13 @@ export default {
 			};
 
 			const fieldsContact = {
-				cellphone_number,
+				cellphone_number: this.cleanPhone(cellphone_number),
 				address_city,
 				address_neighbourhood,
 				address_number,
 				address_state,
 				address_street,
-				address_zip,
+				address_zip: this.cleanZip(address_zip),
 			};
 
 			const validationContact = validate(fieldsContact);
@@ -174,7 +201,7 @@ export default {
 						name_on_card,
 						csc,
 						number,
-						validity,
+						validity: this.cleanValidity(validity),
 					});
 				}
 			} else {
@@ -236,7 +263,7 @@ export default {
 				address_zip,
 			} = this.user;
 
-			this.cellphone_number = cellphone_number;
+			this.cellphone_number = cellphone_number.replace('+55', '');
 			this.address_city = address_city;
 			this.address_neighbourhood = address_neighbourhood;
 			this.address_observation = address_observation;
@@ -259,6 +286,21 @@ export default {
 		useCard() {
 			// eslint-disable-next-line
 			this.useRegisteredCard = this.selectedCard !== '' ? true : false;
+		},
+		cleanPhone(phone) {
+			return `+55${phone
+				.trim()
+				.replace(/\W+/g, '')
+				.replace(/\D+/g, '')}`;
+		},
+		cleanZip(zip) {
+			return zip.replace(/\D+/g, '');
+		},
+		cleanValidity(validity) {
+			const valid = validity
+				.replace(/\D+/g, '')
+				.replace(/(\d{2})(\d{4})/g, '$2$1');
+			return valid;
 		},
 	},
 };
