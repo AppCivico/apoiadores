@@ -8,16 +8,16 @@
 			<fieldset>
 				<label for="amount">Escolha o valor da sua contribuição</label>
 
-				<input type="radio" id="amount1" name="amount" v-model="amount" value="20">
+				<input type="radio" id="amount1" name="amount" v-model="amount" value="2000">
 				<label for="amount1">R$ 20,00</label>
 
-				<input type="radio" id="amount2" name="amount" v-model="amount" value="40">
+				<input type="radio" id="amount2" name="amount" v-model="amount" value="4000">
 				<label for="amount2">R$ 40,00</label>
 
-				<input type="radio" id="amount3" name="amount" v-model="amount" value="40">
+				<input type="radio" id="amount3" name="amount" v-model="amount" value="8000">
 				<label for="amount3">R$ 80,00</label>
 
-				<input type="radio" id="amount4" name="amount" v-model="amount" value="40">
+				<input type="radio" id="amount4" name="amount" v-model="amount" value="20000">
 				<label for="amount4">R$ 200,00</label>
 
 				<input type="radio" id="amount5" name="amount" v-model="amount" value="other">
