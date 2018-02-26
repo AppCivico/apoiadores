@@ -18,7 +18,7 @@
 					<input type="text" v-model="csc" name="csc" maxlength="3">
 				</template>
 
-				<div v-if="user.credit_cards">
+				<div v-if="user.credit_cards.length > 0">
 					<h3>Utilizar um cartão já cadastrado</h3>
 					<select name="credit_cards" id="credit_cards" v-model="selectedCard" @change="useCard">
 						<option value="">Selecionar cartão</option>
@@ -110,6 +110,9 @@ export default {
 		};
 	},
 	computed: {
+		donation() {
+			return this.$store.state.donation;
+		},
 		user() {
 			return this.$store.state.user;
 		},
@@ -203,12 +206,23 @@ export default {
 				.then(() => {
 					this.$store.dispatch('REGISTER_CARD', card)
 						.then(() => {
-							this.$router.push({ path: '/finish' });
+							this.selectedCard = this.newCard.id;
+							this.sendSubscription();
 						});
 				});
 		},
 		sendSubscription() {
-			console.log('create subscription here');
+			const data = {
+				amount: this.donation.amount,
+				credit_card_id: this.selectedCard,
+				is_recurring: this.donation.is_recurring,
+				merchant_program_id: this.donation.merchant_program_id,
+			};
+			this.$store.dispatch('SEND_SUBSCRIPTION', data)
+				.then(() => {
+					this.$router.push({ path: '/finish' });
+				})
+				.catch(err => console.error('deu ruim', err));
 		},
 		copyData() {
 			const {
