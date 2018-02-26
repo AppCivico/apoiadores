@@ -40,7 +40,7 @@
 				<input type="radio" id="frequency2" name="frequency" v-model="frequency" value="monthly">
 				<label for="frequency2">Mensal</label>
 			</fieldset>
-			<button type="submit">Quero doar</button>
+			<button type="submit" :disabled="loading">Quero doar</button>
 		</form>
 	</div>
 </template>
@@ -55,6 +55,7 @@ export default {
 	},
 	data() {
 		return {
+			loading: false,
 			amount: '',
 			frequency: '',
 			other: '',
@@ -79,7 +80,12 @@ export default {
 		}
 	},
 	methods: {
+		toggleLoading() {
+			this.loading = !this.loading;
+		},
 		validateForm() {
+			this.toggleLoading();
+
 			const { amount, frequency, other } = this;
 			const values = amount === 'other' ? { amount, frequency, other } : { amount, frequency };
 			const validation = validate(values);
@@ -87,6 +93,7 @@ export default {
 			if (validation.valid) {
 				this.saveStep(values);
 			} else {
+				this.toggleLoading();
 				console.error('formulario contem erros', validation.errors);
 			}
 		},
@@ -100,6 +107,10 @@ export default {
 			this.$store.dispatch('CHANGE_DONATION', data)
 				.then(() => {
 					this.$router.push({ path: '/is-registered' });
+				})
+				.catch((err) => {
+					console.err('Erro no registro da doação', err);
+					this.toggleLoading();
 				});
 		},
 		formatOther() {
