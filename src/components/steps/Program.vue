@@ -22,8 +22,13 @@
 
 				<input type="radio" id="amount5" name="amount" v-model="amount" value="other">
 				<label for="amount5">Outro valor</label>
-				<input type="text" v-model="other" name="other"
-					:disabled="amount === 'other' ? false : true">
+				<input
+					type="text"
+					name="other"
+					v-model="other"
+					:disabled="amount === 'other' ? false : true"
+					@keydown="formatOther">
+				Valor: R$ {{ formatedOther }}
 			</fieldset>
 
 			<fieldset>
@@ -44,7 +49,7 @@
 </template>
 
 <script>
-import { validate } from '../../utilities';
+import { validate, formatBRL } from '../../utilities';
 
 export default {
 	name: 'Program',
@@ -56,6 +61,7 @@ export default {
 			amount: '',
 			frequency: '',
 			other: '',
+			formatedOther: '',
 		};
 	},
 	computed: {
@@ -99,6 +105,15 @@ export default {
 					this.$router.push({ path: '/is-registered' });
 				});
 		},
+		formatOther() {
+			this.formatedOther = formatBRL(this.other);
+		},
 	},
 };
 </script>
+
+<style scoped>
+	[name="other"] {
+		text-align: right;
+	}
+</style>
