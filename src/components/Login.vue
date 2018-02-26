@@ -3,9 +3,9 @@
 		<h3>Login component</h3>
 		<form @submit.prevent="validateForm">
 			<label for="email">Email</label>
-			<input type="email" v-model="email" name="email">
+			<input type="email" v-model.trim="email" name="email">
 			<label for="password">Senha</label>
-			<input type="password" v-model="password" name="password">
+			<input type="password" v-model.trim="password" name="password">
 			<button type="submit">Entrar</button>
 		</form>
 	</div>
