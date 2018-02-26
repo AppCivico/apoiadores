@@ -7,7 +7,10 @@ import App from './App';
 import router from './router';
 import store from './store';
 
+import { formatBRL } from './utilities';
+
 Vue.config.productionTip = false;
+Vue.filter('formatBRL', formatBRL);
 
 // Some middleware to help ensure the program was selected
 router.beforeEach((to, from, next) => {
