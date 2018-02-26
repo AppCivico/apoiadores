@@ -86,8 +86,7 @@ const store = new Vuex.Store({
 					});
 			});
 		},
-		// eslint-disable-next-line
-		REGISTER_CARD({ state }, data) {
+		REGISTER_CARD({ commit, state }, data) {
 			return new Promise((resolve) => {
 				axios({
 					method: 'POST',
@@ -95,8 +94,23 @@ const store = new Vuex.Store({
 					url: state.flotum,
 					data,
 				})
-					.then(() => {
+					.then((response) => {
 						commit('SET_NEW_CARD', { data: response.data });
+						resolve();
+					}, (err) => {
+						console.error(err);
+					});
+			});
+		},
+		SEND_SUBSCRIPTION({ state }, data) {
+			return new Promise((resolve) => {
+				axios({
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					url: `${config.api}/user/${state.user.id}/subscriptions?api_key=${state.apiKey}`,
+					data,
+				})
+					.then(() => {
 						resolve();
 					}, (err) => {
 						console.error(err);
