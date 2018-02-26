@@ -2,7 +2,7 @@
 	<div>
 		<h1>Finish</h1>
 		<h2>Contribuição realizada com sucesso!</h2>
-		<p>Você contribuiu com o valor de R$ {{ donation.amount }} para a {{ name }}</p>
+		<p>Você contribuiu com o valor de R$ {{ donation.amount | formatBRL }} para a {{ name }}</p>
 		<router-link to="/">voltar a página inicial</router-link>
 	</div>
 </template>
