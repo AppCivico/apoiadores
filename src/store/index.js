@@ -9,12 +9,13 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
 	state: {
-		merchant: {},
-		programs: [],
-		selectedProgram: {},
+		charges: [],
 		donation: {},
 		flotum: '',
+		merchant: {},
 		newCard: {},
+		programs: [],
+		selectedProgram: {},
 	},
 	actions: {
 		LOAD_MERCHANTS({ commit }) {
@@ -123,6 +124,13 @@ const store = new Vuex.Store({
 					});
 			});
 		},
+		LOAD_CHARGES({ commit, state }) {
+			axios.get(`${config.api}/user/${state.user.id}/charges?api_key=${state.apiKey}`).then((response) => {
+				commit('SET_CHARGES', { data: response.data });
+			}, (err) => {
+				console.error(err);
+			});
+		},
 	},
 	mutations: {
 		SET_PROGRAMS(state, { res }) {
@@ -150,6 +158,9 @@ const store = new Vuex.Store({
 		},
 		SET_NEW_CARD(state, { data }) {
 			state.newCard = data;
+		},
+		SET_CHARGES(state, { data }) {
+			state.charges = data;
 		},
 	},
 });
