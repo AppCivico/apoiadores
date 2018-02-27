@@ -7,6 +7,7 @@ import IsRegistered from '@/components/steps/IsRegistered';
 import Register from '@/components/steps/Register';
 import Payment from '@/components/steps/Payment';
 import Finish from '@/components/steps/Finish';
+import MyAccount from '@/components/account/myAccount';
 
 Vue.use(Router);
 
@@ -46,6 +47,12 @@ export default new Router({
 			name: 'Finish',
 			component: Finish,
 			meta: { requiresProgram: true },
+		},
+		{
+			path: '/my-account',
+			name: 'MyAccount',
+			component: MyAccount,
+			props: true,
 		},
 	],
 });
