@@ -43,7 +43,12 @@
 					<h3>Utilizar um cartão já cadastrado</h3>
 					<select name="credit_cards" id="credit_cards" v-model="selectedCard" @change="useCard">
 						<option value="">Selecionar cartão</option>
-						<option :value="card.id" v-for="card in user.credit_cards" :v-key="card.id">{{ niceType(card.brand) }} com final {{ endNumber(card.mask) }}</option>
+						<option
+							:value="card.id"
+							v-for="card in user.credit_cards"
+							:key="card.id">
+							{{ niceType(card.brand) }} com final {{ endNumber(card.mask) }}
+						</option>
 					</select>
 				</div>
 			</fieldset>
