@@ -4,6 +4,20 @@
 
 		<section>
 			<h2>Histório de doações</h2>
+			<table v-if="charges.length > 0">
+				<tr>
+					<td>Data e hora</td>
+					<td>Periodicidade</td>
+					<td>Valor</td>
+					<td>Status</td>
+				</tr>
+				<tr v-for="charge in charges">
+					<td>{{ charge.created_at}}</td>
+					<td>Nao sei</td>
+					<td>{{ charge.charge_amount }}</td>
+					<td>{{ charge.charge_transaction_status }}</td>
+				</tr>
+			</table>
 		</section>
 
 		<section>
@@ -73,6 +87,9 @@ export default {
 		this.$store.dispatch('LOAD_CHARGES');
 	},
 	computed: {
+		charges() {
+			return this.$store.state.charges;
+		},
 		user() {
 			return this.$store.state.user;
 		},
@@ -104,5 +121,8 @@ export default {
 <style scoped>
 	section {
 		border: 1px solid #000;
+	}
+	table {
+		width: 100%;
 	}
 </style>
