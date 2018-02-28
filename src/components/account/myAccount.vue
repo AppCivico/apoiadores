@@ -12,10 +12,10 @@
 					<td>Status</td>
 				</tr>
 				<tr v-for="charge in charges">
-					<td>{{ charge.created_at}}</td>
+					<td>{{ formatDate(charge.created_at) }}</td>
 					<td>Nao sei</td>
-					<td>{{ charge.charge_amount }}</td>
-					<td>{{ charge.charge_transaction_status }}</td>
+					<td>R$ {{ charge.charge_amount | formatBRL }}</td>
+					<td>{{ statusType(charge.charge_transaction_status) }}</td>
 				</tr>
 			</table>
 		</section>
@@ -83,6 +83,14 @@ import creditCardType from 'credit-card-type';
 
 export default {
 	name: 'MyAccount',
+	data() {
+		return {
+			status: {
+				captured: 'Confirmada',
+				cancelled: 'Cancelada',
+			},
+		};
+	},
 	mounted() {
 		this.$store.dispatch('LOAD_CHARGES');
 	},
@@ -113,6 +121,47 @@ export default {
 			const currentPhone = phone.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
 			// eslint-disable-next-line
 			return !currentPhone[2] ? currentPhone[1] : '(' + currentPhone[1] + ') ' + currentPhone[2] + (currentPhone[3] ? '-' + currentPhone[3] : '');
+		},
+		statusType(type) {
+			return this.status[type] ? this.status[type] : type;
+		},
+		formatDate(data) {
+			const week = [
+				'Segunda-feira',
+				'Terça-feira',
+				'Quarta-feira',
+				'Quinta-feira',
+				'Sexta-feira',
+				'Sábado',
+				'Domingo',
+			];
+			const months = [
+				'Janeiro',
+				'Fevereiro',
+				'Março',
+				'Abril',
+				'Maio',
+				'Junho',
+				'Julho',
+				'Agosto',
+				'Setembro',
+				'Outubro',
+				'Novembro',
+				'Dezembro',
+			];
+			const date = new Date(data);
+
+			const weekDay = week[date.getDay()];
+			const day = date.getDate();
+			const month = months[date.getMonth()];
+			const year = date.getFullYear();
+
+			const time = data
+				.split('T')[1]
+				.replace(':', 'h')
+				.split(':')[0];
+
+			return `${weekDay}, ${day} de ${month} de ${year} - ${time}`;
 		},
 	},
 };
