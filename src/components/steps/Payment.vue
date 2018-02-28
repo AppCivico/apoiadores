@@ -104,7 +104,7 @@
 					disabled>
 			</fieldset>
 
-			<button type="send">Finalizar</button>
+			<button type="send" :disabled="loading">Finalizar</button>
 		</form>
 	</div>
 </template>
@@ -123,6 +123,7 @@ export default {
 	},
 	data() {
 		return {
+			loading: false,
 			name_on_card: '',
 			csc: '',
 			number: '',
@@ -154,6 +155,8 @@ export default {
 	},
 	methods: {
 		validateForm() {
+			this.toggleLoading();
+
 			const {
 				name_on_card,
 				csc,
@@ -211,6 +214,7 @@ export default {
 				}
 			} else {
 				console.error('formulario contem erros', validationContact, validationCard);
+				this.toggleLoading();
 			}
 		},
 		setAddress() {
@@ -306,6 +310,9 @@ export default {
 				.replace(/\D+/g, '')
 				.replace(/(\d{2})(\d{4})/g, '$2$1');
 			return valid;
+		},
+		toggleLoading() {
+			this.loading = !this.loading;
 		},
 	},
 };
