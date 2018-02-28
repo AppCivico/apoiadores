@@ -181,6 +181,11 @@ export default {
 				address_zip: this.cleanZip(address_zip),
 			};
 
+			if (password_confirm !== password) {
+				console.error('password nao é igual');
+				return;
+			}
+
 			const validation = validate(fields);
 
 			if (validation.valid) {
