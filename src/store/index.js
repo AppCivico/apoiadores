@@ -126,7 +126,7 @@ const store = new Vuex.Store({
 		},
 		LOAD_CHARGES({ commit, state }) {
 			axios.get(`${config.api}/user/${state.user.id}/charges?api_key=${state.apiKey}`).then((response) => {
-				commit('SET_CHARGES', { data: response.data });
+				commit('SET_CHARGES', { data: response.data.charges });
 			}, (err) => {
 				console.error(err);
 			});
