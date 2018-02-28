@@ -124,8 +124,10 @@ const store = new Vuex.Store({
 					});
 			});
 		},
-		LOAD_CHARGES({ commit, state }) {
-			axios.get(`${config.api}/user/${state.user.id}/charges?api_key=${state.apiKey}`).then((response) => {
+		LOAD_CHARGES({ commit, state }, rows) {
+			// eslint-disable-next-line
+			const url = rows > 0 ? `${config.api}/user/${state.user.id}/charges?rows=${rows}&api_key=${state.apiKey}` : `${config.api}/user/${state.user.id}/charges?api_key=${state.apiKey}`;
+			axios.get(url).then((response) => {
 				commit('SET_CHARGES', { data: response.data.charges });
 			}, (err) => {
 				console.error(err);

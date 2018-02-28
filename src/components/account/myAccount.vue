@@ -92,7 +92,7 @@ export default {
 		};
 	},
 	mounted() {
-		this.$store.dispatch('LOAD_CHARGES');
+		this.$store.dispatch('LOAD_CHARGES', 5);
 	},
 	computed: {
 		charges() {
