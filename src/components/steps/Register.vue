@@ -92,7 +92,7 @@
 					disabled>
 			</fieldset>
 
-			<button type="submit">Continuar</button>
+			<button type="submit" :disabled="loading">Continuar</button>
 		</form>
 	</div>
 </template>
@@ -109,6 +109,7 @@ export default {
 	},
 	data() {
 		return {
+			loading: false,
 			first_name: '',
 			last_name: '',
 			cpf: '',
@@ -148,6 +149,8 @@ export default {
 			}
 		},
 		validateForm() {
+			this.toggleLoading();
+
 			const {
 				first_name,
 				last_name,
@@ -183,6 +186,7 @@ export default {
 
 			if (password_confirm !== password) {
 				console.error('password nao é igual');
+				this.toggleLoading();
 				return;
 			}
 
@@ -197,6 +201,7 @@ export default {
 				this.registerUser(fields);
 			} else {
 				console.error('formulario contem erros', validation.errors);
+				this.toggleLoading();
 			}
 		},
 		cleanPhone(phone) {
@@ -213,6 +218,9 @@ export default {
 		},
 		cleanZip(zip) {
 			return zip.replace(/\D+/g, '');
+		},
+		toggleLoading() {
+			this.loading = !this.loading;
 		},
 	},
 };
