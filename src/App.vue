@@ -1,12 +1,49 @@
 <template>
-	<div id="app">
-		<router-view/>
+	<div class="shell">
+		<header>
+			<h1>{{ title }}</h1>
+
+			<div class="btn-group">
+				<button>Menu</button>
+				<button>Login</button>
+			</div>
+
+			<nav>
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Faça uma Doação</a></li>
+					<li><a href="#">Doe seu Serviço</a></li>
+					<li><a href="#">Compartilhe um Sonho</a></li>
+					<li><a href="#">Perguntas Frequentes</a></li>
+					<li><a href="#">Contato</a></li>
+				</ul>
+			</nav>
+
+			<Login route="/my-account"/>
+		</header>
+		<main>
+			<router-view/>
+		</main>
+		<footer>
+
+		</footer>
 	</div>
 </template>
 
 <script>
+import Login from './components/Login';
+import config from './config';
+
 export default {
 	name: 'App',
+	components: {
+		Login,
+	},
+	data() {
+		return {
+			title: config.name,
+		};
+	},
 };
 </script>
 
