@@ -1,0 +1,54 @@
+$white: #fff;
+$black: #000;
+
+/// Friendlier colour names with Sass maps
+/// @access private
+$_color-base-gray: rgb(204, 204, 204);
+$_color-base-green: rgb(37, 203, 194);
+
+/// @access private
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are pure colors or the returned value of functions
+// this is a variable! A variable map!
+// scss-lint:disable ColorVariable
+$_palettes: (
+	'white': (
+		'base': $white,
+		'dark': rgb(245, 245, 245)
+	),
+	'black': (
+		'base': $black
+	),
+	'green': (
+		'base': $_color-base-green,
+		'light': mix($white, $_color-base-green, 10%),
+		'dark': rgb(24, 146, 139)
+	),
+	'gray':  (
+		'base': $_color-base-gray,
+		'light': rgb(249, 249, 249),
+		'dark': mix($black, $_color-base-gray, 10%)
+	),
+	'ciudatos': (
+		'base': rgb(132, 64, 133),
+		'dark': rgb(77, 32, 76)
+	),
+	'saveh': (
+		'base': rgb(81, 133, 179),
+		'light': rgb(102, 254, 254)
+	),
+	'observa-sampa': (
+		'base': rgb(255, 157, 64),
+	),
+	'votolegal': (
+		'base': rgb(79, 204, 121),
+		'light': rgb(103, 254, 152),
+		'dark': rgb(70, 172, 117)
+	),
+	'gestao-e-implementacao': (
+		'base': rgb(4, 119, 199)
+	),
+	'hospedagem-e-infraestrutura': (
+		'base': rgb(246, 157, 69)
+	)
+);
