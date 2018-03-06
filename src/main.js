@@ -11,6 +11,7 @@ import { formatBRL } from './utilities';
 
 Vue.config.productionTip = false;
 Vue.filter('formatBRL', formatBRL);
+Vue.filter('upperCase', value => value.toUpperCase());
 
 // Some middleware to help ensure the program was selected
 router.beforeEach((to, from, next) => {
