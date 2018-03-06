@@ -1,7 +1,7 @@
 <template>
 	<div class="shell">
 		<header>
-			<h1>{{ title }}</h1>
+			<h1>{{ title }}	</h1>
 
 			<div class="btn-group">
 				<button>Menu</button>
@@ -25,7 +25,19 @@
 			<router-view/>
 		</main>
 		<footer>
+			<h1>{{ title }}</h1>
+			<h2>{{ title | upperCase }}</h2>
 
+			<div class="partners" v-if="partners.length > 0">
+				<strong>Powered by</strong>
+				<ul>
+					<li v-for="partner in partners">
+						<a :href="partner.url" target="_blank">
+							<img :src="partner.logo" :alt="partner.name">
+						</a>
+					</li>
+				</ul>
+			</div>
 		</footer>
 	</div>
 </template>
@@ -42,6 +54,8 @@ export default {
 	data() {
 		return {
 			title: config.name,
+			partners: config.partners,
+			logos: config.logos,
 		};
 	},
 };
