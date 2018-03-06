@@ -10,18 +10,4 @@ export default {
 };
 </script>
 
-<style>
-#app {
-	font-family: 'Avenir', Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	color: #2c3e50;
-	width: 100%;
-	max-width: 960px;
-	margin: 60px auto 0;
-}
-
-input {
-	display: block;
-}
-</style>
+<style src="./stylesheets/index.scss" lang="scss"></style>
