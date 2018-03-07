@@ -10,11 +10,13 @@ $_palettes: (
 	'black': (
 		'base': rgb(0, 0, 0)
 	),
-	'gray': (
+	'primary': (
 		'base': rgb(80, 80, 80)
 	),
-	'orange': (
+	'secundary': (
 		'base': rgb(255, 101, 51),
 		'light': rgb(255, 153, 102)
 	)
 );
+
+$gutter: 40px;
