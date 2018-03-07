@@ -1,0 +1,54 @@
+footer {
+	width: 100%;
+	background-color: palette('primary');
+	color: palette('white');
+}
+
+footer .container {
+	display: table;
+	padding: $gutter * 2;
+}
+
+footer h1 {
+	@extend .hide-text;
+	float: left;
+	display: block;
+	width: 213px;
+	height: 39px;
+	background-repeat: no-repeat;
+	margin-right: $gutter;
+}
+
+footer h2 {
+	text-align: right;
+	font-size: 1.2em;
+	font-weight: 400;
+	letter-spacing: 0.2em;
+	color: palette('white');
+	margin-bottom: $gutter * 3;
+}
+
+footer .partners {
+	width: 100%;
+	clear: both;
+	text-align: right;
+}
+
+footer .partners strong {
+	color: palette('secundary', 'light');
+	text-transform: uppercase;
+}
+
+footer .partners ul {
+	display: inline-block;
+	list-style: none;
+}
+
+footer .partners li {
+	display: inline-block;
+	margin-left: $gutter;
+}
+
+footer .partners img {
+	vertical-align: middle;
+}
