@@ -6,7 +6,28 @@
 	'abstracts/functions';
 
 // 2. Base stuff
-/* @import
+@import
+	'base/reset',
+	'base/base',
+	'base/helpers',
+	'base/typography';
+
+// 4. Layout-related sections
+@import
+	'layout/header',
+	'layout/navigation',
+	'layout/login';
+
+// 5. Components
+@import
+	'components/button';
+
+// 7. Themes
+@import
+	'themes/customization';
+/*
+// 2. Base stuff
+ @import
 	'base/base',
 	'base/fonts',
 	'base/typography',
