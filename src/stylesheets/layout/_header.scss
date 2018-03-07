@@ -1,0 +1,50 @@
+[role="banner"] {
+	width: 100%;
+	color: palette('primary');
+	transition: background-color 300ms;
+}
+
+[role="banner"] .container {
+	display: table;
+	padding: $gutter * 2;
+}
+
+[role="banner"] h1 {
+	@extend .hide-text;
+	float: left;
+	display: block;
+	width: 240px;
+	height: 44px;
+	background-repeat: no-repeat;
+	margin-right: $gutter;
+}
+
+[role="banner"] .btn-group {
+	float: left;
+}
+
+[role="banner"] .login-wrapper {
+	float: right;
+}
+
+[role="banner"] nav,
+[role="banner"] .login-wrapper {
+	display: none;
+	opacity: 0;
+	transition: opacity 300ms 300ms;
+}
+
+[role="banner"].open {
+	background-color: palette('primary');
+	color: palette('white');
+
+	.active {
+		display: block;
+		opacity: 1;
+	}
+
+	.btn.unselected {
+		visibility: hidden;
+		cursor: default;
+	}
+}
