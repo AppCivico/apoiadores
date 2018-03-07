@@ -29,18 +29,20 @@
 			<router-view/>
 		</main>
 		<footer>
-			<h1>{{ title }}</h1>
-			<h2>{{ title | upperCase }}</h2>
+			<div class="container">
+				<h1>{{ title }}</h1>
+				<h2>{{ title | upperCase }}</h2>
 
-			<div class="partners" v-if="partners.length > 0">
-				<strong>Powered by</strong>
-				<ul>
-					<li v-for="partner in partners">
-						<a :href="partner.url" target="_blank">
-							<img :src="partner.logo" :alt="partner.name">
-						</a>
-					</li>
-				</ul>
+				<div class="partners" v-if="partners.length > 0">
+					<strong>Powered by</strong>
+					<ul>
+						<li v-for="partner in partners">
+							<a :href="partner.url" target="_blank">
+								<img :src="partner.logo" :alt="partner.name">
+							</a>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</footer>
 	</div>
