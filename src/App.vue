@@ -1,25 +1,29 @@
 <template>
 	<div class="shell">
-		<header>
-			<h1>{{ title }}	</h1>
+		<header role="banner" :class="this.header ? 'open' : ''">
+				<div class="container">
+				<h1>{{ title }}</h1>
 
-			<div class="btn-group">
-				<button>Menu</button>
-				<button>Login</button>
+				<div class="btn-group">
+					<button :class="`btn btn__nav ${this.target === 'nav' ? 'selected' : 'unselected'}`" @click="toggleHeader('nav')">Menu</button>
+					<button :class="`btn btn__login ${this.target === 'login' ? 'selected' : 'unselected'}`" @click="toggleHeader('login')">Login</button>
+				</div>
+
+				<nav :class="this.target === 'nav' ? 'active' : ''">
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Faça uma Doação</a></li>
+						<li><a href="#">Doe seu Serviço</a></li>
+						<li><a href="#">Compartilhe um Sonho</a></li>
+						<li><a href="#">Perguntas Frequentes</a></li>
+						<li><a href="#">Contato</a></li>
+					</ul>
+				</nav>
+
+				<div :class="`login-wrapper ${this.target === 'login' ? 'active' : ''}`">
+					<Login route="/my-account"/>
+				</div>
 			</div>
-
-			<nav>
-				<ul>
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Faça uma Doação</a></li>
-					<li><a href="#">Doe seu Serviço</a></li>
-					<li><a href="#">Compartilhe um Sonho</a></li>
-					<li><a href="#">Perguntas Frequentes</a></li>
-					<li><a href="#">Contato</a></li>
-				</ul>
-			</nav>
-
-			<Login route="/my-account"/>
 		</header>
 		<main>
 			<router-view/>
@@ -56,7 +60,20 @@ export default {
 			title: config.name,
 			partners: config.partners,
 			logos: config.logos,
+			header: false,
+			target: '',
 		};
+	},
+	methods: {
+		toggleHeader(target) {
+			if (this.header) {
+				this.target = '';
+			} else {
+				this.target = target;
+			}
+
+			this.header = !this.header;
+		},
 	},
 };
 </script>
