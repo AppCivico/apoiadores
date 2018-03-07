@@ -1,6 +1,5 @@
 <template>
-	<div>
-		<h3>Login component</h3>
+	<div class="login">
 		<form @submit.prevent="validateForm">
 			<label for="email">Email</label>
 			<input type="email" v-model.trim="email" name="email">
