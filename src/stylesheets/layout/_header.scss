@@ -1,7 +1,14 @@
 [role="banner"] {
+	position: absolute;
+	top: 0;
+	left: 0;
 	width: 100%;
 	color: palette('primary');
-	transition: background-color 300ms;
+	background-image: linear-gradient(90deg, palette('primary') 30%, palette('primary') 70%);
+	background-size: 100% 0;
+	background-repeat: no-repeat;
+	transition: background-size 300ms ease-in, color 300ms;
+	z-index: 3;
 }
 
 [role="banner"] .container {
@@ -29,17 +36,18 @@
 
 [role="banner"] nav,
 [role="banner"] .login-wrapper {
-	display: none;
+	overflow: hidden;
+	max-height: 0;
 	opacity: 0;
 	transition: opacity 300ms 300ms;
 }
 
 [role="banner"].open {
-	background-color: palette('primary');
+	background-size: 100% 100%;
 	color: palette('white');
 
 	.active {
-		display: block;
+		max-height: 1000px;
 		opacity: 1;
 	}
 
