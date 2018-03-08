@@ -7,31 +7,39 @@
 				<p v-html="header.text"></p>
 			</div>
 		</section>
-		<section class="programs container">
-			<div class="program" v-for="(program, key) in programs">
-				<h3 v-html="program.title"></h3>
-				<p>{{ program.text }}</p>
-				<a
-					v-if="key === 'donation'"
-					href="#"
-					@click.prevent="setCurrentProgram(program.active ? donation : null)"
-				>
-					{{ program.active ? 'DOE AGORA!' : 'EM BREVE' }}
-				</a>
-				<a
-					v-else-if="key === 'project'"
-					href="#"
-					@click.prevent="setCurrentProgram(program.active ? '' : null)"
-				>
-					{{ program.active ? 'DOE AGORA!!' : 'EM BREVE' }}
-				</a>
-				<a
-					v-else
-					href="#"
-					@click.prevent="setCurrentProgram(program.active ? '' : null)"
-				>
-					{{ program.active ? 'DOE AGORA!' : 'EM BREVE' }}
-				</a>
+		<section class="programs">
+			<div class="programs__positioner">
+				<div class="container">
+					<div class="programs__row">
+						<div class="programs__program" v-for="(program, key) in programs">
+							<div class="program__content">
+								<h3 v-html="program.title"></h3>
+								<p>{{ program.text }}</p>
+								<a
+									v-if="key === 'donation'"
+									href="#"
+									@click.prevent="setCurrentProgram(program.active ? donation : null)"
+								>
+									{{ program.active ? 'DOE AGORA!' : 'EM BREVE' }}
+								</a>
+								<a
+									v-else-if="key === 'project'"
+									href="#"
+									@click.prevent="setCurrentProgram(program.active ? '' : null)"
+								>
+									{{ program.active ? 'DOE AGORA!!' : 'EM BREVE' }}
+								</a>
+								<a
+									v-else
+									href="#"
+									@click.prevent="setCurrentProgram(program.active ? '' : null)"
+								>
+									{{ program.active ? 'DOE AGORA!' : 'EM BREVE' }}
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>
 		<section class="video">
@@ -44,7 +52,7 @@
 					<img :src="`https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg`" :alt="video.text">
 				</a>
 				<h2 v-html="video.title"></h2>
-				<h3>
+				<h3 v-if="donation">
 						{{ donation.summary.captured_count }}
 						pessoas já doaram,
 						<a href="#" @click.prevent="setCurrentProgram(donation)">
