@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<main class="container">
 		<h1>My account</h1>
 
 		<section>
@@ -74,7 +74,7 @@
 			</div>
 			<button type="button" @click="edit('cards')">Alterar</button>
 		</section>
-	</div>
+	</main>
 </template>
 
 <script>

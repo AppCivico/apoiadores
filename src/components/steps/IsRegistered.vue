@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<main class="container">
 		<h1>Is Registered</h1>
 
 		<Login route="/payment"/>
@@ -12,7 +12,7 @@
 		Architecto libero laudantium tempore deserunt totam quaerat fugit harum,
 		sequi doloribus odit!</p>
 		<router-link to="/register">Cadastre-se</router-link>
-	</div>
+	</main>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<main class="container">
 		<h1>Payment</h1>
 
 		<form @submit.prevent="validateForm">
@@ -106,7 +106,7 @@
 
 			<button type="send" :disabled="loading">Finalizar</button>
 		</form>
-	</div>
+	</main>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<main class="container">
 		<h1>Register</h1>
 
 		<form @submit.prevent="validateForm">
@@ -94,7 +94,7 @@
 
 			<button type="submit" :disabled="loading">Continuar</button>
 		</form>
-	</div>
+	</main>
 </template>
 
 <script>

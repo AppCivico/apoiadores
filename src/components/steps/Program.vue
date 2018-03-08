@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<main class="container">
 		<h1>Program: {{program.name}}</h1>
 
 		<h2>Doação</h2>
@@ -42,7 +42,7 @@
 			</fieldset>
 			<button type="submit" :disabled="loading">Quero doar</button>
 		</form>
-	</div>
+	</main>
 </template>
 
 <script>
