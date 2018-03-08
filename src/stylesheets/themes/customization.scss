@@ -1,11 +1,19 @@
 [role="banner"] h1 {
-	background-image: url('../assets/img/logo.png');
+	background-image: url('../assets/img/customization/logo.png');
 }
 
 [role="banner"].open h1 {
-	background-image: url('../assets/img/logo_nav.png');
+	background-image: url('../assets/img/customization/logo_nav.png');
 }
 
 footer h1 {
-	background-image: url('../assets/img/logo_bw.png');
+	background-image: url('../assets/img/customization/logo_bw.png');
+}
+
+.slogan {
+	background-image: url('../assets/img/customization/bg_header.jpg');
+}
+
+.video {
+	background-image: url('../assets/img/customization/bg_video.jpg');
 }
