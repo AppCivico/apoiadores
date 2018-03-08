@@ -25,9 +25,9 @@
 				</div>
 			</div>
 		</header>
-		<main>
-			<router-view/>
-		</main>
+
+		<router-view/>
+
 		<footer>
 			<div class="container">
 				<h1>{{ title }}</h1>
