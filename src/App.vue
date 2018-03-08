@@ -2,7 +2,7 @@
 	<div class="shell">
 		<header role="banner" :class="this.header ? 'open' : ''">
 				<div class="container">
-				<h1>{{ title }}</h1>
+				<router-link to="/" tag="h1">{{ title }}</router-link>
 
 				<div class="btn-group">
 					<button :class="`btn btn__nav ${this.target === 'nav' ? 'selected' : 'unselected'}`" @click="toggleHeader('nav')">Menu</button>
