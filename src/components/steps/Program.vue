@@ -90,7 +90,7 @@ export default {
 			frequency: '',
 			other: '',
 			formatedOther: '',
-			name: config.name
+			name: config.name,
 		};
 	},
 	computed: {
