@@ -1,7 +1,23 @@
+aside {
+	max-width: 360px;
+}
+
 aside h2 {
 	color: palette('blue', 'light');
 	font-size: 4.2em;
 	font-weight: 300;
+	margin-bottom: $gutter;
+}
+
+aside h3 {
+	color: palette('black', 'light');
+	font-size: 2.4em;
+	font-weight: 700;
+	margin-bottom: $gutter / 2;
+}
+
+aside p {
+	font-size: 1.8em;
 	margin-bottom: $gutter;
 }
 
