@@ -8,18 +8,22 @@ $_palettes: (
 		'base': rgb(255, 255, 255)
 	),
 	'black': (
-		'base': rgb(0, 0, 0)
+		'base': rgb(0, 0, 0),
+		'light': rgb(51, 51, 51)
 	),
 	'primary': (
 		'base': rgb(80, 80, 80),
-		'light': rgb(153, 153, 153)
+		'light': rgb(153, 153, 153),
+		'x-light': rgb(218, 218, 218)
 	),
 	'secundary': (
 		'base': rgb(255, 101, 51),
 		'light': rgb(255, 153, 102)
 	),
-	'link': (
-		'base': rgb(16, 241, 245)
+	'blue': (
+		'base': rgb(16, 241, 245),
+		'light': rgb(51, 204, 204),
+		'dark': rgb(74, 174, 188)
 	)
 );
 
