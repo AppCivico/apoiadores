@@ -22,29 +22,29 @@ const config = {
 	content: {
 		header: {
 			title: 'MUITOS<strong>DOANDO</strong><span>POUCO</span>',
-			text: 'A REDE está ciente de que sua força organizativa e sua contribuição política serão mais inspiradoras e sustentáveis na medida em que forem o reflexo de uma cultura verdadeira e de práticas autênticas dos que se dispõe a liderar. <strong>Participe</strong>!',
+			text: 'A Rede Sustentabilidade foi construída com a participação direta de seus integrantes, um espaço de mobilização e inovação, no qual floresce uma nova cultura política.',
 		},
 		programs: {
 			project: {
-				title: 'Compartilhe um <strong>Sonho</strong>',
-				text: 'A democracia precisa de cidadãos e cidadãs responsáveis, bem informados e bem formados',
+				title: 'Seja parceiro dos nossos <strong>Projetos</strong>',
+				text: 'Acreditamos em ferramentas de financiamento inovadoras e participativas. Seja um parceiro financeiro dos nossos projetos.',
 				active: false,
 			},
 			service: {
-				title: 'Doe seu <strong>Serviço</strong>',
-				text: 'A democracia precisa de cidadãos e cidadãs responsáveis, bem informados e bem formados',
+				title: 'Participe! Doe seu <strong>Serviço</strong>',
+				text: 'A forma como a gente faz política, determina a forma como a gente governa. Faça parte do time de voluntários da Rede.',
 				active: false,
 			},
 			donation: {
-				title: 'Faça uma <strong>Doação</strong>',
-				text: 'A democracia precisa de cidadãos e cidadãs responsáveis, bem informados e bem formados',
+				title: 'Faça sua <strong>Doação</strong>',
+				text: 'Você não precisa ser filiado para colaborar financeiramente com a Rede Sustentabilidade. Os desafios são grandes.',
 				active: true,
 			},
 		},
 		video: {
-			title: 'Um chamado ao <strong>engajamento</strong>',
+			title: 'Apoie a Rede no <strong>Combate às  Fake News</strong>',
 			id: 'Pqs6-rLmqWI',
-			text: 'Ouça o que Marina Silva tem a dizer sobre engajamento. A REDE está ciente de que sua força organizativa e sua contribuição política serão mais inspiradoras e sustentáveis na medida em que forem o reflexo de uma cultura verdadeira e de práticas autênticas dos que se dispõe a liderar.',
+			text: 'Desde a campanha presidencial de 2010, com uma intensificação em 2014, Marina Silva é alvo de notícias falsas e ataques mentirosos. Estas investidas partem de membros de diferentes campos políticos. Apoie a “REDE no combate às fake news”, um projeto inovador com o objetivo se contrapor às mentiras virtuais sobre Marina Silva e a Rede Sustentabilidade nas eleições de 2018. <a href="#">Apoie este projeto</a>',
 		},
 	},
 };
