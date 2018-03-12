@@ -59,7 +59,7 @@
 							seja a próxima
 						</a>
 				</h3>
-				<p>{{ video.text }}</p>
+				<p v-html="video.text"></p>
 			</div>
 		</section>
 	</main>
