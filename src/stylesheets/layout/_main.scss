@@ -1,5 +1,36 @@
 main {
 	position: relative;
+	width: 100%;
+	display: table;
 	z-index: 1;
 	padding-top: $gutter * 5;
+}
+
+main .content {
+	float: left;
+	width: 60%;
+	border-right: 1px solid palette('primary', 'x-light');
+	padding-right: $gutter;
+	margin-bottom: $gutter;
+}
+
+main .content h2 {
+	color: palette('blue', 'light');
+	font-size: 1.4em;
+	font-weight: 800;
+	margin-bottom: $gutter / 2;
+	text-transform: uppercase;
+}
+
+main .content h3 {
+	color: palette('black', 'light');
+	font-size: 2.4em;
+	font-weight: 700;
+	margin-bottom: $gutter;
+}
+
+main aside {
+	float: right;
+	width: 40%;
+	padding-left: $gutter;
 }
