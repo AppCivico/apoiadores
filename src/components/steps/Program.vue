@@ -9,31 +9,31 @@
 					<div class="input-wrapper">
 						<input type="radio" id="amount1" name="amount" v-model="amount" value="2000">
 						<label for="amount1" class="bigger">R$ 20,00</label>
-						<div class="check"></div>
+						<div class="radio"></div>
 					</div>
 
 					<div class="input-wrapper">
 						<input type="radio" id="amount2" name="amount" v-model="amount" value="4000">
 						<label for="amount2" class="bigger">R$ 40,00</label>
-						<div class="check"></div>
+						<div class="radio"></div>
 					</div>
 
 					<div class="input-wrapper">
 						<input type="radio" id="amount3" name="amount" v-model="amount" value="8000">
 						<label for="amount3" class="bigger">R$ 80,00</label>
-						<div class="check"></div>
+						<div class="radio"></div>
 					</div>
 
 					<div class="input-wrapper">
 						<input type="radio" id="amount4" name="amount" v-model="amount" value="20000">
 						<label for="amount4" class="bigger">R$ 200,00</label>
-						<div class="check"></div>
+						<div class="radio"></div>
 					</div>
 
 					<div class="input-wrapper">
 						<input type="radio" id="amount5" name="amount" v-model="amount" value="other">
 						<label for="amount5" class="bigger">Outro valor</label>
-						<div class="check"></div>
+						<div class="radio"></div>
 					</div>
 
 					<input
@@ -51,13 +51,13 @@
 					<div class="input-wrapper">
 						<input type="radio" id="frequency1" name="frequency" v-model="frequency" value="once">
 						<label for="frequency1">Única vez</label>
-						<div class="check"></div>
+						<div class="radio"></div>
 					</div>
 
 					<div class="input-wrapper">
 						<input type="radio" id="frequency2" name="frequency" v-model="frequency" value="monthly">
 						<label for="frequency2">Mensal</label>
-						<div class="check"></div>
+						<div class="radio"></div>
 					</div>
 				</fieldset>
 				<button type="submit" :disabled="loading">Quero doar</button>
