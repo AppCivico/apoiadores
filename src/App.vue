@@ -11,12 +11,8 @@
 
 				<nav :class="this.target === 'nav' ? 'active' : ''">
 					<ul>
-						<li><a href="#">Home</a></li>
-						<li><a href="#">Faça uma Doação</a></li>
-						<li><a href="#">Doe seu Serviço</a></li>
-						<li><a href="#">Compartilhe um Sonho</a></li>
-						<li><a href="#">Perguntas Frequentes</a></li>
-						<li><a href="#">Contato</a></li>
+						<li><router-link to="/" @click.native="toggleHeader('')">Home</router-link></li>
+						<li v-if="donation"><router-link :to="`/program/${donation.id}`" @click.native="toggleHeader('')">Faça uma Doação</router-link></li>
 					</ul>
 				</nav>
 
@@ -36,7 +32,7 @@
 				<div class="partners" v-if="partners.length > 0">
 					<strong>Powered by</strong>
 					<ul>
-						<li v-for="partner in partners">
+						<li v-for="partner in partners" :key="partner.id">
 							<a :href="partner.url" target="_blank">
 								<img :src="partner.logo" :alt="partner.name">
 							</a>
@@ -56,6 +52,11 @@ export default {
 	name: 'App',
 	components: {
 		Login,
+	},
+	computed: {
+		donation() {
+			return this.$store.state.programs[0];
+		},
 	},
 	data() {
 		return {
