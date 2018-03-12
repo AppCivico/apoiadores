@@ -7,11 +7,13 @@ const config = {
 	name: 'Rede Sustentabilidade',
 	partners: [
 		{
+			id: 1,
 			name: 'Apoiadores',
 			logo: logoApoiadores,
 			url: 'https://appcivico.com/pt/apoiadores/',
 		},
 		{
+			id: 2,
 			name: 'AppCívico',
 			logo: logoAppCivico,
 			url: 'https://appcivico.com/',
