@@ -33,6 +33,24 @@
 
 [role="banner"] .login-wrapper {
 	float: right;
+	max-width: 350px;
+}
+
+[role="banner"] .login .login__options .input-wrapper,
+[role="banner"] .login .login__disclaimer {
+	display: none;
+}
+
+[role="banner"] .login [type="submit"] {
+	background-color: palette('secundary');
+	width: 100%;
+}
+
+[role="banner"] .login a {
+	color: palette('secundary');
+	font-size: 1.4em;
+	margin-bottom: $gutter / 3;
+	text-decoration: none;
 }
 
 [role="banner"] nav,
@@ -52,7 +70,7 @@
 		opacity: 1;
 	}
 
-	.btn.unselected {
+	.nav_btn.unselected {
 		visibility: hidden;
 		cursor: default;
 	}
