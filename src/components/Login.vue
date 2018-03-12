@@ -1,11 +1,36 @@
 <template>
 	<div class="login">
 		<form @submit.prevent="validateForm">
-			<label for="email">Email</label>
-			<input type="email" v-model.trim="email" name="email">
-			<label for="password">Senha</label>
-			<input type="password" v-model.trim="password" name="password">
+			<label for="email" class="visually-hidden">Email</label>
+			<input
+				type="email"
+				v-model.trim="email"
+				name="email"
+				placeholder="Email"
+			>
+			<label for="password" class="visually-hidden">Senha</label>
+			<input
+				type="password"
+				v-model.trim="password"
+				name="password"
+				placeholder="Senha"
+			>
+
+			<div class="login__options">
+				<div class="input-wrapper">
+					<input
+						type="checkbox"
+						name="connected"
+						v-model="connected"
+					>
+					<label for="connected" class="smaller">Continuar conectado</label>
+					<div class="checkbox"></div>
+				</div>
+				<router-link to="/">Esqueci minha senha</router-link>
+			</div>
+
 			<button type="submit" :disabled="loading">Entrar</button>
+			<p class="login__disclaimer">Ao entrar, você concorda com nossos termos de uso, condições, política de privacidade e que tem pelo menos 18 anos de idade</p>
 		</form>
 	</div>
 </template>
@@ -23,6 +48,7 @@ export default {
 			loading: false,
 			email: '',
 			password: '',
+			connected: false,
 		};
 	},
 	computed: {
