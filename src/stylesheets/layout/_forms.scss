@@ -1,0 +1,79 @@
+form fieldset {
+	border: 0;
+	margin-bottom: $gutter;
+}
+
+form .input-wrapper {
+	position: relative;
+	width: 100%;
+	margin-bottom: $gutter / 2;
+}
+
+form label {
+	font-size: 2.4em;
+	font-weight: 300;
+	color: palette('black', 'light');
+
+	&.bigger {
+		font-size: 3em;
+	}
+}
+
+form input[type="radio"] {
+	position: relative;
+	z-index: 1;
+	opacity: 0;
+	width: 20px;
+	height: 20px;
+	margin-right: $gutter / 2;
+}
+
+form .check {
+	position: absolute;
+	z-index: 0;
+	top: 11px;
+	left: 0;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	border: 1px solid palette('primary', 'x-light');
+
+	&:after {
+		content: '';
+		position: absolute;
+		top: 4px;
+		left: 4px;
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		background-color: palette('blue', 'light');
+		opacity: 0;
+		transition: opacity 300ms;
+	}
+}
+
+form input[type="radio"]:checked ~ .check {
+	&:after {
+		opacity: 1;
+	}
+}
+
+form input[type="radio"]:checked ~ label {
+	font-weight: 600;
+}
+
+form [type="submit"] {
+	font-size: 1.8em;
+	font-weight: 800;
+	color: palette('white');
+	text-transform: uppercase;
+	background-color: palette('blue', 'light');
+	border: 0;
+	padding: $gutter / 2 $gutter;
+	cursor: pointer;
+	transition: background-color 300ms;
+
+	&:hover {
+		background-color: palette('blue', 'dark');
+	}
+}
