@@ -4,11 +4,12 @@ main {
 	display: table;
 	z-index: 1;
 	padding-top: $gutter * 5;
+	min-height: 800px;
 }
 
 main .content {
 	float: left;
-	width: 60%;
+	width: 55%;
 	border-right: 1px solid palette('primary', 'x-light');
 	padding-right: $gutter;
 	margin-bottom: $gutter;
@@ -30,7 +31,7 @@ main .content h3 {
 }
 
 main aside {
-	float: right;
-	width: 40%;
+	float: left;
+	width: 45%;
 	padding-left: $gutter;
 }
