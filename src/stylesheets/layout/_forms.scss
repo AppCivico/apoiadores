@@ -17,9 +17,13 @@ form label {
 	&.bigger {
 		font-size: 3em;
 	}
+	&.smaller {
+		font-size: 1.6em;
+	}
 }
 
-form input[type="radio"] {
+form input[type="radio"],
+form input[type="checkbox"] {
 	position: relative;
 	z-index: 1;
 	opacity: 0;
@@ -28,7 +32,12 @@ form input[type="radio"] {
 	margin-right: $gutter / 2;
 }
 
-form .check {
+form input[type="checkbox"] {
+	margin-right: $gutter / 4;
+}
+
+form .checkbox,
+form .radio {
 	position: absolute;
 	z-index: 0;
 	top: 11px;
@@ -52,7 +61,17 @@ form .check {
 	}
 }
 
-form input[type="radio"]:checked ~ .check {
+form .checkbox {
+	border-radius: 6px;
+	top: 1px;
+
+	&:after {
+		border-radius: 6px;
+	}
+}
+
+form input[type="checkbox"]:checked ~ .checkbox,
+form input[type="radio"]:checked ~ .radio {
 	&:after {
 		opacity: 1;
 	}
@@ -62,18 +81,22 @@ form input[type="radio"]:checked ~ label {
 	font-weight: 600;
 }
 
-form [type="submit"] {
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="tel"] {
+	display: block;
+	width: 100%;
+	border: 1px solid palette('primary', 'x-light');
+	background-color: palette('white');
+	color: palette('primary', 'light');
 	font-size: 1.8em;
-	font-weight: 800;
-	color: palette('white');
-	text-transform: uppercase;
-	background-color: palette('blue', 'light');
-	border: 0;
-	padding: $gutter / 2 $gutter;
-	cursor: pointer;
-	transition: background-color 300ms;
+	font-family: $fontFamily;
+	padding: ($gutter / 4) ($gutter / 2);
+	border-radius: 4px;
+	margin-bottom: $gutter / 4;
 
-	&:hover {
-		background-color: palette('blue', 'dark');
+	&::placeholder {
+		color: inherit;
 	}
 }
