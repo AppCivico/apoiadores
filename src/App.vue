@@ -4,9 +4,9 @@
 				<div class="container">
 				<router-link to="/" tag="h1">{{ title }}</router-link>
 
-				<div class="btn-group">
-					<button :class="`btn btn__nav ${this.target === 'nav' ? 'selected' : 'unselected'}`" @click="toggleHeader('nav')">Menu</button>
-					<button :class="`btn btn__login ${this.target === 'login' ? 'selected' : 'unselected'}`" @click="toggleHeader('login')">Login</button>
+				<div class="nav_btn-group">
+					<button :class="`nav_btn nav_btn__nav ${this.target === 'nav' ? 'selected' : 'unselected'}`" @click="toggleHeader('nav')">Menu</button>
+					<button :class="`nav_btn nav_btn__login ${this.target === 'login' ? 'selected' : 'unselected'}`" @click="toggleHeader('login')">Login</button>
 				</div>
 
 				<nav :class="this.target === 'nav' ? 'active' : ''">
