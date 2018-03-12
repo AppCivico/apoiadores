@@ -1,0 +1,28 @@
+aside h2 {
+	color: palette('blue', 'light');
+	font-size: 4.2em;
+	font-weight: 300;
+	margin-bottom: $gutter;
+}
+
+aside ul {
+	list-style: none;
+}
+
+aside ul li {
+	position: relative;
+	font-size: 1.8em;
+	padding-left: $gutter / 2;
+	margin-bottom: $gutter;
+	line-height: 1.6em;
+
+	&:before {
+		content: '\2219';
+		position: absolute;
+		left: 0;
+		top: 1px;
+		color: palette('blue', 'light');
+		font-size: 1.5em;
+		font-family: monospace;
+	}
+}
