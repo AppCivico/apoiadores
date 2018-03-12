@@ -1,17 +1,16 @@
 <template>
 	<main class="container">
-		<h1>Is Registered</h1>
+		<section class="content">
+			<h2>Doação</h2>
+			<h3>Já tem cadastro?</h3>
 
-		<Login route="/payment"/>
-
-		<hr>
-
-		<h2>Você é novo por aqui?</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo cupiditate,
-		quasi provident a iusto dignissimos, debitis nostrum repellat!
-		Architecto libero laudantium tempore deserunt totam quaerat fugit harum,
-		sequi doloribus odit!</p>
-		<router-link to="/register">Cadastre-se</router-link>
+			<Login route="/payment"/>
+		</section>
+		<aside>
+			<h3>Você é novo por aqui?</h3>
+			<p>Faça já seu cadastro e tenha acesso ao sistema de doações da Rede Sustentabilidade o que possibilita doações recorrentes.</p>
+			<router-link to="/register" class="btn">Cadastre-se</router-link>
+		</aside>
 	</main>
 </template>
 
