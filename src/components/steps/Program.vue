@@ -1,52 +1,82 @@
 <template>
 	<main class="container">
-		<h1>Program: {{program.name}}</h1>
+		<section class="content">
+			<h2>Doação</h2>
+			<form @submit.prevent="validateForm">
+				<fieldset>
+					<h3>Escolha o valor da sua contribuição</h3>
 
-		<h2>Doação</h2>
+					<div class="input-wrapper">
+						<input type="radio" id="amount1" name="amount" v-model="amount" value="2000">
+						<label for="amount1" class="bigger">R$ 20,00</label>
+						<div class="check"></div>
+					</div>
 
-		<form @submit.prevent="validateForm">
-			<fieldset>
-				<label for="amount">Escolha o valor da sua contribuição</label>
+					<div class="input-wrapper">
+						<input type="radio" id="amount2" name="amount" v-model="amount" value="4000">
+						<label for="amount2" class="bigger">R$ 40,00</label>
+						<div class="check"></div>
+					</div>
 
-				<input type="radio" id="amount1" name="amount" v-model="amount" value="2000">
-				<label for="amount1">R$ 20,00</label>
+					<div class="input-wrapper">
+						<input type="radio" id="amount3" name="amount" v-model="amount" value="8000">
+						<label for="amount3" class="bigger">R$ 80,00</label>
+						<div class="check"></div>
+					</div>
 
-				<input type="radio" id="amount2" name="amount" v-model="amount" value="4000">
-				<label for="amount2">R$ 40,00</label>
+					<div class="input-wrapper">
+						<input type="radio" id="amount4" name="amount" v-model="amount" value="20000">
+						<label for="amount4" class="bigger">R$ 200,00</label>
+						<div class="check"></div>
+					</div>
 
-				<input type="radio" id="amount3" name="amount" v-model="amount" value="8000">
-				<label for="amount3">R$ 80,00</label>
+					<div class="input-wrapper">
+						<input type="radio" id="amount5" name="amount" v-model="amount" value="other">
+						<label for="amount5" class="bigger">Outro valor</label>
+						<div class="check"></div>
+					</div>
 
-				<input type="radio" id="amount4" name="amount" v-model="amount" value="20000">
-				<label for="amount4">R$ 200,00</label>
+					<input
+						type="text"
+						name="other"
+						v-model="other"
+						:disabled="amount === 'other' ? false : true"
+						@keydown="formatOther">
+					Valor: R$ {{ formatedOther }}
+				</fieldset>
 
-				<input type="radio" id="amount5" name="amount" v-model="amount" value="other">
-				<label for="amount5">Outro valor</label>
-				<input
-					type="text"
-					name="other"
-					v-model="other"
-					:disabled="amount === 'other' ? false : true"
-					@keydown="formatOther">
-				Valor: R$ {{ formatedOther }}
-			</fieldset>
+				<fieldset>
+					<h3>Escolha a periodicidade da contribuição</h3>
 
-			<fieldset>
-				<label for="frequency">Escolha a periodicidade da contribuição</label>
+					<div class="input-wrapper">
+						<input type="radio" id="frequency1" name="frequency" v-model="frequency" value="once">
+						<label for="frequency1">Única vez</label>
+						<div class="check"></div>
+					</div>
 
-				<input type="radio" id="frequency1" name="frequency" v-model="frequency" value="once">
-				<label for="frequency1">Única vez</label>
-
-				<input type="radio" id="frequency2" name="frequency" v-model="frequency" value="monthly">
-				<label for="frequency2">Mensal</label>
-			</fieldset>
-			<button type="submit" :disabled="loading">Quero doar</button>
-		</form>
+					<div class="input-wrapper">
+						<input type="radio" id="frequency2" name="frequency" v-model="frequency" value="monthly">
+						<label for="frequency2">Mensal</label>
+						<div class="check"></div>
+					</div>
+				</fieldset>
+				<button type="submit" :disabled="loading">Quero doar</button>
+			</form>
+		</section>
+		<aside>
+			<h2>Como funciona?</h2>
+			<ul>
+				<li>Você não precisa ser filiado para colaborar financeiramente com a {{ name }}.</li>
+				<li>Há três formas de fazer esta contribuição: cartão de crédito, boleto bancário e transferência bancária.</li>
+				<li>Os desafios são grandes. Nossos sonhos são maiores.</li>
+			</ul>
+		</aside>
 	</main>
 </template>
 
 <script>
 import { validate, formatBRL } from '../../utilities';
+import config from '../../config';
 
 export default {
 	name: 'Program',
@@ -60,6 +90,7 @@ export default {
 			frequency: '',
 			other: '',
 			formatedOther: '',
+			name: config.name
 		};
 	},
 	computed: {
