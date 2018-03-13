@@ -111,8 +111,10 @@
 		<aside>
 			<div class="steps">
 				<span>1</span>
-				<span class="active">2</span>
+				<span>2</span>
 				<span>3</span>
+				<span class="active">4</span>
+				<span>5</span>
 			</div>
 			<hr>
 			<h2>Informações de pagamento</h2>

@@ -10,7 +10,9 @@
 			<div class="steps">
 				<span>1</span>
 				<span>2</span>
-				<span class="active">3</span>
+				<span>3</span>
+				<span>4</span>
+				<span class="active">5</span>
 			</div>
 			<hr>
 			<h2>Obrigado</h2>

@@ -64,6 +64,14 @@
 			</form>
 		</section>
 		<aside>
+			<div class="steps">
+				<span class="active">1</span>
+				<span>2</span>
+				<span>3</span>
+				<span>4</span>
+				<span>5</span>
+			</div>
+			<hr>
 			<h2>Como funciona?</h2>
 			<ul>
 				<li>Você não precisa ser filiado para colaborar financeiramente com a {{ name }}.</li>
