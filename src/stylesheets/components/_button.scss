@@ -1,4 +1,5 @@
 .btn, [type="submit"] {
+	display: inline-block;
 	font-size: 1.8em;
 	font-weight: 800;
 	color: palette('white');
@@ -7,6 +8,7 @@
 	text-align: left;
 	background-color: palette('blue', 'light');
 	border: 0;
+	margin-bottom: $gutter;
 	padding: $gutter / 2 $gutter;
 	padding-right: $gutter * 2;
 	min-width: 250px;
