@@ -27,11 +27,17 @@ main .content h3 {
 	color: palette('black', 'light');
 	font-size: 2.4em;
 	font-weight: 700;
-	margin-bottom: $gutter;
+	margin-bottom: $gutter / 2;
+	clear: both;
 }
 
 main aside {
 	float: left;
 	width: 45%;
 	padding-left: $gutter;
+}
+
+main p {
+	font-size: 1.8em;
+	margin-bottom: $gutter / 2;
 }
