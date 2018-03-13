@@ -1,9 +1,20 @@
 <template>
 	<main class="container">
-		<h1>Finish</h1>
-		<h2>Contribuição realizada com sucesso!</h2>
-		<p>Você contribuiu com o valor de R$ {{ donation.amount | formatBRL }} para a {{ name }}</p>
-		<router-link to="/">voltar a página inicial</router-link>
+		<section class="content">
+			<h2>Doação</h2>
+			<h3>Contribuição realizada com sucesso!</h3>
+			<p>Você contribuiu com o valor de R$ {{ donation.amount | formatBRL }} para a {{ name }}</p>
+			<router-link to="/">voltar a página inicial</router-link>
+		</section>
+		<aside>
+			<div class="steps">
+				<span>1</span>
+				<span>2</span>
+				<span class="active">3</span>
+			</div>
+			<hr>
+			<h2>Obrigado</h2>
+		</aside>
 	</main>
 </template>
 
