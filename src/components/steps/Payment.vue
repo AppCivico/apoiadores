@@ -1,111 +1,123 @@
 <template>
 	<main class="container">
-		<h1>Payment</h1>
+		<section class="content">
+			<h2>Doação</h2>
 
-		<form @submit.prevent="validateForm">
-			<fieldset>
-				<h2>Preencha os dados de pagamento</h2>
-				<template v-if="!useRegisteredCard">
-					<label for="name_on_card">Nome completo do titular do cartão</label>
-					<input
-						type="text"
-						v-model="name_on_card"
-						name="name_on_card">
-					<label for="cpf">CPF do titular</label>
-					<input
-						type="text"
-						v-model="cpf"
-						name="cpf"
-						v-mask="'###.###.###-##'">
-					<label for="number">Número do cartão de crédito</label>
-					<input
-						type="text"
-						v-model="number"
-						name="number"
-						placeholder="numero sem pontos"
-						v-mask="'#### #### #### #### ####'">
-					<label for="validity">Data expiração</label>
-					<input
-						type="text"
-						v-model="validity"
-						name="validity"
-						placeholder="MM/AAAA"
-						v-mask="'##/####'">
-					<label for="csc">Cód. Segurança</label>
-					<input
-						type="text"
-						v-model="csc"
-						name="csc"
-						maxlength="3">
-				</template>
+			<form @submit.prevent="validateForm">
+				<fieldset>
+					<h3>Preencha os dados de pagamento</h3>
+					<template v-if="!useRegisteredCard">
+						<label for="name_on_card">Nome completo do titular do cartão</label>
+						<input
+							type="text"
+							v-model="name_on_card"
+							name="name_on_card">
+						<label for="cpf">CPF do titular</label>
+						<input
+							type="text"
+							v-model="cpf"
+							name="cpf"
+							v-mask="'###.###.###-##'">
+						<label for="number">Número do cartão de crédito</label>
+						<input
+							type="text"
+							v-model="number"
+							name="number"
+							placeholder="numero sem pontos"
+							v-mask="'#### #### #### #### ####'">
+						<label for="validity">Data expiração</label>
+						<input
+							type="text"
+							v-model="validity"
+							name="validity"
+							placeholder="MM/AAAA"
+							v-mask="'##/####'">
+						<label for="csc">Cód. Segurança</label>
+						<input
+							type="text"
+							v-model="csc"
+							name="csc"
+							maxlength="3">
+					</template>
 
-				<div v-if="user.credit_cards.length > 0">
-					<h3>Utilizar um cartão já cadastrado</h3>
-					<select name="credit_cards" id="credit_cards" v-model="selectedCard" @change="useCard">
-						<option value="">Selecionar cartão</option>
-						<option
-							:value="card.id"
-							v-for="card in user.credit_cards"
-							:key="card.id">
-							{{ niceType(card.brand) }} com final {{ endNumber(card.mask) }}
-						</option>
-					</select>
-				</div>
-			</fieldset>
+					<div v-if="user.credit_cards.length > 0">
+						<h3>Utilizar um cartão já cadastrado</h3>
+						<select name="credit_cards" id="credit_cards" v-model="selectedCard" @change="useCard">
+							<option value="">Selecionar cartão</option>
+							<option
+								:value="card.id"
+								v-for="card in user.credit_cards"
+								:key="card.id">
+								{{ niceType(card.brand) }} com final {{ endNumber(card.mask) }}
+							</option>
+						</select>
+					</div>
+				</fieldset>
 
-			<fieldset>
-				<h2>Dados de contato do titular</h2>
-				<a href="#" @click.prevent="copyData">usar os dados já cadastrados</a>
-				<input
-					type="text"
-					name="cellphone_number"
-					v-model="cellphone_number"
-					placeholder="Telefone"
-					v-mask="['(##)####-####', '(##)#####-####']">
-				<input
-					type="text"
-					name="address_zip"
-					v-model="address_zip"
-					placeholder="CEP"
-					@blur="setAddress"
-					v-mask="'#####-###'">
-				<input
-					type="text"
-					name="address_street"
-					v-model="address_street"
-					placeholder="Endereço">
-				<input
-					type="text"
-					name="address_number"
-					v-model="address_number"
-					placeholder="Número">
-				<input
-					type="text"
-					name="address_observation"
-					v-model="address_observation"
-					placeholder="Complemento">
-				<input
-					type="text"
-					name="address_neighbourhood"
-					v-model="address_neighbourhood"
-					placeholder="Bairro"
-					disabled>
-				<input
-					type="text"
-					name="address_state"
-					v-model="address_state"
-					placeholder="Estado"
-					disabled>
-				<input
-					type="text"
-					name="address_city"
-					v-model="address_city"
-					placeholder="Estado"
-					disabled>
-			</fieldset>
+				<fieldset>
+					<h3>Dados de contato do titular</h3>
+					<a href="#" @click.prevent="copyData">usar os dados já cadastrados</a>
+					<input
+						type="text"
+						name="cellphone_number"
+						v-model="cellphone_number"
+						placeholder="Telefone"
+						v-mask="['(##)####-####', '(##)#####-####']">
+					<input
+						type="text"
+						name="address_zip"
+						v-model="address_zip"
+						placeholder="CEP"
+						@blur="setAddress"
+						v-mask="'#####-###'">
+					<input
+						type="text"
+						name="address_street"
+						v-model="address_street"
+						placeholder="Endereço">
+					<input
+						type="text"
+						name="address_number"
+						v-model="address_number"
+						placeholder="Número">
+					<input
+						type="text"
+						name="address_observation"
+						v-model="address_observation"
+						placeholder="Complemento">
+					<input
+						type="text"
+						name="address_neighbourhood"
+						v-model="address_neighbourhood"
+						placeholder="Bairro"
+						disabled>
+					<input
+						type="text"
+						name="address_state"
+						v-model="address_state"
+						placeholder="Estado"
+						disabled>
+					<input
+						type="text"
+						name="address_city"
+						v-model="address_city"
+						placeholder="Estado"
+						disabled>
+				</fieldset>
 
-			<button type="send" :disabled="loading">Finalizar</button>
-		</form>
+				<button type="send" :disabled="loading">Finalizar</button>
+			</form>
+		</section>
+		<aside>
+			<div class="steps">
+				<span>1</span>
+				<span class="active">2</span>
+				<span>3</span>
+			</div>
+			<hr>
+			<h2>Informações de pagamento</h2>
+			<p>Você não precisa ser filiado para colaborar financeiramente com a {{ name }}.</p>
+		</aside>
 	</main>
 </template>
 
