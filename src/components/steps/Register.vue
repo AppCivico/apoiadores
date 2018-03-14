@@ -10,11 +10,11 @@
 						:class="`input-wrapper half
 						${validation.errors.first_name ? 'has-error' : ''}`"
 					>
+						<label for="first_name">Nome</label>
 						<input
 							type="text"
 							name="first_name"
-							v-model="first_name"
-							placeholder="Nome">
+							v-model="first_name">
 						<div class="error" v-if="validation.errors.first_name">
 							{{ validation.errors.first_name }}
 						</div>
@@ -23,11 +23,11 @@
 						:class="`input-wrapper half
 						${validation.errors.last_name ? 'has-error' : ''}`"
 					>
+						<label for="last-name">Sobrenome</label>
 						<input
 							type="text"
 							name="last_name"
-							v-model="last_name"
-							placeholder="Sobrenome">
+							v-model="last_name">
 						<div class="error" v-if="validation.errors.last_name">
 							{{ validation.errors.last_name }}
 						</div>
@@ -36,12 +36,12 @@
 						:class="`input-wrapper
 						${validation.errors.cpf ? 'has-error' : ''}`"
 					>
+						<label for="cpf">CPF</label>
 						<input
 							type="text"
 							name="cpf"
 							v-model="cpf"
-							placeholder="CPF"
-						v-mask="'###.###.###-##'">
+							v-mask="'###.###.###-##'">
 						<div class="error" v-if="validation.errors.cpf">
 							{{ validation.errors.cpf }}
 						</div>
@@ -50,11 +50,11 @@
 						:class="`input-wrapper
 						${validation.errors.email ? 'has-error' : ''}`"
 					>
+						<label for="email">Email</label>
 						<input
 							type="email"
 							name="email"
-							v-model="email"
-							placeholder="Email">
+							v-model="email">
 						<div class="error" v-if="validation.errors.email">
 							{{ validation.errors.email }}
 						</div>
@@ -63,12 +63,12 @@
 						:class="`input-wrapper
 						${validation.errors.password ? 'has-error' : ''}`"
 					>
+						<label for="password">Senha</label>
 						<input
 							type="text"
 							name="password"
 							ref="password"
 							v-model="password"
-							placeholder="Senha"
 							@focus="changeType">
 						<div class="error" v-if="validation.errors.password">
 							{{ validation.errors.password }}
@@ -78,12 +78,12 @@
 						:class="`input-wrapper
 						${validation.errors.password_confirm ? 'has-error' : ''}`"
 					>
+						<label for="password_confirm">Confirmar senha</label>
 						<input
 							type="text"
 							name="password_confirm"
 							ref="password_confirm"
 							v-model="password_confirm"
-							placeholder="Confirmar senha"
 							@focus="changeType">
 						<div class="error" v-if="validation.errors.password_confirm">
 							{{ validation.errors.password_confirm }}
@@ -97,11 +97,11 @@
 						:class="`input-wrapper
 						${validation.errors.cellphone_number ? 'has-error' : ''}`"
 					>
+						<label for="cellphone_number">Telefone</label>
 						<input
 							type="text"
 							name="cellphone_number"
 							v-model="cellphone_number"
-							placeholder="Telefone"
 							v-mask="['(##)####-####', '(##)#####-####']">
 						<div class="error" v-if="validation.errors.cellphone_number">
 							{{ validation.errors.cellphone_number }}
@@ -111,11 +111,11 @@
 						:class="`input-wrapper half
 						${validation.errors.address_zip ? 'has-error' : ''}`"
 					>
+						<label for="address_zip">CEP</label>
 						<input
 							type="text"
 							name="address_zip"
 							v-model="address_zip"
-							placeholder="CEP"
 							@blur="setAddress"
 							v-mask="'#####-###'">
 						<div class="error" v-if="validation.errors.address_zip">
@@ -133,11 +133,11 @@
 						:class="`input-wrapper
 						${validation.errors.address_street ? 'has-error' : ''}`"
 					>
+						<label for="address_street">Endereço</label>
 						<input
 							type="text"
 							name="address_street"
-							v-model="address_street"
-							placeholder="Endereço">
+							v-model="address_street">
 						<div class="error" v-if="validation.errors.address_street">
 							{{ validation.errors.address_street }}
 						</div>
@@ -146,11 +146,11 @@
 						:class="`input-wrapper half
 						${validation.errors.address_number ? 'has-error' : ''}`"
 					>
+						<label for="address_number">Número</label>
 						<input
 							type="text"
 							name="address_number"
-							v-model="address_number"
-							placeholder="Número">
+							v-model="address_number">
 						<div class="error" v-if="validation.errors.address_number">
 							{{ validation.errors.address_number }}
 						</div>
@@ -159,11 +159,11 @@
 						:class="`input-wrapper half
 						${validation.errors.address_observation ? 'has-error' : ''}`"
 					>
+						<label for="address_observation">Complemento</label>
 						<input
 							type="text"
 							name="address_observation"
-							v-model="address_observation"
-							placeholder="Complemento">
+							v-model="address_observation">
 						<div class="error" v-if="validation.errors.address_observation">
 							{{ validation.errors.address_observation }}
 						</div>
@@ -172,11 +172,11 @@
 						:class="`input-wrapper
 						${validation.errors.address_neighbourhood ? 'has-error' : ''}`"
 					>
+						<label for="address_neighbourhood">Bairro</label>
 						<input
 							type="text"
 							name="address_neighbourhood"
 							v-model="address_neighbourhood"
-							placeholder="Bairro"
 							disabled>
 						<div class="error" v-if="validation.errors.address_neighbourhood">
 							{{ validation.errors.address_neighbourhood }}
@@ -186,11 +186,11 @@
 						:class="`input-wrapper half
 						${validation.errors.address_city ? 'has-error' : ''}`"
 					>
+						<label for="address_city">Cidade</label>
 						<input
 							type="text"
 							name="address_city"
 							v-model="address_city"
-							placeholder="Cidade"
 							disabled>
 						<div class="error" v-if="validation.errors.address_city">
 							{{ validation.errors.address_city }}
@@ -200,11 +200,11 @@
 						:class="`input-wrapper half
 						${validation.errors.address_state ? 'has-error' : ''}`"
 					>
+						<label for="address_state">Estado</label>
 						<input
 							type="text"
 							name="address_state"
 							v-model="address_state"
-							placeholder="Estado"
 							disabled>
 						<div class="error" v-if="validation.errors.address_state">
 							{{ validation.errors.address_state }}
