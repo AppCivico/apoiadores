@@ -36,13 +36,15 @@
 						<div class="radio"></div>
 					</div>
 
-					<input
-						type="text"
-						name="other"
-						v-model="other"
-						:disabled="amount === 'other' ? false : true"
-						@keydown="formatOther">
-					Valor: R$ {{ formatedOther }}
+					<div class="input-wrapper half has-real-value">
+						<input
+							type="text"
+							name="other"
+							v-model="other"
+							:disabled="amount === 'other' ? false : true"
+							@keydown="formatOther">
+						<div class="real-value">R$ {{ formatedOther }}</div>
+					</div>
 				</fieldset>
 
 				<fieldset>
@@ -169,9 +171,3 @@ export default {
 	},
 };
 </script>
-
-<style scoped>
-	[name="other"] {
-		text-align: right;
-	}
-</style>
