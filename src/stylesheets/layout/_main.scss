@@ -41,3 +41,7 @@ main p {
 	font-size: 1.8em;
 	margin-bottom: $gutter / 2;
 }
+main p a {
+	color: palette('blue', 'light');
+	font-weight: 600;
+}
