@@ -2,17 +2,14 @@ import axios from 'axios';
 
 function validate(fields) {
 	const keys = Object.keys(fields);
-	const errors = [];
+	const errors = {};
 	let valid = true;
 
 	// eslint-disable-next-line
 	keys.map((item) => {
 		if (fields[item] === '') {
 			valid = false;
-			errors.push({
-				field: item,
-				error: 'Campo obrigatório',
-			});
+			errors[item] = 'Campo obrigatório';
 		}
 	});
 
