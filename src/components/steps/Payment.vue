@@ -117,6 +117,7 @@
 				<span>5</span>
 			</div>
 			<hr>
+			<img src="../../assets/img/donation/step_payment.png" alt="Icon">
 			<h2>Informações de pagamento</h2>
 			<p>Você não precisa ser filiado para colaborar financeiramente com a {{ name }}.</p>
 		</aside>
@@ -129,6 +130,7 @@ import { mask } from 'vue-the-mask';
 import creditCardType from 'credit-card-type';
 
 import { validate, getAddress } from '../../utilities';
+import config from '../../config';
 
 export default {
 	name: 'Payment',
@@ -137,6 +139,7 @@ export default {
 	},
 	data() {
 		return {
+			name: config.name,
 			loading: false,
 			name_on_card: '',
 			csc: '',
