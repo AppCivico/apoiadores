@@ -11,9 +11,16 @@
 							Menu
 					</button>
 					<button
+						v-if="!logged"
 						:class="`nav_btn nav_btn__login ${this.target === 'login' ? 'selected' : 'unselected'}`"
 						@click="toggleHeader('login')">
 							Login
+					</button>
+					<button
+						v-if="logged"
+						class="nav_btn"
+					>
+						{{ user.first_name }} {{ user.last_name }}
 					</button>
 				</div>
 
@@ -30,9 +37,15 @@
 					</ul>
 				</nav>
 
-				<div :class="`login-wrapper ${this.target === 'login' ? 'active' : ''}`">
+				<div v-if="!logged" :class="`login-wrapper ${this.target === 'login' ? 'active' : ''}`">
 					<Login route="/my-account"/>
 				</div>
+
+				<!--<ul>
+					<router-link to="/my-account" tag="li">Minha conta</router-link>
+					<router-link to="/my-account/history" tag="li">Histórico de doações</router-link>
+					<a href="#" @click.prevent="logout">Sair</a>
+				</ul>-->
 			</div>
 		</header>
 
@@ -70,6 +83,12 @@ export default {
 	computed: {
 		donation() {
 			return this.$store.state.programs[0];
+		},
+		logged() {
+			return this.$store.state.logged;
+		},
+		user() {
+			return this.$store.state.user;
 		},
 	},
 	data() {
