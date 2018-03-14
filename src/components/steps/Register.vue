@@ -7,7 +7,8 @@
 				<fieldset>
 					<h3>Dados pessoais</h3>
 					<div
-						:class="`input-wrapper half ${validation.errors.first_name ? 'has-error' : ''}`"
+						:class="`input-wrapper half
+						${validation.errors.first_name ? 'has-error' : ''}`"
 					>
 						<input
 							type="text"
@@ -19,7 +20,8 @@
 						</div>
 					</div>
 					<div
-						:class="`input-wrapper half ${validation.errors.last_name ? 'has-error' : ''}`"
+						:class="`input-wrapper half
+						${validation.errors.last_name ? 'has-error' : ''}`"
 					>
 						<input
 							type="text"
@@ -31,7 +33,8 @@
 						</div>
 					</div>
 					<div
-						:class="`input-wrapper ${validation.errors.cpf ? 'has-error' : ''}`"
+						:class="`input-wrapper
+						${validation.errors.cpf ? 'has-error' : ''}`"
 					>
 						<input
 							type="text"
@@ -44,7 +47,8 @@
 						</div>
 					</div>
 					<div
-						:class="`input-wrapper ${validation.errors.email ? 'has-error' : ''}`"
+						:class="`input-wrapper
+						${validation.errors.email ? 'has-error' : ''}`"
 					>
 						<input
 							type="email"
@@ -56,7 +60,8 @@
 						</div>
 					</div>
 					<div
-						:class="`input-wrapper ${validation.errors.password ? 'has-error' : ''}`"
+						:class="`input-wrapper
+						${validation.errors.password ? 'has-error' : ''}`"
 					>
 						<input
 							type="text"
@@ -70,7 +75,8 @@
 						</div>
 					</div>
 					<div
-						:class="`input-wrapper ${validation.errors.password_confirm ? 'has-error' : ''}`"
+						:class="`input-wrapper
+						${validation.errors.password_confirm ? 'has-error' : ''}`"
 					>
 						<input
 							type="text"
@@ -88,7 +94,8 @@
 				<fieldset>
 					<h3>Dados de contato</h3>
 					<div
-						:class="`input-wrapper ${validation.errors.cellphone_number ? 'has-error' : ''}`"
+						:class="`input-wrapper
+						${validation.errors.cellphone_number ? 'has-error' : ''}`"
 					>
 						<input
 							type="text"
@@ -101,7 +108,8 @@
 						</div>
 					</div>
 					<div
-						:class="`input-wrapper half ${validation.errors.address_zip ? 'has-error' : ''}`"
+						:class="`input-wrapper half
+						${validation.errors.address_zip ? 'has-error' : ''}`"
 					>
 						<input
 							type="text"
@@ -122,7 +130,8 @@
 						</a>
 					</p>
 					<div
-						:class="`input-wrapper ${validation.errors.address_street ? 'has-error' : ''}`"
+						:class="`input-wrapper
+						${validation.errors.address_street ? 'has-error' : ''}`"
 					>
 						<input
 							type="text"
@@ -134,7 +143,8 @@
 						</div>
 					</div>
 					<div
-						:class="`input-wrapper half ${validation.errors.address_number ? 'has-error' : ''}`"
+						:class="`input-wrapper half
+						${validation.errors.address_number ? 'has-error' : ''}`"
 					>
 						<input
 							type="text"
@@ -146,7 +156,8 @@
 						</div>
 					</div>
 					<div
-						:class="`input-wrapper half ${validation.errors.address_observation ? 'has-error' : ''}`"
+						:class="`input-wrapper half
+						${validation.errors.address_observation ? 'has-error' : ''}`"
 					>
 						<input
 							type="text"
@@ -158,7 +169,8 @@
 						</div>
 					</div>
 					<div
-						:class="`input-wrapper ${validation.errors.address_neighbourhood ? 'has-error' : ''}`"
+						:class="`input-wrapper
+						${validation.errors.address_neighbourhood ? 'has-error' : ''}`"
 					>
 						<input
 							type="text"
@@ -171,7 +183,8 @@
 						</div>
 					</div>
 					<div
-						:class="`input-wrapper half ${validation.errors.address_city ? 'has-error' : ''}`"
+						:class="`input-wrapper half
+						${validation.errors.address_city ? 'has-error' : ''}`"
 					>
 						<input
 							type="text"
@@ -184,7 +197,8 @@
 						</div>
 					</div>
 					<div
-						:class="`input-wrapper half ${validation.errors.address_state ? 'has-error' : ''}`"
+						:class="`input-wrapper half
+						${validation.errors.address_state ? 'has-error' : ''}`"
 					>
 						<input
 							type="text"
@@ -317,7 +331,11 @@ export default {
 			};
 
 			if (password_confirm !== password) {
-				console.error('password nao é igual');
+				this.validation = {
+					errors: {
+						password_confirm: 'Ops! Senha não corresponde ao campo acima.',
+					},
+				};
 				this.toggleLoading();
 				return;
 			}
@@ -326,7 +344,7 @@ export default {
 
 			if (validation.valid) {
 				fields.address_observation = address_observation;
-				fieals.cellphone_number = this.cleanPhone(cellphone_number);
+				fields.cellphone_number = cleanPhone(cellphone_number);
 				fields.merchant_id = this.merchant.id;
 
 				this.registerUser(fields);
@@ -334,9 +352,6 @@ export default {
 				this.validation = validation;
 				this.toggleLoading();
 			}
-		},
-		getCleanPhone(phone) {
-			return CleanPhone(phone);
 		},
 		registerUser(data) {
 			this.$store.dispatch('CREATE_USER', data)
