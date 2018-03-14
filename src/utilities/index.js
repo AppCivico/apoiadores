@@ -39,5 +39,12 @@ function formatBRL(amount) {
 	return formated;
 }
 
+function cleanPhone(phone) {
+	return `+55${phone
+		.trim()
+		.replace(/\W+/g, '')
+		.replace(/\D+/g, '')}`;
+}
+
 // eslint-disable-next-line
-export { validate, getAddress, formatBRL };
+export { validate, getAddress, formatBRL, cleanPhone };
