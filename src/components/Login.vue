@@ -80,6 +80,7 @@ export default {
 		login(data) {
 			this.$store.dispatch('LOGIN', data)
 				.then(() => {
+					this.toggleLoading();
 					this.$router.push({ path: this.route });
 				})
 				.catch(() => {
