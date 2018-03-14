@@ -42,3 +42,10 @@ aside ul li {
 		font-family: monospace;
 	}
 }
+
+aside hr {
+	margin: $gutter 0;
+	width: 63px;
+	border: 0;
+	border-bottom: 3px solid palette('primary', 'x-light');
+}
