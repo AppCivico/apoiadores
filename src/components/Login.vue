@@ -28,7 +28,9 @@
 				</div>
 				<router-link to="/">Esqueci minha senha</router-link>
 			</div>
-
+			<p class="error" v-if="errorMessage != ''">
+				{{ errorMessage }}
+			</p>
 			<button type="submit" :disabled="loading">Entrar</button>
 			<p class="login__disclaimer">Ao entrar, você concorda com nossos termos de uso,
 				condições, política de privacidade e que tem pelo menos 18 anos de idade</p>
@@ -72,16 +74,17 @@ export default {
 				this.login(fields);
 			} else {
 				this.toggleLoading();
-				console.error('formulario contem erros', validation.errors);
+				this.errorMessage = 'Todos os campos são obrigatórios';
 			}
 		},
 		login(data) {
 			this.$store.dispatch('LOGIN', data)
 				.then(() => {
+					this.toggleLoading();
 					this.$router.push({ path: this.route });
 				})
-				.catch((err) => {
-					console.err('Erro no login', err);
+				.catch(() => {
+					this.errorMessage = 'Email ou senha incorretos. Tenta novamente.';
 					this.toggleLoading();
 				});
 		},

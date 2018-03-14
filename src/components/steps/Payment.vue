@@ -2,42 +2,76 @@
 	<main class="container">
 		<section class="content">
 			<h2>Doação</h2>
-
+			<h3>Valor e periodicidade escolhidos</h3>
+			<blockquote>
+				R$ {{ donation.amount | formatBRL }}
+				•
+				{{ donation.is_recurring ? 'Mensal' : 'Única vez' }}
+			</blockquote>
 			<form @submit.prevent="validateForm">
 				<fieldset>
-					<h3>Preencha os dados de pagamento</h3>
 					<template v-if="!useRegisteredCard">
-						<label for="name_on_card">Nome completo do titular do cartão</label>
-						<input
-							type="text"
-							v-model="name_on_card"
-							name="name_on_card">
-						<label for="cpf">CPF do titular</label>
-						<input
-							type="text"
-							v-model="cpf"
-							name="cpf"
-							v-mask="'###.###.###-##'">
-						<label for="number">Número do cartão de crédito</label>
-						<input
-							type="text"
-							v-model="number"
-							name="number"
-							placeholder="numero sem pontos"
-							v-mask="'#### #### #### #### ####'">
-						<label for="validity">Data expiração</label>
-						<input
-							type="text"
-							v-model="validity"
-							name="validity"
-							placeholder="MM/AAAA"
-							v-mask="'##/####'">
-						<label for="csc">Cód. Segurança</label>
-						<input
-							type="text"
-							v-model="csc"
-							name="csc"
-							maxlength="3">
+						<h3>Preencha os dados de pagamento</h3>
+						<div :class="`input-wrapper
+						${validationCard.errors.name_on_card ? 'has-error' : ''}`">
+							<label for="name_on_card">Nome completo do titular do cartão</label>
+							<input
+								type="text"
+								v-model="name_on_card"
+								name="name_on_card">
+							<div class="error" v-if="validationCard.errors.name_on_card">
+								{{ validationCard.errors.name_on_card }}
+							</div>
+						</div>
+						<div :class="`input-wrapper
+						${validationCard.errors.cpf ? 'has-error' : ''}`">
+							<label for="cpf">CPF do titular</label>
+							<input
+								type="text"
+								v-model="cpf"
+								name="cpf"
+								v-mask="'###.###.###-##'">
+							<div class="error" v-if="validationCard.errors.cpf">
+								{{ validationCard.errors.cpf }}
+							</div>
+						</div>
+						<div :class="`input-wrapper
+						${validationCard.errors.number ? 'has-error' : ''}`">
+							<label for="number">Número do cartão de crédito</label>
+							<input
+								type="text"
+								v-model="number"
+								name="number"
+								v-mask="'#### #### #### #### ####'">
+							<div class="error" v-if="validationCard.errors.number">
+								{{ validationCard.errors.number }}
+							</div>
+						</div>
+						<div :class="`input-wrapper
+						${validationCard.errors.validity ? 'has-error' : ''}`">
+							<label for="validity">Data expiração</label>
+							<input
+								type="text"
+								v-model="validity"
+								name="validity"
+								placeholder="MM/AAAA"
+								v-mask="'##/####'">
+							<div class="error" v-if="validationCard.errors.validity">
+								{{ validationCard.errors.validity }}
+							</div>
+						</div>
+						<div :class="`input-wrapper
+						${validationCard.errors.csc ? 'has-error' : ''}`">
+							<label for="csc">Cód. Segurança</label>
+							<input
+								type="text"
+								v-model="csc"
+								name="csc"
+								maxlength="3">
+							<div class="error" v-if="validationCard.errors.csc">
+								{{ validationCard.errors.csc }}
+							</div>
+						</div>
 					</template>
 
 					<div v-if="user.credit_cards.length > 0">
@@ -56,56 +90,137 @@
 
 				<fieldset>
 					<h3>Dados de contato do titular</h3>
-					<a href="#" @click.prevent="copyData">usar os dados já cadastrados</a>
-					<input
-						type="text"
-						name="cellphone_number"
-						v-model="cellphone_number"
-						placeholder="Telefone"
-						v-mask="['(##)####-####', '(##)#####-####']">
-					<input
-						type="text"
-						name="address_zip"
-						v-model="address_zip"
-						placeholder="CEP"
-						@blur="setAddress"
-						v-mask="'#####-###'">
-					<input
-						type="text"
-						name="address_street"
-						v-model="address_street"
-						placeholder="Endereço">
-					<input
-						type="text"
-						name="address_number"
-						v-model="address_number"
-						placeholder="Número">
-					<input
-						type="text"
-						name="address_observation"
-						v-model="address_observation"
-						placeholder="Complemento">
-					<input
-						type="text"
-						name="address_neighbourhood"
-						v-model="address_neighbourhood"
-						placeholder="Bairro"
-						disabled>
-					<input
-						type="text"
-						name="address_state"
-						v-model="address_state"
-						placeholder="Estado"
-						disabled>
-					<input
-						type="text"
-						name="address_city"
-						v-model="address_city"
-						placeholder="Estado"
-						disabled>
+					<p><a href="#" @click.prevent="copyData">usar os dados já cadastrados</a></p>
+					<div
+						:class="`input-wrapper
+						${validationContact.errors.cellphone_number ? 'has-error' : ''}`"
+					>
+						<label for="cellphone_number">Telefone</label>
+						<input
+							type="text"
+							name="cellphone_number"
+							v-model="cellphone_number"
+							placeholder="Telefone"
+							v-mask="['(##)####-####', '(##)#####-####']">
+						<div class="error" v-if="validationContact.errors.cellphone_number">
+							{{ validationContact.errors.cellphone_number }}
+						</div>
+					</div>
+					<div
+						:class="`input-wrapper half
+						${validationContact.errors.address_zip ? 'has-error' : ''}`"
+					>
+						<label for="address_zip">CEP</label>
+						<input
+							type="text"
+							name="address_zip"
+							v-model="address_zip"
+							placeholder="CEP"
+							@blur="setAddress"
+							v-mask="'#####-###'">
+						<div class="error" v-if="validationContact.errors.address_zip">
+							{{ validationContact.errors.address_zip }}
+						</div>
+					</div>
+					<p>
+						<a
+							href="http://www.buscacep.correios.com.br/sistemas/buscacep/"
+							target="_blank">
+							Não sei meu CEP
+						</a>
+					</p>
+					<div
+						:class="`input-wrapper
+						${validationContact.errors.address_street ? 'has-error' : ''}`"
+					>
+						<label for="address_street">Endereço</label>
+						<input
+							type="text"
+							name="address_street"
+							v-model="address_street"
+							placeholder="Endereço">
+						<div class="error" v-if="validationContact.errors.address_street">
+							{{ validationContact.errors.address_street }}
+						</div>
+					</div>
+					<div
+						:class="`input-wrapper half
+						${validationContact.errors.address_number ? 'has-error' : ''}`"
+					>
+						<label for="address_number">Número</label>
+						<input
+							type="text"
+							name="address_number"
+							v-model="address_number"
+							placeholder="Número">
+						<div class="error" v-if="validationContact.errors.address_number">
+							{{ validationContact.errors.address_number }}
+						</div>
+					</div>
+					<div
+						:class="`input-wrapper half
+						${validationContact.errors.address_observation ? 'has-error' : ''}`"
+					>
+						<label for="address_observation">Complemento</label>
+						<input
+							type="text"
+							name="address_observation"
+							v-model="address_observation"
+							placeholder="Complemento">
+						<div class="error" v-if="validationContact.errors.address_observation">
+							{{ validationContact.errors.address_observation }}
+						</div>
+					</div>
+					<div
+						:class="`input-wrapper
+						${validationContact.errors.address_neighbourhood ? 'has-error' : ''}`"
+					>
+						<label for="address_neighbourhood">Bairro</label>
+						<input
+							type="text"
+							name="address_neighbourhood"
+							v-model="address_neighbourhood"
+							placeholder="Bairro"
+							disabled>
+						<div class="error" v-if="validationContact.errors.address_neighbourhood">
+							{{ validationContact.errors.address_neighbourhood }}
+						</div>
+					</div>
+					<div
+						:class="`input-wrapper half
+						${validationContact.errors.address_city ? 'has-error' : ''}`"
+					>
+						<label for="address_city">Cidade</label>
+						<input
+							type="text"
+							name="address_city"
+							v-model="address_city"
+							placeholder="Cidade"
+							disabled>
+						<div class="error" v-if="validationContact.errors.address_city">
+							{{ validationContact.errors.address_city }}
+						</div>
+					</div>
+					<div
+						:class="`input-wrapper half
+						${validationContact.errors.address_state ? 'has-error' : ''}`"
+					>
+						<label for="address_state">Estado</label>
+						<input
+							type="text"
+							name="address_state"
+							v-model="address_state"
+							placeholder="Estado"
+							disabled>
+						<div class="error" v-if="validationContact.errors.address_state">
+							{{ validationContact.errors.address_state }}
+						</div>
+					</div>
 				</fieldset>
-
-				<button type="send" :disabled="loading">Finalizar</button>
+				<p class="error" v-if="errorMessage != ''">
+					{{ errorMessage }}
+				</p>
+				<button type="submit" :disabled="loading">Finalizar</button>
 			</form>
 		</section>
 		<aside>
@@ -139,6 +254,7 @@ export default {
 	},
 	data() {
 		return {
+			errorMessage: '',
 			name: config.name,
 			loading: false,
 			name_on_card: '',
@@ -157,6 +273,12 @@ export default {
 			address_zip: '',
 			selectedCard: '',
 			useRegisteredCard: false,
+			validationCard: {
+				errors: {},
+			},
+			validationContact: {
+				errors: {},
+			},
 		};
 	},
 	computed: {
@@ -230,7 +352,8 @@ export default {
 					});
 				}
 			} else {
-				console.error('formulario contem erros', validationContact, validationCard);
+				this.validationCard = validationCard;
+				this.validationContact = validationContact;
 				this.toggleLoading();
 			}
 		},
@@ -243,6 +366,13 @@ export default {
 						this.address_state = estado_info.nome;
 						this.address_street = logradouro;
 						this.address_city = cidade;
+					})
+					.catch(() => {
+						this.validation = {
+							errors: {
+								address_zip: 'O CEP informado não foi localizado.',
+							},
+						};
 					});
 			}
 		},
@@ -261,7 +391,15 @@ export default {
 						.then(() => {
 							this.selectedCard = this.newCard.id;
 							this.sendSubscription();
+						})
+						.catch(() => {
+							this.errorMessage = 'Ocorreu um erro ao salvar seu cartão';
+							this.toggleLoading();
 						});
+				})
+				.catch(() => {
+					this.errorMessage = 'Ocorreu um erro ao processar seu cartão';
+					this.toggleLoading();
 				});
 		},
 		sendSubscription() {
@@ -275,7 +413,10 @@ export default {
 				.then(() => {
 					this.$router.push({ path: '/finish' });
 				})
-				.catch(err => console.error('deu ruim', err));
+				.catch(() => {
+					this.errorMessage = 'Ocorreu um erro durante o cadastro da operação. Tente novamente!';
+					this.toggleLoading();
+				});
 		},
 		copyData() {
 			const {

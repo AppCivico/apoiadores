@@ -44,6 +44,15 @@
 [role="banner"] .login [type="submit"] {
 	background-color: palette('secundary');
 	width: 100%;
+
+	&:hover {
+		background-color: palette('secundary', 'light');
+	}
+
+	&:disabled {
+		background-color: palette('secundary', 'light');
+		color: palette('secundary');
+	}
 }
 
 [role="banner"] .login a {
@@ -51,6 +60,11 @@
 	font-size: 1.4em;
 	margin-bottom: $gutter / 3;
 	text-decoration: none;
+}
+
+[role="banner"] .login .error {
+	color: palette('white');
+	margin-bottom: $gutter / 3;
 }
 
 [role="banner"] nav,

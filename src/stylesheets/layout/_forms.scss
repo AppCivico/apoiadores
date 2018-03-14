@@ -22,7 +22,7 @@ form .input-wrapper.half {
 }
 
 form .input-wrapper.has-error input {
-		border-color: palette('warning');
+	border-color: palette('warning');
 }
 
 form .input-wrapper .error {
@@ -31,7 +31,24 @@ form .input-wrapper .error {
 	font-size: 1.4em;
 }
 
+form p.error {
+	color: palette('warning');
+}
+
 form label {
+	position: absolute;
+	top: 3px;
+	left: 7px;
+	font-size: 1.5em;
+	color: palette('primary', 'light');
+	z-index: 1;
+}
+
+form input[type="radio"] ~ label,
+form input[type="checkbox"] ~ label {
+	position: relative;
+	top: auto;
+	left: auto;
 	font-size: 2.4em;
 	font-weight: 300;
 	color: palette('black', 'light');
@@ -106,7 +123,8 @@ form input[type="radio"]:checked ~ label {
 form input[type="text"],
 form input[type="email"],
 form input[type="password"],
-form input[type="tel"] {
+form input[type="tel"],
+form select {
 	position: relative;
 	display: block;
 	width: 100%;
@@ -115,7 +133,7 @@ form input[type="tel"] {
 	color: palette('primary', 'light');
 	font-size: 1.8em;
 	font-family: $fontFamily;
-	padding: ($gutter / 4) ($gutter / 2);
+	padding: 30px 20px 10px;
 	border-radius: 4px;
 	margin-bottom: $gutter / 4;
 
@@ -127,9 +145,15 @@ form input[type="tel"] {
 	}
 }
 
+form select {
+	appearance: none;
+	padding: ($gutter / 4) ($gutter / 2);
+}
+
 form .has-real-value input {
 	z-index: 1;
 	opacity: 0;
+	padding-bottom: 0;
 }
 
 form .input-wrapper .real-value {
@@ -137,9 +161,10 @@ form .input-wrapper .real-value {
 	top: 0;
 	left: 0;
 	width: 100%;
-	font-size: 1.8em;
+	height: 100%;
+	font-size: 2em;
 	color: palette('primary', 'light');
-	padding: ($gutter / 4) ($gutter / 2);
+	padding: 30px 20px 10px;
 	border: 1px solid palette('primary', 'x-light');
 	border-radius: 4px;
 	z-index: 0;
