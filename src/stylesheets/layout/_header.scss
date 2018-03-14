@@ -44,6 +44,15 @@
 [role="banner"] .login [type="submit"] {
 	background-color: palette('secundary');
 	width: 100%;
+
+	&:hover {
+		background-color: palette('secundary', 'light');
+	}
+
+	&:disabled {
+		background-color: palette('secundary', 'light');
+		color: palette('secundary');
+	}
 }
 
 [role="banner"] .login a {
