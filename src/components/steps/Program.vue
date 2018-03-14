@@ -120,6 +120,9 @@ export default {
 		};
 	},
 	computed: {
+		logged() {
+			return this.$store.state.logged;
+		},
 		programs() {
 			return this.$store.state.programs;
 		},
@@ -163,7 +166,11 @@ export default {
 
 			this.$store.dispatch('CHANGE_DONATION', data)
 				.then(() => {
-					this.$router.push({ path: '/is-registered' });
+					if (this.logged) {
+						this.$router.push({ path: '/payment' });
+					} else {
+						this.$router.push({ path: '/is-registered' });
+					}
 				})
 				.catch(() => {
 					this.errorMessage = 'Ocorreu um erro no registro da doação';
