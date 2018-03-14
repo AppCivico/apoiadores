@@ -16,6 +16,7 @@ const store = new Vuex.Store({
 		newCard: {},
 		programs: [],
 		selectedProgram: {},
+		logged: false,
 	},
 	actions: {
 		LOAD_MERCHANTS({ commit }) {
@@ -73,6 +74,12 @@ const store = new Vuex.Store({
 						reject(err);
 						console.error(err);
 					});
+			});
+		},
+		CHANGE_USER({ commit }, data) {
+			return new Promise((resolve) => {
+				commit('SET_USER', { data });
+				resolve();
 			});
 		},
 		GET_FLOTUM({ commit, state }) {
@@ -149,6 +156,7 @@ const store = new Vuex.Store({
 		SET_USER(state, { data }) {
 			state.apiKey = data.api_key;
 			state.user = data.user;
+			state.logged = true;
 
 			if (window.sessionStorage) {
 				sessionStorage.setItem('api-key', data.api_key);
