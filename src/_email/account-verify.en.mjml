@@ -1,0 +1,103 @@
+<mjml>
+  <mj-head>
+    <mj-title>
+      Your account is almost ready
+    </mj-title>
+    
+      <mj-preview>Verify your account</mj-preview>
+    
+    <mj-font name="Ubuntu" href="https://fonts.googleapis.com/css?family=Ubuntu" />
+    <mj-attributes>
+      <mj-all font-family="Ubuntu, sans-serif" />
+      <mj-button color="white" background-color="#06c" border-bottom="5px solid #02408e" border-radius="5px" font-weight="bold" text-transform="uppercase" />
+      <mj-class name="footer" color="#999" />
+      <mj-class name="img-wrapper" padding="0" />
+      <mj-section padding="50px" />
+      <mj-text padding="0" />
+    </mj-attributes>
+    <mj-style inline="inline">
+      a {
+        color: #06c;
+      }
+      h1 {
+        color: #0cf;
+        font-weight: normal;
+        font-size: 25px;
+      }
+      h2 {
+        font-size: 17px;
+      }
+    </mj-style>
+  </mj-head>
+  <mj-body>
+    <mj-container background-color="#eee">
+      <mj-section padding="65px 0 33px 0">
+        <mj-column width="100%">
+          <mj-image src="[% base_url %]/_email/assets/img/img-logo.png" width="171px" href="[% base_url %]/" />
+        </mj-column>
+      </mj-section>
+      <mj-wrapper background-color="#fff" padding="0" border-radius="5px">
+
+        <mj-section border-top="2px solid #00d4fd">
+          <mj-column>
+            <mj-text>
+              <h1>
+                Your account is almost ready
+              </h1>
+              <h2>
+                Hello, [% name %]!
+              </h2>
+              <p>Just one more step before you start using your account. We have to make sure it&rsquo;s really you!</p>
+
+<p>Thank you!</p>
+
+            </mj-text>
+            <mj-button href="[% confirm_account_link %]">
+              Confirm my account
+            </mj-button>
+          </mj-column>
+        </mj-section>
+
+        <mj-section mj-class="img-wrapper" border-radius="5px">
+          <mj-column>
+            <mj-image src="[% base_url %]/_email/assets/img/img-rodape-padrao.png" padding="0" />
+          </mj-column>
+        </mj-section>
+
+      </mj-wrapper>
+      <mj-section>
+        <mj-column width="475px">
+          <mj-text align="center" font-size="13px" mj-class="footer">
+            <p>You&rsquo;re receiving this message because you are using <a href="https://appcivico.com/pt/apoiadores/">Apoiadores</a> app.</p>
+            <p>Copyright &copy; 2018 - Apoiadores - An <a href='http://www.eokoe.com'>Eokoe</a> Project</p>
+          </mj-text>
+        </mj-column>
+      </mj-section>
+      <mj-section padding="0 0 100px">
+        <mj-group>
+          <mj-column>
+          </mj-column>
+          <mj-column>
+          </mj-column>
+          <mj-column>
+            <mj-image padding="10" width="30px" src="[% base_url %]/_email/assets/img/youtube.gif" href="https://www.youtube.com/channel/UCIuAzzWMogJV0r-mvFmjNNQ" />
+          </mj-column>
+          <mj-column>
+            <mj-image padding="10" width="30px" src="[% base_url %]/_email/assets/img/facebook.gif" href="https://www.facebook.com/AppCivicoCSB" />
+          </mj-column>
+          <mj-column>
+            <mj-image padding="10" width="29px" src="[% base_url %]/_email/assets/img/github.png" href="https://github.com/AppCivico/apoiadores" />
+          </mj-column>
+          <mj-column>
+            <mj-image padding="10" width="30px" src="[% base_url %]/_email/assets/img/twitter.gif" href="https://twitter.com/appcivico" />
+          </mj-column>
+          <mj-column>
+          </mj-column>
+          <mj-column>
+          </mj-column>
+        </mj-group>
+      </mj-section>
+    </mj-container>
+  </mj-body>
+</mjml>
+
