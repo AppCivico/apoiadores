@@ -21,6 +21,7 @@
 				<span>5</span>
 			</div>
 			<hr>
+			<img src="../../assets/img/donation/step_login.png" alt="Icon">
 			<h2>Faça seu login</h2>
 			<p>Você não precisa ser filiado para colaborar financeiramente com a {{ name }}.</p>
 		</aside>
