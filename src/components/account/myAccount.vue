@@ -11,7 +11,7 @@
 					<td>Valor</td>
 					<td>Status</td>
 				</tr>
-				<tr v-for="charge in charges">
+				<tr v-for="charge in charges" :key="charge.flotum_charge_id">
 					<td>{{ formatDate(charge.created_at) }}</td>
 					<td>Nao sei</td>
 					<td>R$ {{ charge.charge_amount | formatBRL }}</td>
@@ -66,7 +66,7 @@
 				<p>
 					<strong>Cartão de Crédito</strong><br>
 					<template v-if="user.credit_cards.length > 0">
-						<p class="card" v-for="card in user.credit_cards">
+						<p class="card" v-for="card in user.credit_cards" :key="card.id">
 							{{ niceType(card.brand) }} com final {{ endNumber(card.mask) }}
 						</p>
 					</template>

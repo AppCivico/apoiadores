@@ -11,7 +11,7 @@
 			<div class="programs__positioner">
 				<div class="container">
 					<div class="programs__row">
-						<div class="programs__program" v-for="(program, key) in programs">
+						<div class="programs__program" v-for="(program, key) in programs" :key="key">
 							<div class="program__content">
 								<h3 v-html="program.title"></h3>
 								<p>{{ program.text }}</p>
