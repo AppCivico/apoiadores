@@ -9,6 +9,15 @@ form .input-wrapper {
 	margin-bottom: $gutter / 2;
 }
 
+form .input-wrapper.half {
+	width: 45%;
+	float: left;
+
+	& + .half {
+		margin-right: 5%;
+	}
+}
+
 form label {
 	font-size: 2.4em;
 	font-weight: 300;
@@ -85,6 +94,7 @@ form input[type="text"],
 form input[type="email"],
 form input[type="password"],
 form input[type="tel"] {
+	position: relative;
 	display: block;
 	width: 100%;
 	border: 1px solid palette('primary', 'x-light');
@@ -99,4 +109,27 @@ form input[type="tel"] {
 	&::placeholder {
 		color: inherit;
 	}
+}
+
+form .has-real-value input {
+	z-index: 1;
+	opacity: 0;
+}
+
+form .input-wrapper .real-value {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	font-size: 1.8em;
+	color: palette('primary', 'light');
+	padding: ($gutter / 4) ($gutter / 2);
+	border: 1px solid palette('primary', 'x-light');
+	border-radius: 4px;
+	z-index: 0;
+	transition: background-color 300ms;
+}
+
+form input:disabled ~ .real-value {
+	background-color: palette('primary', 'x-light');
 }
