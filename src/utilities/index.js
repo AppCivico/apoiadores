@@ -17,12 +17,12 @@ function validate(fields) {
 }
 
 function getAddress(zip) {
-	return new Promise((resolve) => {
+	return new Promise((resolve, reject) => {
 		if (zip !== '') {
 			axios.get(`https://api.postmon.com.br/v1/cep/${zip}`).then((response) => {
 				resolve(response.data);
 			}, (err) => {
-				console.error(err);
+				reject(err);
 			});
 		}
 	});

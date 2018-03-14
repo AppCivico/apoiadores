@@ -270,6 +270,13 @@ export default {
 						this.address_state = estado_info.nome;
 						this.address_street = logradouro;
 						this.address_city = cidade;
+					})
+					.catch(() => {
+						this.validation = {
+							errors: {
+								address_zip: 'O CEP informado não foi localizado.',
+							},
+						};
 					});
 			}
 		},
