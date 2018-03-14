@@ -7,7 +7,7 @@
 	background-image: linear-gradient(90deg, palette('primary') 30%, palette('primary') 70%);
 	background-size: 100% 0;
 	background-repeat: no-repeat;
-	transition: background-size 300ms ease-in, color 300ms;
+	transition: background-size 300ms ease-in 200ms, color 300ms;
 	z-index: 3;
 }
 
@@ -58,7 +58,7 @@
 	overflow: hidden;
 	max-height: 0;
 	opacity: 0;
-	transition: opacity 300ms 300ms;
+	transition: opacity 300ms 300ms, max-height 200ms 100ms;
 }
 
 [role="banner"].open {
