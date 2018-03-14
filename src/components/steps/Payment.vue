@@ -129,7 +129,7 @@ import { mask } from 'vue-the-mask';
 /* eslint-disable camelcase */
 import creditCardType from 'credit-card-type';
 
-import { validate, getAddress } from '../../utilities';
+import { validate, getAddress, cleanPhone } from '../../utilities';
 import config from '../../config';
 
 export default {
@@ -199,7 +199,7 @@ export default {
 			};
 
 			const fieldsContact = {
-				cellphone_number: this.cleanPhone(cellphone_number),
+				cellphone_number: this.getCleanPhone(cellphone_number),
 				address_city,
 				address_neighbourhood,
 				address_number,
@@ -313,11 +313,8 @@ export default {
 			// eslint-disable-next-line
 			this.useRegisteredCard = this.selectedCard !== '' ? true : false;
 		},
-		cleanPhone(phone) {
-			return `+55${phone
-				.trim()
-				.replace(/\W+/g, '')
-				.replace(/\D+/g, '')}`;
+		getCleanPhone(phone) {
+			return cleanPhone(phone);
 		},
 		cleanZip(zip) {
 			return zip.replace(/\D+/g, '');

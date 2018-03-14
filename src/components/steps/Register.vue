@@ -220,7 +220,7 @@
 <script>
 /* eslint-disable camelcase */
 import { mask } from 'vue-the-mask';
-import { validate, getAddress } from '../../utilities';
+import { validate, getAddress, cleanPhone } from '../../utilities';
 import config from '../../config';
 
 export default {
@@ -300,7 +300,7 @@ export default {
 				email,
 				password,
 				password_confirm,
-				cellphone_number: this.cleanPhone(cellphone_number),
+				cellphone_number,
 				address_city,
 				address_neighbourhood,
 				address_number,
@@ -319,21 +319,17 @@ export default {
 
 			if (validation.valid) {
 				fields.address_observation = address_observation;
+				fieals.cellphone_number = this.cleanPhone(cellphone_number);
 				fields.merchant_id = this.merchant.id;
-
-				console.log('fields', fields);
 
 				this.registerUser(fields);
 			} else {
-				console.error('formulario contem erros', validation.errors);
+				this.validation = validation;
 				this.toggleLoading();
 			}
 		},
-		cleanPhone(phone) {
-			return `+55${phone
-				.trim()
-				.replace(/\W+/g, '')
-				.replace(/\D+/g, '')}`;
+		getCleanPhone(phone) {
+			return CleanPhone(phone);
 		},
 		registerUser(data) {
 			this.$store.dispatch('CREATE_USER', data)
