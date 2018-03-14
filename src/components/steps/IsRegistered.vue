@@ -30,11 +30,17 @@
 
 <script>
 import Login from '../Login';
+import config from '../../config';
 
 export default {
 	name: 'IsRegistered',
 	components: {
 		Login,
+	},
+	data() {
+		return {
+			name: config.name,
+		};
 	},
 };
 </script>
