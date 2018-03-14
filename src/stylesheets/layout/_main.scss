@@ -45,3 +45,12 @@ main p a {
 	color: palette('blue', 'light');
 	font-weight: 600;
 }
+
+main blockquote {
+	background-color: palette('white', 'dark');
+	font-size: 3em;
+	font-weight: 300;
+	padding: $gutter / 2;
+	border-radius: 4px;
+	margin-bottom: $gutter;
+}
