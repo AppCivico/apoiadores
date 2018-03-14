@@ -1,31 +1,40 @@
 .login [type="submit"] {
-  float: left;
-  margin-right: $gutter;
+	float: left;
+	margin-right: $gutter;
 }
 
 .login__options {
-  clear: both;
-  display: table;
-  width: 100%;
+	clear: both;
+	display: table;
+	width: 100%;
 }
 
 .login__options .input-wrapper {
-  float: left;
-  width: 60%;
+	float: left;
+	width: 60%;
 }
 
 .login__disclaimer {
-  color: palette('primary', 'light');
-  font-size: 1.2em;
+	color: palette('primary', 'light');
+	font-size: 1.2em;
 }
 
 .login label {
-  color: palette('primary', 'light');
+	color: palette('primary', 'light');
 }
 
 .login a {
-  float: right;
-  color: palette('blue', 'light');
-  font-size: 1.6em;
-  font-weight: 700;
+	float: right;
+	color: palette('blue', 'light');
+	font-size: 1.6em;
+	font-weight: 700;
+}
+
+.login input[type="email"],
+.login input[type="password"] {
+	padding: ($gutter / 4) ($gutter / 2);
+}
+
+.login .error {
+	font-size: 1.4em;
 }
