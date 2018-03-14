@@ -55,4 +55,7 @@ export default new Router({
 			props: true,
 		},
 	],
+	scrollBehavior() {
+		return { x: 0, y: 0 }
+	},
 });
