@@ -37,13 +37,14 @@
 					</div>
 
 					<div class="input-wrapper half has-real-value">
+						<label for="other">R$</label>
 						<input
 							type="text"
 							name="other"
 							v-model="other"
 							:disabled="amount === 'other' ? false : true"
-							@keydown="formatOther">
-						<div class="real-value">R$ {{ formatedOther }}</div>
+							@keyup="formatOther">
+						<div class="real-value">{{ formatedOther }}</div>
 					</div>
 				</fieldset>
 
