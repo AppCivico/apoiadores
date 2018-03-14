@@ -73,6 +73,9 @@
 						<div class="radio"></div>
 					</div>
 				</fieldset>
+				<p class="error" v-if="errorMessage != ''">
+					{{ errorMessage }}
+				</p>
 				<button type="submit" :disabled="loading">Quero doar</button>
 			</form>
 		</section>
@@ -107,6 +110,7 @@ export default {
 	},
 	data() {
 		return {
+			errorMessage: '',
 			loading: false,
 			amount: '',
 			frequency: '',
@@ -147,7 +151,7 @@ export default {
 				this.saveStep(values);
 			} else {
 				this.toggleLoading();
-				console.error('formulario contem erros', validation.errors);
+				this.errorMessage = 'Todos os campos são obrigatórios';
 			}
 		},
 		saveStep(values) {
@@ -161,8 +165,8 @@ export default {
 				.then(() => {
 					this.$router.push({ path: '/is-registered' });
 				})
-				.catch((err) => {
-					console.err('Erro no registro da doação', err);
+				.catch(() => {
+					this.errorMessage = 'Ocorreu um erro no registro da doação';
 					this.toggleLoading();
 				});
 		},
