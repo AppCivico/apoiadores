@@ -53,6 +53,11 @@
 	text-decoration: none;
 }
 
+[role="banner"] .login .error {
+	color: palette('white');
+	margin-bottom: $gutter / 3;
+}
+
 [role="banner"] nav,
 [role="banner"] .login-wrapper {
 	overflow: hidden;
