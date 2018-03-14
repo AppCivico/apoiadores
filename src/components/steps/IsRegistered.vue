@@ -8,7 +8,8 @@
 
 
 			<h3>Você é novo por aqui?</h3>
-			<p>Faça já seu cadastro e tenha acesso ao sistema de doações da Rede Sustentabilidade o que possibilita doações recorrentes.</p>
+			<p>Faça já seu cadastro e tenha acesso ao sistema de doações
+				da Rede Sustentabilidade o que possibilita doações recorrentes.</p>
 			<router-link to="/register" class="btn">Cadastre-se</router-link>
 		</section>
 		<aside>

@@ -30,7 +30,8 @@
 			</div>
 
 			<button type="submit" :disabled="loading">Entrar</button>
-			<p class="login__disclaimer">Ao entrar, você concorda com nossos termos de uso, condições, política de privacidade e que tem pelo menos 18 anos de idade</p>
+			<p class="login__disclaimer">Ao entrar, você concorda com nossos termos de uso,
+				condições, política de privacidade e que tem pelo menos 18 anos de idade</p>
 		</form>
 	</div>
 </template>

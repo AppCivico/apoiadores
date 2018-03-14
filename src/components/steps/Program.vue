@@ -49,13 +49,23 @@
 					<h3>Escolha a periodicidade da contribuição</h3>
 
 					<div class="input-wrapper">
-						<input type="radio" id="frequency1" name="frequency" v-model="frequency" value="once">
+						<input
+							type="radio"
+							id="frequency1"
+							name="frequency"
+							v-model="frequency"
+							value="once">
 						<label for="frequency1">Única vez</label>
 						<div class="radio"></div>
 					</div>
 
 					<div class="input-wrapper">
-						<input type="radio" id="frequency2" name="frequency" v-model="frequency" value="monthly">
+						<input
+							type="radio"
+							id="frequency2"
+							name="frequency"
+							v-model="frequency"
+							value="monthly">
 						<label for="frequency2">Mensal</label>
 						<div class="radio"></div>
 					</div>
@@ -75,7 +85,8 @@
 			<h2>Como funciona?</h2>
 			<ul>
 				<li>Você não precisa ser filiado para colaborar financeiramente com a {{ name }}.</li>
-				<li>Há três formas de fazer esta contribuição: cartão de crédito, boleto bancário e transferência bancária.</li>
+				<li>Há três formas de fazer esta contribuição:
+					cartão de crédito, boleto bancário e transferência bancária.</li>
 				<li>Os desafios são grandes. Nossos sonhos são maiores.</li>
 			</ul>
 		</aside>

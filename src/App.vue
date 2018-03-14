@@ -5,14 +5,28 @@
 				<router-link to="/" tag="h1">{{ title }}</router-link>
 
 				<div class="nav_btn-group">
-					<button :class="`nav_btn nav_btn__nav ${this.target === 'nav' ? 'selected' : 'unselected'}`" @click="toggleHeader('nav')">Menu</button>
-					<button :class="`nav_btn nav_btn__login ${this.target === 'login' ? 'selected' : 'unselected'}`" @click="toggleHeader('login')">Login</button>
+					<button
+						:class="`nav_btn nav_btn__nav ${this.target === 'nav' ? 'selected' : 'unselected'}`"
+						@click="toggleHeader('nav')">
+							Menu
+					</button>
+					<button
+						:class="`nav_btn nav_btn__login ${this.target === 'login' ? 'selected' : 'unselected'}`"
+						@click="toggleHeader('login')">
+							Login
+					</button>
 				</div>
 
 				<nav :class="this.target === 'nav' ? 'active' : ''">
 					<ul>
 						<li><router-link to="/" @click.native="toggleHeader('')">Home</router-link></li>
-						<li v-if="donation"><router-link :to="`/program/${donation.id}`" @click.native="toggleHeader('')">Faça uma Doação</router-link></li>
+						<li v-if="donation">
+							<router-link
+								:to="`/program/${donation.id}`"
+								@click.native="toggleHeader('')">
+									Faça uma Doação
+								</router-link>
+						</li>
 					</ul>
 				</nav>
 
