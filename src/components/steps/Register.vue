@@ -6,91 +6,127 @@
 			<form @submit.prevent="validateForm">
 				<fieldset>
 					<h3>Dados pessoais</h3>
-					<input
-						type="text"
-						name="first_name"
-						v-model="first_name"
-						placeholder="Name">
-					<input
-						type="text"
-						name="last_name"
-						v-model="last_name"
-						placeholder="Surname">
-					<input
-						type="text"
-						name="cpf"
-						v-model="cpf"
-						placeholder="CPF"
+					<div class="input-wrapper half">
+						<input
+							type="text"
+							name="first_name"
+							v-model="first_name"
+							placeholder="Nome">
+					</div>
+					<div class="input-wrapper half">
+						<input
+							type="text"
+							name="last_name"
+							v-model="last_name"
+							placeholder="Sobrenome">
+					</div>
+					<div class="input-wrapper">
+						<input
+							type="text"
+							name="cpf"
+							v-model="cpf"
+							placeholder="CPF"
 						v-mask="'###.###.###-##'">
-					<input
-						type="email"
-						name="email"
-						v-model="email"
-						placeholder="Email">
-					<input
-						type="text"
-						name="password"
-						ref="password"
-						v-model="password"
-						placeholder="Senha"
-						@focus="changeType">
-					<input
-						type="text"
-						name="password_confirm"
-						ref="password_confirm"
-						v-model="password_confirm"
-						placeholder="Confirmar senha"
-						@focus="changeType">
+					</div>
+					<div class="input-wrapper">
+						<input
+							type="email"
+							name="email"
+							v-model="email"
+							placeholder="Email">
+					</div>
+					<div class="input-wrapper">
+						<input
+							type="text"
+							name="password"
+							ref="password"
+							v-model="password"
+							placeholder="Senha"
+							@focus="changeType">
+					</div>
+					<div class="input-wrapper">
+						<input
+							type="text"
+							name="password_confirm"
+							ref="password_confirm"
+							v-model="password_confirm"
+							placeholder="Confirmar senha"
+							@focus="changeType">
+					</div>
 				</fieldset>
 
 				<fieldset>
 					<h3>Dados de contato</h3>
-					<input
-						type="text"
-						name="cellphone_number"
-						v-model="cellphone_number"
-						placeholder="Telefone"
-						v-mask="['(##)####-####', '(##)#####-####']">
-					<input
-						type="text"
-						name="address_zip"
-						v-model="address_zip"
-						placeholder="CEP"
-						@blur="setAddress"
-						v-mask="'#####-###'">
-					<input
-						type="text"
-						name="address_street"
-						v-model="address_street"
-						placeholder="Endereço">
-					<input
-						type="text"
-						name="address_number"
-						v-model="address_number"
-						placeholder="Número">
-					<input
-						type="text"
-						name="address_observation"
-						v-model="address_observation"
-						placeholder="Complemento">
-					<input
-						type="text"
-						name="address_neighbourhood"
-						v-model="address_neighbourhood"
-						placeholder="Bairro"
-						disabled>
-					<input
-						type="text"
-						name="address_state"
-						v-model="address_state"
-						placeholder="Estado"
-						disabled>
-					<input
-						type="text"
-						name="address_city"
-						v-model="address_city"
-						placeholder="Estado"
-						disabled>
+					</div>
+					<div class="input-wrapper">
+						<input
+							type="text"
+							name="cellphone_number"
+							v-model="cellphone_number"
+							placeholder="Telefone"
+							v-mask="['(##)####-####', '(##)#####-####']">
+					</div>
+					<div class="input-wrapper half">
+						<input
+							type="text"
+							name="address_zip"
+							v-model="address_zip"
+							placeholder="CEP"
+							@blur="setAddress"
+							v-mask="'#####-###'">
+					</div>
+					<p>
+						<a
+							href="http://www.buscacep.correios.com.br/sistemas/buscacep/"
+							target="_blank">
+							Não sei meu CEP
+						</a>
+					</p>
+					<div class="input-wrapper">
+						<input
+							type="text"
+							name="address_street"
+							v-model="address_street"
+							placeholder="Endereço">
+					</div>
+					<div class="input-wrapper half">
+						<input
+							type="text"
+							name="address_number"
+							v-model="address_number"
+							placeholder="Número">
+					</div>
+					<div class="input-wrapper half">
+						<input
+							type="text"
+							name="address_observation"
+							v-model="address_observation"
+							placeholder="Complemento">
+					</div>
+					<div class="input-wrapper">
+						<input
+							type="text"
+							name="address_neighbourhood"
+							v-model="address_neighbourhood"
+							placeholder="Bairro"
+							disabled>
+					</div>
+					<div class="input-wrapper half">
+						<input
+							type="text"
+							name="address_city"
+							v-model="address_city"
+							placeholder="Cidade"
+							disabled>
+					</div>
+					<div class="input-wrapper half">
+						<input
+							type="text"
+							name="address_state"
+							v-model="address_state"
+							placeholder="Estado"
+							disabled>
+					</div>
 				</fieldset>
 
 				<button type="submit" :disabled="loading">Continuar</button>
