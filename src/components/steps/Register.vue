@@ -6,36 +6,58 @@
 			<form @submit.prevent="validateForm">
 				<fieldset>
 					<h3>Dados pessoais</h3>
-					<div class="input-wrapper half">
+					<div
+						:class="`input-wrapper half ${validation.errors.first_name ? 'has-error' : ''}`"
+					>
 						<input
 							type="text"
 							name="first_name"
 							v-model="first_name"
 							placeholder="Nome">
+						<div class="error" v-if="validation.errors.first_name">
+							{{ validation.errors.first_name }}
+						</div>
 					</div>
-					<div class="input-wrapper half">
+					<div
+						:class="`input-wrapper half ${validation.errors.last_name ? 'has-error' : ''}`"
+					>
 						<input
 							type="text"
 							name="last_name"
 							v-model="last_name"
 							placeholder="Sobrenome">
+						<div class="error" v-if="validation.errors.last_name">
+							{{ validation.errors.last_name }}
+						</div>
 					</div>
-					<div class="input-wrapper">
+					<div
+						:class="`input-wrapper ${validation.errors.cpf ? 'has-error' : ''}`"
+					>
 						<input
 							type="text"
 							name="cpf"
 							v-model="cpf"
 							placeholder="CPF"
 						v-mask="'###.###.###-##'">
+						<div class="error" v-if="validation.errors.cpf">
+							{{ validation.errors.cpf }}
+						</div>
 					</div>
-					<div class="input-wrapper">
+					<div
+						:class="`input-wrapper ${validation.errors.email ? 'has-error' : ''}`"
+					>
 						<input
 							type="email"
 							name="email"
 							v-model="email"
 							placeholder="Email">
+						<div class="error" v-if="validation.errors.email">
+							{{ validation.errors.email }}
+						</div>
 					</div>
-					<div class="input-wrapper">
+					<div
+						:class="`input-wrapper ${validation.errors.password ? 'has-error' : ''}`"
+					>
 						<input
 							type="text"
 							name="password"
@@ -43,8 +65,13 @@
 							v-model="password"
 							placeholder="Senha"
 							@focus="changeType">
+						<div class="error" v-if="validation.errors.password">
+							{{ validation.errors.password }}
+						</div>
 					</div>
-					<div class="input-wrapper">
+					<div
+						:class="`input-wrapper ${validation.errors.password_confirm ? 'has-error' : ''}`"
+					>
 						<input
 							type="text"
 							name="password_confirm"
@@ -52,21 +79,30 @@
 							v-model="password_confirm"
 							placeholder="Confirmar senha"
 							@focus="changeType">
+						<div class="error" v-if="validation.errors.password_confirm">
+							{{ validation.errors.password_confirm }}
+						</div>
 					</div>
 				</fieldset>
 
 				<fieldset>
 					<h3>Dados de contato</h3>
-					</div>
-					<div class="input-wrapper">
+					<div
+						:class="`input-wrapper ${validation.errors.cellphone_number ? 'has-error' : ''}`"
+					>
 						<input
 							type="text"
 							name="cellphone_number"
 							v-model="cellphone_number"
 							placeholder="Telefone"
 							v-mask="['(##)####-####', '(##)#####-####']">
+						<div class="error" v-if="validation.errors.cellphone_number">
+							{{ validation.errors.cellphone_number }}
+						</div>
 					</div>
-					<div class="input-wrapper half">
+					<div
+						:class="`input-wrapper half ${validation.errors.address_zip ? 'has-error' : ''}`"
+					>
 						<input
 							type="text"
 							name="address_zip"
@@ -74,6 +110,9 @@
 							placeholder="CEP"
 							@blur="setAddress"
 							v-mask="'#####-###'">
+						<div class="error" v-if="validation.errors.address_zip">
+							{{ validation.errors.address_zip }}
+						</div>
 					</div>
 					<p>
 						<a
@@ -82,50 +121,80 @@
 							Não sei meu CEP
 						</a>
 					</p>
-					<div class="input-wrapper">
+					<div
+						:class="`input-wrapper ${validation.errors.address_street ? 'has-error' : ''}`"
+					>
 						<input
 							type="text"
 							name="address_street"
 							v-model="address_street"
 							placeholder="Endereço">
+						<div class="error" v-if="validation.errors.address_street">
+							{{ validation.errors.address_street }}
+						</div>
 					</div>
-					<div class="input-wrapper half">
+					<div
+						:class="`input-wrapper half ${validation.errors.address_number ? 'has-error' : ''}`"
+					>
 						<input
 							type="text"
 							name="address_number"
 							v-model="address_number"
 							placeholder="Número">
+						<div class="error" v-if="validation.errors.address_number">
+							{{ validation.errors.address_number }}
+						</div>
 					</div>
-					<div class="input-wrapper half">
+					<div
+						:class="`input-wrapper half ${validation.errors.address_observation ? 'has-error' : ''}`"
+					>
 						<input
 							type="text"
 							name="address_observation"
 							v-model="address_observation"
 							placeholder="Complemento">
+						<div class="error" v-if="validation.errors.address_observation">
+							{{ validation.errors.address_observation }}
+						</div>
 					</div>
-					<div class="input-wrapper">
+					<div
+						:class="`input-wrapper ${validation.errors.address_neighbourhood ? 'has-error' : ''}`"
+					>
 						<input
 							type="text"
 							name="address_neighbourhood"
 							v-model="address_neighbourhood"
 							placeholder="Bairro"
 							disabled>
+						<div class="error" v-if="validation.errors.address_neighbourhood">
+							{{ validation.errors.address_neighbourhood }}
+						</div>
 					</div>
-					<div class="input-wrapper half">
+					<div
+						:class="`input-wrapper half ${validation.errors.address_city ? 'has-error' : ''}`"
+					>
 						<input
 							type="text"
 							name="address_city"
 							v-model="address_city"
 							placeholder="Cidade"
 							disabled>
+						<div class="error" v-if="validation.errors.address_city">
+							{{ validation.errors.address_city }}
+						</div>
 					</div>
-					<div class="input-wrapper half">
+					<div
+						:class="`input-wrapper half ${validation.errors.address_state ? 'has-error' : ''}`"
+					>
 						<input
 							type="text"
 							name="address_state"
 							v-model="address_state"
 							placeholder="Estado"
 							disabled>
+						<div class="error" v-if="validation.errors.address_state">
+							{{ validation.errors.address_state }}
+						</div>
 					</div>
 				</fieldset>
 
@@ -177,6 +246,9 @@ export default {
 			address_observation: '',
 			address_zip: '',
 			name: config.name,
+			validation: {
+				errors: {},
+			},
 		};
 	},
 	computed: {
