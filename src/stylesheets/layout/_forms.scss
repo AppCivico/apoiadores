@@ -7,16 +7,28 @@ form .input-wrapper {
 	position: relative;
 	width: 100%;
 	margin-bottom: $gutter / 2;
+	clear: both;
 }
 
 form .input-wrapper.half {
 	width: 47.5%;
 	margin-right: 5%;
 	float: left;
+	clear: right;
 
 	& + .half {
 		margin-right: 0;
 	}
+}
+
+form .input-wrapper.has-error input {
+		border-color: palette('warning');
+}
+
+form .input-wrapper .error {
+	color: palette('warning');
+	text-align: right;
+	font-size: 1.4em;
 }
 
 form label {
