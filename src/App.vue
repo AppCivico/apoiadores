@@ -81,7 +81,23 @@ export default {
 			target: '',
 		};
 	},
+	mounted() {
+		this.checkUser();
+	},
 	methods: {
+		checkUser() {
+			if (window.sessionStorage) {
+				const apiKey = sessionStorage.getItem('api-key');
+				const user = sessionStorage.getItem('user');
+				if (user !== null && apiKey !== null) {
+					const data = {
+						api_key: apiKey,
+						user: JSON.parse(user),
+					};
+					this.$store.dispatch('CHANGE_USER', data);
+				}
+			}
+		},
 		toggleHeader(target) {
 			if (this.header) {
 				this.target = '';
