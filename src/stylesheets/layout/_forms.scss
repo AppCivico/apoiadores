@@ -10,11 +10,12 @@ form .input-wrapper {
 }
 
 form .input-wrapper.half {
-	width: 45%;
+	width: 47.5%;
+	margin-right: 5%;
 	float: left;
 
 	& + .half {
-		margin-right: 5%;
+		margin-right: 0;
 	}
 }
 
@@ -108,6 +109,9 @@ form input[type="tel"] {
 
 	&::placeholder {
 		color: inherit;
+	}
+	&:disabled {
+		background-color: palette('primary', 'x-light');
 	}
 }
 
