@@ -19,60 +19,67 @@
 			</table>
 		</section>
 
-		<section>
-			<h3>Meus dados de acesso</h3>
-			<div class="content">
-				<p>
-					<strong>Email cadastrado</strong><br>
-					{{ user.email }}
-				</p>
-				<p>
-					<strong>Senha</strong><br>
-					********
-				</p>
-				<p>
-					<strong>CPF</strong><br>
-					{{ user.cpf }}
-				</p>
-			</div>
-			<button type="button" @click="edit('access')">Alterar</button>
-		</section>
-
-		<section>
-			<h3>Meus dados de contato</h3>
-			<div class="content">
-				<p>
-					<strong>Telefone</strong><br>
-					{{ maskPhone(user.cellphone_number) }}
-				</p>
-				<p>
-					<strong>Endereço</strong><br>
-					{{ user.address_street }},
-					{{ user.address_number }}
-					<span v-if="user.address_observation"> - </span>
-					{{ user.address_observation }}<br>
-					{{ user.address_neighbourhood }} -
-					CEP {{ user.address_zip }}<br>
-					{{ user.address_city }} - {{ user.address_state }}
-				</p>
-			</div>
-			<button type="button" @click="edit('contact')">Alterar</button>
-		</section>
-
-		<section>
-			<h3>Meus dados financeiros</h3>
-			<div class="content">
-				<p>
-					<strong>Cartão de Crédito</strong><br>
-					<template v-if="user.credit_cards.length > 0">
-						<p class="card" v-for="card in user.credit_cards" :key="card.id">
-							{{ niceType(card.brand) }} com final {{ endNumber(card.mask) }}
+		<div class="row">
+			<div class="row__box">
+				<section class="content">
+					<h3>Meus dados de acesso</h3>
+					<div :style="{ height: `${finalHeight}px`}">
+						<p>
+							<strong>Email cadastrado</strong><br>
+							{{ user.email }}
 						</p>
-					</template>
-				</p>
+						<p>
+							<strong>Senha</strong><br>
+							********
+						</p>
+						<p>
+							<strong>CPF</strong><br>
+							{{ user.cpf }}
+						</p>
+					</div>
+					<button type="button" class="btn" @click="edit('access')">Alterar</button>
+				</section>
 			</div>
-			<button type="button" @click="edit('cards')">Alterar</button>
-		</section>
+			<div class="row__box">
+				<section class="content">
+					<h3>Meus dados de contato</h3>
+					<div :style="{ height: `${finalHeight}px`}">
+						<p>
+							<strong>Telefone</strong><br>
+							{{ maskPhone(user.cellphone_number) }}
+						</p>
+						<p>
+							<strong>Endereço</strong><br>
+							{{ user.address_street }},
+							{{ user.address_number }}
+							<span v-if="user.address_observation"> - </span>
+							{{ user.address_observation }}<br>
+							{{ user.address_neighbourhood }} -
+							CEP {{ user.address_zip }}<br>
+							{{ user.address_city }} - {{ user.address_state }}
+						</p>
+					</div>
+					<button type="button" class="btn" @click="edit('contact')">Alterar</button>
+				</section>
+			</div>
+			<div class="row__box">
+				<section class="content">
+					<h3>Meus dados financeiros</h3>
+					<div :style="{ height: `${finalHeight}px`}">
+						<p>
+							<strong>Cartão de Crédito</strong><br>
+						</p>
+						<ul v-if="user.credit_cards.length > 0">
+							<li class="card" v-for="card in user.credit_cards" :key="card.id">
+								Final {{ endNumber(card.mask) }}
+								<span>{{ niceType(card.brand) }}</span>
+							</li>
+						</ul>
+					</div>
+					<button type="button" class="btn" @click="edit('cards')">Alterar</button>
+				</section>
+			</div>
+		</div>
 	</main>
 </template>
 
@@ -87,11 +94,13 @@ export default {
 			status: {
 				captured: 'Confirmada',
 				cancelled: 'Cancelada',
+				finalHeight: 250,
 			},
 		};
 	},
 	mounted() {
 		this.$store.dispatch('LOAD_CHARGES', 5);
+		this.alignBoxes();
 	},
 	computed: {
 		charges() {
@@ -162,6 +171,17 @@ export default {
 
 			return `${weekDay}, ${day} de ${month} de ${year} - ${time}`;
 		},
+		alignBoxes() {
+			const boxes = Array.from(document.querySelectorAll('.row__box'));
+			let highest = 0;
+			boxes.map((box) => {
+				const height = box.querySelector('div').clientHeight;
+				if (height > highest) {
+					highest = height;
+				}
+			});
+			this.finalHeight = highest;
+		}
 	},
 };
 </script>
