@@ -14,7 +14,7 @@
 				</thead>
 				<tbody>
 					<tr v-for="charge in charges" :key="charge.flotum_charge_id">
-						<td>{{ formatDate(charge.created_at) }}</td>
+						<td>{{ charge.created_at | formatDate }}</td>
 						<td>{{ charge.is_recurring ? 'Mensal' : 'Única' }}</td>
 						<td><strong>R$ {{ charge.charge_amount | formatBRL }}</strong></td>
 						<td>{{ statusType(charge.charge_transaction_status) }}</td>
@@ -137,44 +137,6 @@ export default {
 		},
 		statusType(type) {
 			return this.status[type] ? this.status[type] : type;
-		},
-		formatDate(data) {
-			const week = [
-				'Segunda-feira',
-				'Terça-feira',
-				'Quarta-feira',
-				'Quinta-feira',
-				'Sexta-feira',
-				'Sábado',
-				'Domingo',
-			];
-			const months = [
-				'Janeiro',
-				'Fevereiro',
-				'Março',
-				'Abril',
-				'Maio',
-				'Junho',
-				'Julho',
-				'Agosto',
-				'Setembro',
-				'Outubro',
-				'Novembro',
-				'Dezembro',
-			];
-			const date = new Date(data);
-
-			const weekDay = week[date.getDay()];
-			const day = date.getDate();
-			const month = months[date.getMonth()];
-			const year = date.getFullYear();
-
-			const time = data
-				.split('T')[1]
-				.replace(':', 'h')
-				.split(':')[0];
-
-			return `${weekDay}, ${day} de ${month} de ${year} - ${time}`;
 		},
 		alignBoxes() {
 			const boxes = Array.from(document.querySelectorAll('.row__box'));
