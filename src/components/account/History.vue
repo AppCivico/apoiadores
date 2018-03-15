@@ -26,9 +26,6 @@
 </template>
 
 <script>
-/* eslint-disable camelcase */
-import creditCardType from 'credit-card-type';
-
 export default {
 	name: 'MyAccount',
 	data() {
