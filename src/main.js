@@ -25,6 +25,17 @@ router.beforeEach((to, from, next) => {
 	} else {
 		next();
 	}
+
+	if (to.matched.some(record => record.meta.requiresLogin) &&
+		(!store.state.logged)) {
+		window.console.log('Not authorized!');
+		next({
+			path: '/',
+			query: { redirect: to.fullPath },
+		});
+	} else {
+		next();
+	}
 });
 
 sync(store, router);

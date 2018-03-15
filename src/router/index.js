@@ -53,6 +53,7 @@ export default new Router({
 			name: 'MyAccount',
 			component: MyAccount,
 			props: true,
+			meta: { requiresLogin: true },
 		},
 	],
 	scrollBehavior() {
