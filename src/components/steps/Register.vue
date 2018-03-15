@@ -65,11 +65,10 @@
 					>
 						<label for="password">Senha</label>
 						<input
-							type="text"
+							type="password"
 							name="password"
 							ref="password"
-							v-model="password"
-							@focus="changeType">
+							v-model="password">
 						<div class="error" v-if="validation.errors.password">
 							{{ validation.errors.password }}
 						</div>
@@ -80,11 +79,10 @@
 					>
 						<label for="password_confirm">Confirmar senha</label>
 						<input
-							type="text"
+							type="password"
 							name="password_confirm"
 							ref="password_confirm"
-							v-model="password_confirm"
-							@focus="changeType">
+							v-model="password_confirm">
 						<div class="error" v-if="validation.errors.password_confirm">
 							{{ validation.errors.password_confirm }}
 						</div>
@@ -271,10 +269,6 @@ export default {
 		},
 	},
 	methods: {
-		changeType(event) {
-			const ref = event.target.getAttribute('name');
-			this.$refs[ref].setAttribute('type', 'password');
-		},
 		setAddress() {
 			if (this.address_zip !== '') {
 				getAddress(this.address_zip)

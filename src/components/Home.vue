@@ -45,8 +45,7 @@
 		<section class="video">
 			<div class="container">
 				<a
-					:href="`https://www.youtube.com/watch?v=${video.id}`"
-					target="_blank"
+					@click.prevent="toggleModal"
 					class="video__link"
 				>
 					<img :src="`https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg`" :alt="video.text">
@@ -62,6 +61,21 @@
 				<p v-html="video.text"></p>
 			</div>
 		</section>
+		<div
+			:class="`modal ${ this.modal ? 'active' : ''}`"
+			@click.self="toggleModal"
+		>
+			<div class="modal__content">
+				<iframe
+					width="560"
+					height="315"
+					:src="`https://www.youtube.com/embed/${video.id}?rel=0&amp;showinfo=0`"
+					frameborder="0"
+					allow="autoplay; encrypted-media"
+					allowfullscreen>
+				</iframe>
+			</div>
+		</div>
 	</main>
 </template>
 
@@ -80,12 +94,16 @@ export default {
 			header: config.content.header,
 			video: config.content.video,
 			programs: config.content.programs,
+			modal: false,
 		};
 	},
 	mounted() {
 		this.$store.dispatch('LOAD_MERCHANTS');
 	},
 	methods: {
+		toggleModal() {
+			this.modal = !this.modal;
+		},
 		setCurrentProgram(program) {
 			if (program) {
 				this.$store.dispatch('CHANGE_SELECTED_PROGRAM', program)

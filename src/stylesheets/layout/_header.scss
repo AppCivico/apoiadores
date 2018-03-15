@@ -27,10 +27,6 @@
 	cursor: pointer;
 }
 
-[role="banner"] .btn-group {
-	float: left;
-}
-
 [role="banner"] .login-wrapper {
 	float: right;
 	max-width: 350px;
@@ -67,7 +63,7 @@
 	margin-bottom: $gutter / 3;
 }
 
-[role="banner"] nav,
+[role="banner"] .secundary,
 [role="banner"] .login-wrapper {
 	overflow: hidden;
 	max-height: 0;
@@ -84,8 +80,12 @@
 		opacity: 1;
 	}
 
-	.nav_btn.unselected {
+	.unselected {
 		visibility: hidden;
 		cursor: default;
+	}
+
+	li ul {
+		color: palette('primary');
 	}
 }

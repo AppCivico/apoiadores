@@ -4,20 +4,40 @@
 				<div class="container">
 				<router-link to="/" tag="h1">{{ title }}</router-link>
 
-				<div class="nav_btn-group">
-					<button
-						:class="`nav_btn nav_btn__nav ${this.target === 'nav' ? 'selected' : 'unselected'}`"
-						@click="toggleHeader('nav')">
-							Menu
-					</button>
-					<button
-						:class="`nav_btn nav_btn__login ${this.target === 'login' ? 'selected' : 'unselected'}`"
-						@click="toggleHeader('login')">
-							Login
-					</button>
-				</div>
+				<nav class="main">
+					<ul>
+						<li
+							:class="`main__nav ${this.target === 'nav' ? 'selected' : 'unselected'}`"
+							@click="toggleHeader('nav')">
+							<span>Menu</span>
+						</li>
+						<li
+							v-if="!logged"
+							:class="`main__login ${this.target === 'login' ? 'selected' : 'unselected'}`"
+							@click="toggleHeader('login')">
+								<span>Login</span>
+						</li>
+						<li
+							v-if="logged"
+							class="main__user"
+						>
+							<span>{{ user.first_name }} {{ user.last_name }}</span>
+							<ul>
+								<li>
+									<router-link to="/my-account">Minha conta</router-link>
+								</li>
+								<li>
+									<router-link to="/my-account/history">Histórico de doações</router-link>
+								</li>
+								<li>
+									<a href="#" @click.prevent="logout">Sair</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
 
-				<nav :class="this.target === 'nav' ? 'active' : ''">
+				<nav :class="`secundary ${this.target === 'nav' ? 'active' : ''}`">
 					<ul>
 						<li><router-link to="/" @click.native="toggleHeader('')">Home</router-link></li>
 						<li v-if="donation">
@@ -30,7 +50,7 @@
 					</ul>
 				</nav>
 
-				<div :class="`login-wrapper ${this.target === 'login' ? 'active' : ''}`">
+				<div v-if="!logged" :class="`login-wrapper ${this.target === 'login' ? 'active' : ''}`">
 					<Login route="/my-account"/>
 				</div>
 			</div>
@@ -71,6 +91,20 @@ export default {
 		donation() {
 			return this.$store.state.programs[0];
 		},
+		logged() {
+			return this.$store.state.logged;
+		},
+		user() {
+			return this.$store.state.user;
+		},
+	},
+	watch: {
+		logged() {
+			if (this.logged) {
+				this.target = '';
+				this.header = false;
+			}
+		},
 	},
 	data() {
 		return {
@@ -90,6 +124,14 @@ export default {
 			}
 
 			this.header = !this.header;
+		},
+		logout() {
+			this.$store.dispatch('LOGOUT')
+				.then(() => {
+					if (this.$route.path.indexOf('/my-account') > -1) {
+						this.$router.push({ path: '/' });
+					}
+				});
 		},
 	},
 };

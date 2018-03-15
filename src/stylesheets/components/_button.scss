@@ -1,4 +1,5 @@
-.btn, [type="submit"] {
+.btn,
+[type="submit"] {
 	position: relative;
 	display: inline-block;
 	font-size: 1.8em;
@@ -39,54 +40,3 @@
 }
 
 @keyframes spin { 100% { transform:rotate(360deg); } };
-
-.nav_btn {
-	position: relative;
-	border: 0;
-	background: none;
-	text-transform: uppercase;
-	padding: 0;
-	padding-left: $gutter;
-	color: inherit;
-	font-weight: 700;
-	font-size: 1.8em;
-	transition: color 250ms;
-	cursor: pointer;
-	outline: none;
-
-	&:before {
-		position: absolute;
-		top: 0;
-		left: 0;
-		color: inherit;
-		font-size: 1.3em;
-		line-height: 0.8em;
-		display: none;
-	}
-
-	&:hover {
-		color: palette('secundary');
-	}
-}
-
-
-.nav_btn.nav_btn__nav {
-	&:before {
-		display: inline;
-		content: '\2630';
-	}
-}
-
-.nav_btn.nav_btn__login {
-	margin-left: $gutter / 2;
-	padding-left: $gutter / 2;
-}
-
-.nav_btn.selected {
-	color: palette('white');
-
-	&:before {
-		content: '\2715';
-		display: inline;
-	}
-}

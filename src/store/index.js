@@ -16,6 +16,8 @@ const store = new Vuex.Store({
 		newCard: {},
 		programs: [],
 		selectedProgram: {},
+		logged: false,
+		user: {},
 	},
 	actions: {
 		LOAD_MERCHANTS({ commit }) {
@@ -58,6 +60,43 @@ const store = new Vuex.Store({
 					});
 			});
 		},
+		EDIT_USER({ commit, state }, data) {
+			return new Promise((resolve) => {
+				axios({
+					method: 'PUT',
+					headers: { 'Content-Type': 'application/json' },
+					url: `${config.api}/user/${state.user.id}?api_key=${state.apiKey}`,
+					data,
+				})
+					.then((response) => {
+						const newData = {
+							api_key: state.apiKey,
+							user: response.data,
+						};
+						commit('SET_USER', { data: newData });
+						resolve();
+					}, (err) => {
+						console.error(err);
+						reject(err);
+					});
+			});
+		},
+		LOAD_USER({ commit, state }) {
+			return new Promise((resolve, reject) => {
+				axios.get(`${config.api}/user/${state.user.id}?api_key=${state.apiKey}`).then((response) => {
+					console.log('user', response.data);
+					const newData = {
+						api_key: state.apiKey,
+						user: response.data,
+					};
+					commit('SET_USER', { data: newData });
+					resolve();
+				}, (err) => {
+					reject(err);
+					console.error(err);
+				});
+			});
+		},
 		LOGIN({ commit }, data) {
 			return new Promise((resolve, reject) => {
 				axios({
@@ -73,6 +112,18 @@ const store = new Vuex.Store({
 						reject(err);
 						console.error(err);
 					});
+			});
+		},
+		CHANGE_USER({ commit }, data) {
+			return new Promise((resolve) => {
+				commit('SET_USER', { data });
+				resolve();
+			});
+		},
+		LOGOUT({ commit }) {
+			return new Promise((resolve) => {
+				commit('CLEAR_USER');
+				resolve();
 			});
 		},
 		GET_FLOTUM({ commit, state }) {
@@ -108,6 +159,21 @@ const store = new Vuex.Store({
 					});
 			});
 		},
+		REMOVE_CARD({ state }, id) {
+			return new Promise((resolve, reject) => {
+				axios({
+					method: 'DELETE',
+					headers: { 'Content-Type': 'application/json' },
+					url: `${config.api}/user/${state.user.id}/credit-cards/${id}?api_key=${state.apiKey}`,
+				})
+					.then((response) => {
+						resolve(response);
+					}, (err) => {
+						reject(err);
+						console.error(err);
+					});
+			});
+		},
 		SEND_SUBSCRIPTION({ state }, data) {
 			return new Promise((resolve, reject) => {
 				axios({
@@ -133,6 +199,23 @@ const store = new Vuex.Store({
 				console.error(err);
 			});
 		},
+		// eslint-disable-next-line
+		SEND_TOKEN({ state }, data) {
+			return new Promise((resolve, reject) => {
+				axios({
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					url: `${config.api}/user-forgot-password/email`,
+					data,
+				})
+					.then((response) => {
+						resolve(response);
+					}, (err) => {
+						reject(err);
+						console.error(err);
+					});
+			});
+		},
 	},
 	mutations: {
 		SET_PROGRAMS(state, { res }) {
@@ -149,10 +232,19 @@ const store = new Vuex.Store({
 		SET_USER(state, { data }) {
 			state.apiKey = data.api_key;
 			state.user = data.user;
+			state.logged = true;
 
 			if (window.sessionStorage) {
 				sessionStorage.setItem('api-key', data.api_key);
 				sessionStorage.setItem('user', JSON.stringify(data.user));
+			}
+		},
+		CLEAR_USER(state) {
+			state.logged = false;
+
+			if (window.sessionStorage) {
+				sessionStorage.removeItem('api-key');
+				sessionStorage.removeItem('user');
 			}
 		},
 		SET_FLOTUM(state, { data }) {
