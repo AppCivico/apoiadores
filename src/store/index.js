@@ -82,6 +82,12 @@ const store = new Vuex.Store({
 				resolve();
 			});
 		},
+		LOGOUT({ commit }) {
+			return new Promise((resolve) => {
+				commit('CLEAR_USER');
+				resolve();
+			});
+		},
 		GET_FLOTUM({ commit, state }) {
 			return new Promise((resolve, reject) => {
 				axios({
@@ -161,6 +167,14 @@ const store = new Vuex.Store({
 			if (window.sessionStorage) {
 				sessionStorage.setItem('api-key', data.api_key);
 				sessionStorage.setItem('user', JSON.stringify(data.user));
+			}
+		},
+		CLEAR_USER(state) {
+			state.logged = false;
+
+			if (window.sessionStorage) {
+				sessionStorage.removeItem('api-key');
+				sessionStorage.removeItem('user');
 			}
 		},
 		SET_FLOTUM(state, { data }) {

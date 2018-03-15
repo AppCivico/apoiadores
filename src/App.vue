@@ -133,6 +133,15 @@ export default {
 
 			this.header = !this.header;
 		},
+		logout() {
+			this.$store.dispatch('LOGOUT')
+				.then(() => {
+					console.log(this.$route.path);
+					if (this.$route.path.indexOf('/my-account') > -1 ) {
+						this.$router.push({ path: '/' });
+					}
+				});
+		}
 	},
 };
 </script>
