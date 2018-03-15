@@ -6,13 +6,11 @@
 		<div class="modal__content">
 			<h3>Altere os dados de
 				{{ this.type === 'contact' ? 'contato' : 'acesso' }}
-				{{ this.type === 'card' ? 'cartão de crédito' : '' }}
 			</h3>
 
 			<form @submit.prevent="getAccessFields" v-if="this.type === 'access'">
 				<div
-					:class="`input-wrapper
-					${validation.errors.cpf ? 'has-error' : ''}`"
+					:class="`input-wrapper ${validation.errors.cpf ? 'has-error' : ''}`"
 				>
 					<label for="cpf">CPF</label>
 					<input
@@ -25,8 +23,7 @@
 					</div>
 				</div>
 				<div
-					:class="`input-wrapper
-					${validation.errors.email ? 'has-error' : ''}`"
+					:class="`input-wrapper ${validation.errors.email ? 'has-error' : ''}`"
 				>
 					<label for="email">Email</label>
 					<input
@@ -38,8 +35,7 @@
 					</div>
 				</div>
 				<div
-					:class="`input-wrapper
-					${validation.errors.password ? 'has-error' : ''}`"
+					:class="`input-wrapper ${validation.errors.password ? 'has-error' : ''}`"
 				>
 					<label for="password">Senha</label>
 					<input
@@ -53,8 +49,7 @@
 					</div>
 				</div>
 				<div
-					:class="`input-wrapper
-					${validation.errors.password_confirm ? 'has-error' : ''}`"
+					:class="`input-wrapper ${validation.errors.password_confirm ? 'has-error' : ''}`"
 				>
 					<label for="password_confirm">Confirmar senha</label>
 					<input
@@ -75,8 +70,7 @@
 
 			<form @submit.prevent="getContactFields" v-if="this.type === 'contact'">
 				<div
-					:class="`input-wrapper
-					${validation.errors.cellphone_number ? 'has-error' : ''}`"
+					:class="`input-wrapper ${validation.errors.cellphone_number ? 'has-error' : ''}`"
 				>
 					<label for="cellphone_number">Telefone</label>
 					<input
@@ -89,8 +83,7 @@
 					</div>
 				</div>
 				<div
-					:class="`input-wrapper half
-					${validation.errors.address_zip ? 'has-error' : ''}`"
+					:class="`input-wrapper half ${validation.errors.address_zip ? 'has-error' : ''}`"
 				>
 					<label for="address_zip">CEP</label>
 					<input
@@ -111,8 +104,7 @@
 					</a>
 				</p>
 				<div
-					:class="`input-wrapper
-					${validation.errors.address_street ? 'has-error' : ''}`"
+					:class="`input-wrapper ${validation.errors.address_street ? 'has-error' : ''}`"
 				>
 					<label for="address_street">Endereço</label>
 					<input
@@ -124,8 +116,7 @@
 					</div>
 				</div>
 				<div
-					:class="`input-wrapper half
-					${validation.errors.address_number ? 'has-error' : ''}`"
+					:class="`input-wrapper half ${validation.errors.address_number ? 'has-error' : ''}`"
 				>
 					<label for="address_number">Número</label>
 					<input
@@ -137,8 +128,7 @@
 					</div>
 				</div>
 				<div
-					:class="`input-wrapper half
-					${validation.errors.address_observation ? 'has-error' : ''}`"
+					:class="`input-wrapper half ${validation.errors.address_observation ? 'has-error' : ''}`"
 				>
 					<label for="address_observation">Complemento</label>
 					<input
@@ -150,8 +140,7 @@
 					</div>
 				</div>
 				<div
-					:class="`input-wrapper
-					${validation.errors.address_neighbourhood ? 'has-error' : ''}`"
+					:class="`input-wrapper ${validation.errors.address_neighbourhood ? 'has-error' : ''}`"
 				>
 					<label for="address_neighbourhood">Bairro</label>
 					<input
@@ -164,8 +153,7 @@
 					</div>
 				</div>
 				<div
-					:class="`input-wrapper half
-					${validation.errors.address_city ? 'has-error' : ''}`"
+					:class="`input-wrapper half ${validation.errors.address_city ? 'has-error' : ''}`"
 				>
 					<label for="address_city">Cidade</label>
 					<input
@@ -178,8 +166,7 @@
 					</div>
 				</div>
 				<div
-					:class="`input-wrapper half
-					${validation.errors.address_state ? 'has-error' : ''}`"
+					:class="`input-wrapper half ${validation.errors.address_state ? 'has-error' : ''}`"
 				>
 					<label for="address_state">Estado</label>
 					<input
