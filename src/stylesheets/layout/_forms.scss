@@ -148,6 +148,9 @@ form select {
 form select {
 	appearance: none;
 	padding: ($gutter / 4) ($gutter / 2);
+	background-image: url('../assets/img/select-seta.png');
+	background-repeat: no-repeat;
+	background-position: right 10px center;
 }
 
 form .has-real-value input {
