@@ -1,22 +1,27 @@
 <template>
 	<main class="container my-account">
-		<section class="content">
+		<section class="content history">
 			<h2>Minha Conta</h2>
 			<h3>Histório de doações</h3>
 			<table v-if="charges.length > 0">
-				<tr>
-					<td>Data e hora</td>
-					<td>Periodicidade</td>
-					<td>Valor</td>
-					<td>Status</td>
-				</tr>
-				<tr v-for="charge in charges" :key="charge.flotum_charge_id">
-					<td>{{ formatDate(charge.created_at) }}</td>
-					<td>Nao sei</td>
-					<td>R$ {{ charge.charge_amount | formatBRL }}</td>
-					<td>{{ statusType(charge.charge_transaction_status) }}</td>
-				</tr>
+				<thead>
+					<tr>
+						<td>Data e hora</td>
+						<td>Periodicidade</td>
+						<td>Valor</td>
+						<td>Status</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="charge in charges" :key="charge.flotum_charge_id">
+						<td>{{ formatDate(charge.created_at) }}</td>
+						<td>{{ charge.is_recurring ? 'Mensal' : 'Única' }}</td>
+						<td><strong>R$ {{ charge.charge_amount | formatBRL }}</strong></td>
+						<td>{{ statusType(charge.charge_transaction_status) }}</td>
+					</tr>
+				</tbody>
 			</table>
+			<p><router-link to="/my-account/history">ver mais</router-link></p>
 		</section>
 
 		<div class="row">
