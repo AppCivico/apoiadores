@@ -40,16 +40,16 @@ export default {
 			this.loading = !this.loading;
 		},
 		sendToken() {
-			this.toggleLoading() ;
+			this.toggleLoading();
 			const { email } = this;
 
 			if (email === '') {
 				this.errorMessage = 'Favor, preencher o seu e-mail.';
-				this.toggleLoading()
+				this.toggleLoading();
 				return;
 			}
 
-			this.$store.dispatch('SEND_TOKEN', email)
+			this.$store.dispatch('SEND_TOKEN', { email })
 				.then(() => {
 					this.errorMessage = `Um e-mail com instruções foi enviado para o endereço ${email}`;
 					this.toggleLoading();
@@ -58,7 +58,7 @@ export default {
 					this.errorMessage = 'Ocorreu um erro ao tentar recuperar sua senha. Tente novamente!';
 					this.toggleLoading();
 				});
-		}
+		},
 	},
-}
+};
 </script>
