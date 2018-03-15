@@ -81,11 +81,12 @@
 							</li>
 						</ul>
 					</div>
-					<button type="button" class="btn" @click="toggleModal('cards', true)">Alterar</button>
+					<button type="button" class="btn" @click="modalCard = true">Adicionar novo cartão</button>
 				</section>
 			</div>
 		</div>
 		<editModal :type="modal.type" :active="modal.active"/>
+		<addCard :active="modalCard"/>
 	</main>
 </template>
 
@@ -94,11 +95,13 @@
 import creditCardType from 'credit-card-type';
 
 import editModal from './editModal';
+import addCard from './addCard';
 
 export default {
 	name: 'MyAccount',
 	components: {
 		editModal,
+		addCard,
 	},
 	data() {
 		return {
@@ -111,6 +114,7 @@ export default {
 				type: 'access',
 				active: false,
 			},
+			modalCard: false,
 		};
 	},
 	mounted() {
