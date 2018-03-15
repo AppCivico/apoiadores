@@ -159,6 +159,21 @@ const store = new Vuex.Store({
 					});
 			});
 		},
+		REMOVE_CARD({ state }, id) {
+			return new Promise((resolve, reject) => {
+				axios({
+					method: 'DELETE',
+					headers: { 'Content-Type': 'application/json' },
+					url: `${config.api}/user/${state.user.id}/credit-cards/${id}?api_key=${state.apiKey}`,
+				})
+					.then((response) => {
+						resolve(response);
+					}, (err) => {
+						reject(err);
+						console.error(err);
+					});
+			});
+		},
 		SEND_SUBSCRIPTION({ state }, data) {
 			return new Promise((resolve, reject) => {
 				axios({
