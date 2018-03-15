@@ -17,6 +17,7 @@ const store = new Vuex.Store({
 		programs: [],
 		selectedProgram: {},
 		logged: false,
+		user: {},
 	},
 	actions: {
 		LOAD_MERCHANTS({ commit }) {
