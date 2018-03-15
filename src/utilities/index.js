@@ -46,5 +46,44 @@ function cleanPhone(phone) {
 		.replace(/\D+/g, '')}`;
 }
 
+function formatDate(data) {
+	const week = [
+		'Segunda-feira',
+		'Terça-feira',
+		'Quarta-feira',
+		'Quinta-feira',
+		'Sexta-feira',
+		'Sábado',
+		'Domingo',
+	];
+	const months = [
+		'Janeiro',
+		'Fevereiro',
+		'Março',
+		'Abril',
+		'Maio',
+		'Junho',
+		'Julho',
+		'Agosto',
+		'Setembro',
+		'Outubro',
+		'Novembro',
+		'Dezembro',
+	];
+	const date = new Date(data);
+
+	const weekDay = week[date.getDay()];
+	const day = date.getDate();
+	const month = months[date.getMonth()];
+	const year = date.getFullYear();
+
+	const time = data
+		.split('T')[1]
+		.replace(':', 'h')
+		.split(':')[0];
+
+	return `${weekDay}, ${day} de ${month} de ${year} - ${time}`;
+}
+
 // eslint-disable-next-line
-export { validate, getAddress, formatBRL, cleanPhone };
+export { validate, getAddress, formatBRL, cleanPhone, formatDate };
