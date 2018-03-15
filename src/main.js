@@ -7,10 +7,11 @@ import App from './App';
 import router from './router';
 import store from './store';
 
-import { formatBRL } from './utilities';
+import { formatBRL, formatDate } from './utilities';
 
 Vue.config.productionTip = false;
 Vue.filter('formatBRL', formatBRL);
+Vue.filter('formatDate', formatDate);
 Vue.filter('upperCase', value => value.toUpperCase());
 
 // Some middleware to help ensure the program was selected
