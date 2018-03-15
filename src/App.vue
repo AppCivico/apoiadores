@@ -98,6 +98,14 @@ export default {
 			return this.$store.state.user;
 		},
 	},
+	watch: {
+		logged() {
+			if (this.logged) {
+				this.target = '';
+				this.header = false;
+			}
+		}
+	},
 	data() {
 		return {
 			title: config.name,
