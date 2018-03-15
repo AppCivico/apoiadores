@@ -9,6 +9,7 @@ import Payment from '@/components/steps/Payment';
 import Finish from '@/components/steps/Finish';
 import MyAccount from '@/components/account/myAccount';
 import History from '@/components/account/History';
+import forgotPassword from '@/components/account/forgotPassword';
 
 Vue.use(Router);
 
@@ -53,15 +54,18 @@ export default new Router({
 			path: '/my-account',
 			name: 'MyAccount',
 			component: MyAccount,
-			props: true,
 			meta: { requiresLogin: true },
 		},
 		{
 			path: '/my-account/history',
 			name: 'History',
 			component: History,
-			props: true,
 			meta: { requiresLogin: true },
+		},
+		{
+			path: '/my-account/password',
+			name: 'forgotPassword',
+			component: forgotPassword,
 		},
 	],
 	scrollBehavior() {
