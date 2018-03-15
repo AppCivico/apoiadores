@@ -4,27 +4,33 @@
 				<div class="container">
 				<router-link to="/" tag="h1">{{ title }}</router-link>
 
-				<div class="nav_btn-group">
-					<button
-						:class="`nav_btn nav_btn__nav ${this.target === 'nav' ? 'selected' : 'unselected'}`"
-						@click="toggleHeader('nav')">
+				<nav class="main">
+					<ul>
+						<li
+							:class="`main__nav ${this.target === 'nav' ? 'selected' : 'unselected'}`"
+							@click="toggleHeader('nav')">
 							Menu
-					</button>
-					<button
-						v-if="!logged"
-						:class="`nav_btn nav_btn__login ${this.target === 'login' ? 'selected' : 'unselected'}`"
-						@click="toggleHeader('login')">
-							Login
-					</button>
-					<button
-						v-if="logged"
-						class="nav_btn"
-					>
-						{{ user.first_name }} {{ user.last_name }}
-					</button>
-				</div>
+						</li>
+						<li
+							v-if="!logged"
+							:class="`main__login ${this.target === 'login' ? 'selected' : 'unselected'}`"
+							@click="toggleHeader('login')">
+								Login
+						</li>
+						<li
+							v-if="logged"
+						>
+							{{ user.first_name }} {{ user.last_name }}
+							<ul>
+								<router-link to="/my-account" tag="li">Minha conta</router-link>
+								<router-link to="/my-account/history" tag="li">Histórico de doações</router-link>
+								<a href="#" @click.prevent="logout">Sair</a>
+							</ul>
+						</li>
+					</ul>
+				</nav>
 
-				<nav :class="this.target === 'nav' ? 'active' : ''">
+				<nav :class="`secundary ${this.target === 'nav' ? 'active' : ''}`">
 					<ul>
 						<li><router-link to="/" @click.native="toggleHeader('')">Home</router-link></li>
 						<li v-if="donation">
@@ -40,12 +46,6 @@
 				<div v-if="!logged" :class="`login-wrapper ${this.target === 'login' ? 'active' : ''}`">
 					<Login route="/my-account"/>
 				</div>
-
-				<!--<ul>
-					<router-link to="/my-account" tag="li">Minha conta</router-link>
-					<router-link to="/my-account/history" tag="li">Histórico de doações</router-link>
-					<a href="#" @click.prevent="logout">Sair</a>
-				</ul>-->
 			</div>
 		</header>
 
