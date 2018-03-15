@@ -39,11 +39,10 @@
 				>
 					<label for="password">Senha</label>
 					<input
-						type="text"
+						type="password"
 						name="password"
 						ref="password"
-						v-model="user.password"
-						@focus="changeType">
+						v-model="user.password">
 					<div class="error" v-if="validation.errors.password">
 						{{ validation.errors.password }}
 					</div>
@@ -54,11 +53,10 @@
 				>
 					<label for="password_confirm">Confirmar senha</label>
 					<input
-						type="text"
+						type="password"
 						name="password_confirm"
 						ref="password_confirm"
-						v-model="user.password_confirm"
-						@focus="changeType">
+						v-model="user.password_confirm">
 					<div class="error" v-if="validation.errors.password_confirm">
 						{{ validation.errors.password_confirm }}
 					</div>
