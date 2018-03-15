@@ -42,7 +42,7 @@
 							{{ user.cpf }}
 						</p>
 					</div>
-					<button type="button" class="btn" @click="edit('access')">Alterar</button>
+					<button type="button" class="btn" @click="toggleModal('access', true)">Alterar</button>
 				</section>
 			</div>
 			<div class="row__box">
@@ -64,7 +64,7 @@
 							{{ user.address_city }} - {{ user.address_state }}
 						</p>
 					</div>
-					<button type="button" class="btn" @click="edit('contact')">Alterar</button>
+					<button type="button" class="btn" @click="toggleModal('contact', true)">Alterar</button>
 				</section>
 			</div>
 			<div class="row__box">
@@ -81,11 +81,11 @@
 							</li>
 						</ul>
 					</div>
-					<button type="button" class="btn" @click="edit('cards')">Alterar</button>
+					<button type="button" class="btn" @click="toggleModal('cards', true)">Alterar</button>
 				</section>
 			</div>
 		</div>
-		<editModal type="access" />
+		<editModal :type="modal.type" :active="modal.active"/>
 	</main>
 </template>
 
@@ -105,8 +105,12 @@ export default {
 			status: {
 				captured: 'Confirmada',
 				cancelled: 'Cancelada',
-				finalHeight: 250,
 			},
+			finalHeight: 250,
+			modal: {
+				type: 'access',
+				active: false,
+			}
 		};
 	},
 	mounted() {
@@ -122,7 +126,7 @@ export default {
 		},
 	},
 	methods: {
-		edit(type) {
+		toggleModal(type) {
 			console.log('editar', type);
 		},
 		endNumber(num) {
@@ -154,6 +158,12 @@ export default {
 				}
 			});
 			this.finalHeight = highest;
+		},
+		toggleModal(type, active) {
+			this.modal = {
+				type,
+				active,
+			}
 		}
 	},
 };
