@@ -85,6 +85,7 @@
 				</section>
 			</div>
 		</div>
+		<editModal type="access" />
 	</main>
 </template>
 
@@ -92,8 +93,13 @@
 /* eslint-disable camelcase */
 import creditCardType from 'credit-card-type';
 
+import editModal from './editModal';
+
 export default {
 	name: 'MyAccount',
+	components: {
+		editModal
+	},
 	data() {
 		return {
 			status: {
