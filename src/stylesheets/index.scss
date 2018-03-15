@@ -29,49 +29,9 @@
 
 // 6. Page-specific styles
 @import
-	'pages/home';
+	'pages/home',
+	'pages/my-account';
 
 // 7. Themes
 @import
 	'themes/customization';
-/*
-// 2. Base stuff
- @import
-	'base/base',
-	'base/fonts',
-	'base/typography',
-	'base/helpers';
-
-// 4. Layout-related sections
-@import
-	'layout/lists',
-	'layout/navigation',
-	'layout/table',
-	'layout/form',
-	'layout/gallery',
-	'layout/main',
-	'layout/header',
-	'layout/footer',
-	'layout/h-feed',
-	'layout/newsletter';
-// 5. Components
-@import
-	'components/h-entry',
-	'components/figure',
-	'components/fields';
-
-// 6. Page-specific styles
-@import
-	'pages/pages',
-	'pages/totem',
-	'pages/cases',
-	'pages/what-we-do',
-	'pages/about',
-	'pages/certification',
-	'pages/home';
-
-// 7. Themes
-@import
-	'themes/shame',
-	'themes/print';
-*/

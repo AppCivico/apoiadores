@@ -1,0 +1,17 @@
+.my-account .content {
+  width: 100%;
+  float: none;
+  border-right: 0;
+  padding-right: 0;
+}
+
+.my-account .content h2,
+.my-account .content p a {
+  color: palette('secundary');
+}
+
+.my-account .content [type="button"] {
+  background-color: palette('secundary');
+  padding: $gutter / 2;
+  font-size: 1.6em;
+}
