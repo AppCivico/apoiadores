@@ -77,6 +77,7 @@
 						<ul v-if="user.credit_cards.length > 0">
 							<li class="card" v-for="card in user.credit_cards" :key="card.id">
 								Final {{ endNumber(card.mask) }}
+								<button type="button" @click="removeCard(card.id)">&#215;</button>
 								<span>{{ niceType(card.brand) }}</span>
 							</li>
 						</ul>
@@ -166,6 +167,12 @@ export default {
 				active,
 			};
 		},
+		removeCard(id) {
+			this.$store.dispatch('REMOVE_CARD', id)
+				.then(() => {
+					this.$store.dispatch('LOAD_USER');
+				});
+		}
 	},
 };
 </script>
