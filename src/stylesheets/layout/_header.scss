@@ -84,4 +84,8 @@
 		visibility: hidden;
 		cursor: default;
 	}
+
+	li ul {
+		color: palette('primary');
+	}
 }
