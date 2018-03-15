@@ -16,6 +16,18 @@ Vue.filter('upperCase', value => value.toUpperCase());
 
 // Some middleware to help ensure the program was selected
 router.beforeEach((to, from, next) => {
+	if (window.sessionStorage) {
+		const apiKey = sessionStorage.getItem('api-key');
+		const user = sessionStorage.getItem('user');
+		if (user !== null && apiKey !== null) {
+			const data = {
+				api_key: apiKey,
+				user: JSON.parse(user),
+			};
+			store.dispatch('CHANGE_USER', data);
+		}
+	}
+
 	if (to.matched.some(record => record.meta.requiresProgram) &&
 		(!store.state.selectedProgram.name)) {
 		window.console.log('No program selected');
