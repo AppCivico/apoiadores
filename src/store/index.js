@@ -199,6 +199,23 @@ const store = new Vuex.Store({
 				console.error(err);
 			});
 		},
+		// eslint-disable-next-line
+		SEND_TOKEN({ state }, data) {
+			return new Promise((resolve, reject) => {
+				axios({
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					url: `${config.api}/user-forgot-password/email`,
+					data,
+				})
+					.then((response) => {
+						resolve(response);
+					}, (err) => {
+						reject(err);
+						console.error(err);
+					});
+			});
+		},
 	},
 	mutations: {
 		SET_PROGRAMS(state, { res }) {
