@@ -1,14 +1,15 @@
 <template>
 	<div
 		:class="`modal ${ this.isOpen ? 'active' : ''}`"
-		@click.stop="closeModal"
+		@click.self="closeModal"
 	>
 		<div class="modal__content">
 			<h3>Altere os dados de
-				{{ this.type === 'card' ? 'seu cartão de crédito' : 'acesso' }}
+				{{ this.type === 'contact' ? 'contato' : 'acesso' }}
+				{{ this.type === 'card' ? 'cartão de crédito' : '' }}
 			</h3>
 
-			<form @submit.prevent="validateAccess" v-if="this.type === 'access'">
+			<form @submit.prevent="getAccessFields" v-if="this.type === 'access'">
 				<div
 					:class="`input-wrapper
 					${validation.errors.cpf ? 'has-error' : ''}`"
@@ -71,11 +72,136 @@
 				</p>
 				<button type="submit" class="btn" :disabled="loading">Alterar</button>
 			</form>
+
+			<form @submit.prevent="getContactFields" v-if="this.type === 'contact'">
+				<div
+					:class="`input-wrapper
+					${validation.errors.cellphone_number ? 'has-error' : ''}`"
+				>
+					<label for="cellphone_number">Telefone</label>
+					<input
+						type="text"
+						name="cellphone_number"
+						v-model="cellphone_number"
+						v-mask="['(##)####-####', '(##)#####-####']">
+					<div class="error" v-if="validation.errors.cellphone_number">
+						{{ validation.errors.cellphone_number }}
+					</div>
+				</div>
+				<div
+					:class="`input-wrapper half
+					${validation.errors.address_zip ? 'has-error' : ''}`"
+				>
+					<label for="address_zip">CEP</label>
+					<input
+						type="text"
+						name="address_zip"
+						v-model="address_zip"
+						@blur="setAddress"
+						v-mask="'#####-###'">
+					<div class="error" v-if="validation.errors.address_zip">
+						{{ validation.errors.address_zip }}
+					</div>
+				</div>
+				<p>
+					<a
+						href="http://www.buscacep.correios.com.br/sistemas/buscacep/"
+						target="_blank">
+						Não sei meu CEP
+					</a>
+				</p>
+				<div
+					:class="`input-wrapper
+					${validation.errors.address_street ? 'has-error' : ''}`"
+				>
+					<label for="address_street">Endereço</label>
+					<input
+						type="text"
+						name="address_street"
+						v-model="address_street">
+					<div class="error" v-if="validation.errors.address_street">
+						{{ validation.errors.address_street }}
+					</div>
+				</div>
+				<div
+					:class="`input-wrapper half
+					${validation.errors.address_number ? 'has-error' : ''}`"
+				>
+					<label for="address_number">Número</label>
+					<input
+						type="text"
+						name="address_number"
+						v-model="address_number">
+					<div class="error" v-if="validation.errors.address_number">
+						{{ validation.errors.address_number }}
+					</div>
+				</div>
+				<div
+					:class="`input-wrapper half
+					${validation.errors.address_observation ? 'has-error' : ''}`"
+				>
+					<label for="address_observation">Complemento</label>
+					<input
+						type="text"
+						name="address_observation"
+						v-model="address_observation">
+					<div class="error" v-if="validation.errors.address_observation">
+						{{ validation.errors.address_observation }}
+					</div>
+				</div>
+				<div
+					:class="`input-wrapper
+					${validation.errors.address_neighbourhood ? 'has-error' : ''}`"
+				>
+					<label for="address_neighbourhood">Bairro</label>
+					<input
+						type="text"
+						name="address_neighbourhood"
+						v-model="address_neighbourhood"
+						disabled>
+					<div class="error" v-if="validation.errors.address_neighbourhood">
+						{{ validation.errors.address_neighbourhood }}
+					</div>
+				</div>
+				<div
+					:class="`input-wrapper half
+					${validation.errors.address_city ? 'has-error' : ''}`"
+				>
+					<label for="address_city">Cidade</label>
+					<input
+						type="text"
+						name="address_city"
+						v-model="address_city"
+						disabled>
+					<div class="error" v-if="validation.errors.address_city">
+						{{ validation.errors.address_city }}
+					</div>
+				</div>
+				<div
+					:class="`input-wrapper half
+					${validation.errors.address_state ? 'has-error' : ''}`"
+				>
+					<label for="address_state">Estado</label>
+					<input
+						type="text"
+						name="address_state"
+						v-model="address_state"
+						disabled>
+					<div class="error" v-if="validation.errors.address_state">
+						{{ validation.errors.address_state }}
+					</div>
+				</div>
+				<p class="error" v-if="errorMessage != ''">
+					{{ errorMessage }}
+				</p>
+				<button type="submit" class="btn" :disabled="loading">Alterar</button>
+			</form>
 		</div>
 	</div>
 </template>
 
 <script>
+/* eslint-disable camelcase */
 import { mask } from 'vue-the-mask';
 import { validate, getAddress, cleanPhone } from '../../utilities';
 
@@ -94,7 +220,7 @@ export default {
 		},
 		isOpen() {
 			return this.active;
-		}
+		},
 	},
 	mounted() {
 		this.populateFields();
@@ -144,7 +270,7 @@ export default {
 
 			this.cpf = cpf;
 			this.email = email;
-			this.cellphone_number = cellphone_number;
+			this.cellphone_number = cellphone_number.replace('+55', '');
 			this.address_city = address_city;
 			this.address_neighbourhood = address_neighbourhood;
 			this.address_number = address_number;
@@ -153,10 +279,10 @@ export default {
 			this.address_observation = address_observation;
 			this.address_zip = address_zip;
 		},
-		validateAccess() {
+		getAccessFields() {
 			this.toggleLoading();
 
-			let fields = {}
+			let fields = {};
 			const {
 				cpf,
 				email,
@@ -170,12 +296,12 @@ export default {
 					email,
 					password,
 					password_confirm,
-				}
+				};
 			} else {
 				fields = {
 					cpf,
 					email,
-				}
+				};
 			}
 
 			if (password_confirm !== password) {
@@ -188,6 +314,34 @@ export default {
 				return;
 			}
 
+			this.validateForm(fields);
+		},
+		getContactFields() {
+			this.toggleLoading();
+
+			const {
+				cellphone_number,
+				address_city,
+				address_neighbourhood,
+				address_number,
+				address_state,
+				address_street,
+				address_zip,
+			} = this;
+
+			const fields = {
+				cellphone_number: cleanPhone(cellphone_number),
+				address_city,
+				address_neighbourhood,
+				address_number,
+				address_state,
+				address_street,
+				address_zip: this.cleanZip(address_zip),
+			};
+
+			this.validateForm(fields);
+		},
+		validateForm(fields) {
 			const validation = validate(fields);
 			if (validation.valid) {
 				this.editUser(fields);
@@ -197,21 +351,42 @@ export default {
 			}
 		},
 		editUser(fields) {
-			console.log('edit', fields);
 			this.$store.dispatch('EDIT_USER', fields)
 				.then(() => {
-					console.log('editou');
 					this.toggleLoading();
 					this.populateFields();
 					this.closeModal();
 				})
 				.catch(() => {
 					this.errorMessage = 'Ocorreu um erro ao tentar atualizar seu cadastro. Tente novamente';
+					this.toggleLoading();
 				});
 		},
 		closeModal() {
 			this.active = false;
 		},
-	}
-}
+		cleanZip(zip) {
+			return zip.replace(/\D+/g, '');
+		},
+		setAddress() {
+			if (this.address_zip !== '') {
+				getAddress(this.address_zip)
+					.then((res) => {
+						const { bairro, cidade, estado_info, logradouro } = res;
+						this.address_neighbourhood = bairro;
+						this.address_state = estado_info.nome;
+						this.address_street = logradouro;
+						this.address_city = cidade;
+					})
+					.catch(() => {
+						this.validation = {
+							errors: {
+								address_zip: 'O CEP informado não foi localizado.',
+							},
+						};
+					});
+			}
+		},
+	},
+};
 </script>
