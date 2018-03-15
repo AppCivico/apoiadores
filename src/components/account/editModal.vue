@@ -1,11 +1,14 @@
 <template>
-	<div class="modal">
+	<div
+		:class="`modal ${ this.isOpen ? 'active' : ''}`"
+		@click.stop="closeModal"
+	>
 		<div class="modal__content">
 			<h3>Altere os dados de
 				{{ this.type === 'card' ? 'seu cartão de crédito' : 'acesso' }}
 			</h3>
 
-			<form @submit.prevent="validateForm" v-if="this.type === 'access'">
+			<form @submit.prevent="validateAccess" v-if="this.type === 'access'">
 				<div
 					:class="`input-wrapper
 					${validation.errors.cpf ? 'has-error' : ''}`"
@@ -14,7 +17,7 @@
 					<input
 						type="text"
 						name="cpf"
-						v-model="user.cpf"
+						v-model="cpf"
 						v-mask="'###.###.###-##'">
 					<div class="error" v-if="validation.errors.cpf">
 						{{ validation.errors.cpf }}
@@ -28,7 +31,7 @@
 					<input
 						type="email"
 						name="email"
-						v-model="user.email">
+						v-model="email">
 					<div class="error" v-if="validation.errors.email">
 						{{ validation.errors.email }}
 					</div>
@@ -42,7 +45,8 @@
 						type="password"
 						name="password"
 						ref="password"
-						v-model="user.password">
+						v-model="password"
+						@change="editedPassword()">
 					<div class="error" v-if="validation.errors.password">
 						{{ validation.errors.password }}
 					</div>
@@ -56,11 +60,15 @@
 						type="password"
 						name="password_confirm"
 						ref="password_confirm"
-						v-model="user.password_confirm">
+						v-model="password_confirm"
+						@change="editedPassword()">
 					<div class="error" v-if="validation.errors.password_confirm">
 						{{ validation.errors.password_confirm }}
 					</div>
 				</div>
+				<p class="error" v-if="errorMessage != ''">
+					{{ errorMessage }}
+				</p>
 				<button type="submit" class="btn" :disabled="loading">Alterar</button>
 			</form>
 		</div>
@@ -75,6 +83,7 @@ export default {
 	name: 'editModal',
 	props: {
 		type: String,
+		active: Boolean,
 	},
 	directives: {
 		mask,
@@ -83,10 +92,17 @@ export default {
 		user() {
 			return this.$store.state.user;
 		},
+		isOpen() {
+			return this.active;
+		}
+	},
+	mounted() {
+		this.populateFields();
 	},
 	data() {
 		return {
 			loading: false,
+			editPassword: false,
 			cpf: '',
 			email: '',
 			password: '',
@@ -102,14 +118,99 @@ export default {
 			validation: {
 				errors: {},
 			},
+			errorMessage: '',
 		};
 	},
 	methods: {
 		toggleLoading() {
 			this.loading = !this.loading;
 		},
-		validateForm() {
-			console.log('oi');
+		editedPassword() {
+			this.editPassword = true;
+		},
+		populateFields() {
+			const {
+				cpf,
+				email,
+				cellphone_number,
+				address_city,
+				address_neighbourhood,
+				address_number,
+				address_state,
+				address_street,
+				address_observation,
+				address_zip,
+			} = this.user;
+
+			this.cpf = cpf;
+			this.email = email;
+			this.cellphone_number = cellphone_number;
+			this.address_city = address_city;
+			this.address_neighbourhood = address_neighbourhood;
+			this.address_number = address_number;
+			this.address_state = address_state;
+			this.address_street = address_street;
+			this.address_observation = address_observation;
+			this.address_zip = address_zip;
+		},
+		validateAccess() {
+			this.toggleLoading();
+
+			let fields = {}
+			const {
+				cpf,
+				email,
+				password,
+				password_confirm,
+			} = this;
+
+			if (this.editPassword) {
+				fields = {
+					cpf,
+					email,
+					password,
+					password_confirm,
+				}
+			} else {
+				fields = {
+					cpf,
+					email,
+				}
+			}
+
+			if (password_confirm !== password) {
+				this.validation = {
+					errors: {
+						password_confirm: 'Ops! Senha não corresponde ao campo acima.',
+					},
+				};
+				this.toggleLoading();
+				return;
+			}
+
+			const validation = validate(fields);
+			if (validation.valid) {
+				this.editUser(fields);
+			} else {
+				this.validation = validation;
+				this.toggleLoading();
+			}
+		},
+		editUser(fields) {
+			console.log('edit', fields);
+			this.$store.dispatch('EDIT_USER', fields)
+				.then(() => {
+					console.log('editou');
+					this.toggleLoading();
+					this.populateFields();
+					this.closeModal();
+				})
+				.catch(() => {
+					this.errorMessage = 'Ocorreu um erro ao tentar atualizar seu cadastro. Tente novamente';
+				});
+		},
+		closeModal() {
+			this.active = false;
 		},
 	}
 }
