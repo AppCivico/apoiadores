@@ -172,7 +172,7 @@ export default {
 				.then(() => {
 					this.$store.dispatch('LOAD_USER');
 				});
-		}
+		},
 	},
 };
 </script>
