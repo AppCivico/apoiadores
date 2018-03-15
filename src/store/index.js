@@ -59,6 +59,27 @@ const store = new Vuex.Store({
 					});
 			});
 		},
+		EDIT_USER({ commit, state }, data) {
+			return new Promise((resolve) => {
+				axios({
+					method: 'PUT',
+					headers: { 'Content-Type': 'application/json' },
+					url: `${config.api}/user/${state.user.id}?api_key=${state.apiKey}`,
+					data,
+				})
+					.then((response) => {
+						const newData = {
+							api_key: state.apiKey,
+							user: response.data,
+						};
+						commit('SET_USER', { data: newData });
+						resolve();
+					}, (err) => {
+						console.error(err);
+						reject(err);
+					});
+			});
+		},
 		LOGIN({ commit }, data) {
 			return new Promise((resolve, reject) => {
 				axios({
