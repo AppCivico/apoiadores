@@ -98,7 +98,7 @@ import editModal from './editModal';
 export default {
 	name: 'MyAccount',
 	components: {
-		editModal
+		editModal,
 	},
 	data() {
 		return {
@@ -110,7 +110,7 @@ export default {
 			modal: {
 				type: 'access',
 				active: false,
-			}
+			},
 		};
 	},
 	mounted() {
@@ -126,9 +126,6 @@ export default {
 		},
 	},
 	methods: {
-		toggleModal(type) {
-			console.log('editar', type);
-		},
 		endNumber(num) {
 			return num.slice(num.length - 3, num.length);
 		},
@@ -141,7 +138,7 @@ export default {
 			return type;
 		},
 		maskPhone(phone) {
-			const currentPhone = phone.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+			const currentPhone = phone.replace('+55', '').replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
 			// eslint-disable-next-line
 			return !currentPhone[2] ? currentPhone[1] : '(' + currentPhone[1] + ') ' + currentPhone[2] + (currentPhone[3] ? '-' + currentPhone[3] : '');
 		},
@@ -163,8 +160,8 @@ export default {
 			this.modal = {
 				type,
 				active,
-			}
-		}
+			};
+		},
 	},
 };
 </script>
