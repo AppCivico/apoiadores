@@ -6,7 +6,8 @@
 }
 
 .my-account .content h2,
-.my-account .content p a {
+.my-account .content p a,
+.my-account table thead {
 	color: palette('secundary');
 }
 
@@ -62,4 +63,9 @@
 	padding: $gutter / 3;
 	border-radius: 4px;
 	float: right;
+}
+
+.my-account .history p {
+	text-align: right;
+	margin: ($gutter / 2) 0 ($gutter * 2);
 }
