@@ -104,7 +104,7 @@ export default {
 				this.target = '';
 				this.header = false;
 			}
-		}
+		},
 	},
 	data() {
 		return {
@@ -128,11 +128,11 @@ export default {
 		logout() {
 			this.$store.dispatch('LOGOUT')
 				.then(() => {
-					if (this.$route.path.indexOf('/my-account') > -1 ) {
+					if (this.$route.path.indexOf('/my-account') > -1) {
 						this.$router.push({ path: '/' });
 					}
 				});
-		}
+		},
 	},
 };
 </script>
