@@ -1,0 +1,28 @@
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table thead tr {
+	border-bottom-width: 2px;
+	font-size: 1.6em;
+	font-weight: 700;
+}
+
+table thead td {
+	padding: $gutter / 4 0;
+}
+
+table tr {
+	border-bottom: 1px solid palette('primary', 'x-light');
+	font-size: 1.8em;
+}
+
+table tbody td {
+	padding: $gutter / 3 0;
+}
+
+table tbody strong {
+	color: palette('black');
+	font-weight: 700;
+}
