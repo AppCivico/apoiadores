@@ -9,22 +9,29 @@
 						<li
 							:class="`main__nav ${this.target === 'nav' ? 'selected' : 'unselected'}`"
 							@click="toggleHeader('nav')">
-							Menu
+							<span>Menu</span>
 						</li>
 						<li
 							v-if="!logged"
 							:class="`main__login ${this.target === 'login' ? 'selected' : 'unselected'}`"
 							@click="toggleHeader('login')">
-								Login
+								<span>Login</span>
 						</li>
 						<li
 							v-if="logged"
+							class="main__user"
 						>
-							{{ user.first_name }} {{ user.last_name }}
+							<span>{{ user.first_name }} {{ user.last_name }}</span>
 							<ul>
-								<router-link to="/my-account" tag="li">Minha conta</router-link>
-								<router-link to="/my-account/history" tag="li">Histórico de doações</router-link>
-								<a href="#" @click.prevent="logout">Sair</a>
+								<li>
+									<router-link to="/my-account">Minha conta</router-link>
+								</li>
+								<li>
+									<router-link to="/my-account/history">Histórico de doações</router-link>
+								</li>
+								<li>
+									<a href="#" @click.prevent="logout">Sair</a>
+								</li>
 							</ul>
 						</li>
 					</ul>
