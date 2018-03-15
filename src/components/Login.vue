@@ -26,7 +26,7 @@
 					<label for="connected" class="smaller">Continuar conectado</label>
 					<div class="checkbox"></div>
 				</div>
-				<router-link to="/">Esqueci minha senha</router-link>
+				<router-link to="/my-account/password">Esqueci minha senha</router-link>
 			</div>
 			<p class="error" v-if="errorMessage != ''">
 				{{ errorMessage }}
