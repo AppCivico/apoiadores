@@ -1,9 +1,8 @@
 <template>
-	<main class="container">
-		<h1>My account</h1>
-
-		<section>
-			<h2>Histório de doações</h2>
+	<main class="container my-account">
+		<section class="content">
+			<h2>Minha Conta</h2>
+			<h3>Histório de doações</h3>
 			<table v-if="charges.length > 0">
 				<tr>
 					<td>Data e hora</td>
@@ -166,12 +165,3 @@ export default {
 	},
 };
 </script>
-
-<style scoped>
-	section {
-		border: 1px solid #000;
-	}
-	table {
-		width: 100%;
-	}
-</style>
