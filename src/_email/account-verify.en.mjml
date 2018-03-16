@@ -33,7 +33,7 @@
     <mj-container background-color="#eee">
       <mj-section padding="65px 0 33px 0">
         <mj-column width="100%">
-          <mj-image src="[% base_url %]/static/_email/assets/img/img-logo.png" width="171px" href="[% base_url %]/" />
+          <mj-image src="[% base_url %]/assets/img/img-logo.png" width="171px" href="[% base_url %]/" />
         </mj-column>
       </mj-section>
       <mj-wrapper background-color="#fff" padding="0" border-radius="5px">
@@ -60,7 +60,7 @@
 
         <mj-section mj-class="img-wrapper" border-radius="5px">
           <mj-column>
-            <mj-image src="[% base_url %]/static/_email/assets/img/img-rodape-padrao.png" padding="0" />
+            <mj-image src="[% base_url %]/assets/img/img-rodape-padrao.png" padding="0" />
           </mj-column>
         </mj-section>
 
@@ -80,16 +80,16 @@
           <mj-column>
           </mj-column>
           <mj-column>
-            <mj-image padding="10" width="30px" src="[% base_url %]/static/_email/assets/img/youtube.gif" href="https://www.youtube.com/channel/UCIuAzzWMogJV0r-mvFmjNNQ" />
+            <mj-image padding="10" width="30px" src="[% base_url %]/assets/img/youtube.gif" href="https://www.youtube.com/channel/UCIuAzzWMogJV0r-mvFmjNNQ" />
           </mj-column>
           <mj-column>
-            <mj-image padding="10" width="30px" src="[% base_url %]/static/_email/assets/img/facebook.gif" href="https://www.facebook.com/AppCivicoCSB" />
+            <mj-image padding="10" width="30px" src="[% base_url %]/assets/img/facebook.gif" href="https://www.facebook.com/AppCivicoCSB" />
           </mj-column>
           <mj-column>
-            <mj-image padding="10" width="29px" src="[% base_url %]/static/_email/assets/img/github.png" href="https://github.com/AppCivico/apoiadores" />
+            <mj-image padding="10" width="29px" src="[% base_url %]/assets/img/github.png" href="https://github.com/AppCivico/apoiadores" />
           </mj-column>
           <mj-column>
-            <mj-image padding="10" width="30px" src="[% base_url %]/static/_email/assets/img/twitter.gif" href="https://twitter.com/appcivico" />
+            <mj-image padding="10" width="30px" src="[% base_url %]/assets/img/twitter.gif" href="https://twitter.com/appcivico" />
           </mj-column>
           <mj-column>
           </mj-column>
