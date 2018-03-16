@@ -350,7 +350,7 @@ export default {
 				});
 		},
 		closeModal() {
-			this.active = false;
+			this.$emit('close', true);
 		},
 		cleanZip(zip) {
 			return zip.replace(/\D+/g, '');

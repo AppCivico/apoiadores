@@ -82,7 +82,7 @@ import { validate } from '../../utilities';
 export default {
 	name: 'addCard',
 	props: {
-		active: Boolean,
+		activeCard: Boolean,
 	},
 	directives: {
 		mask,
@@ -92,7 +92,7 @@ export default {
 			return this.$store.state.user;
 		},
 		isOpen() {
-			return this.active;
+			return this.activeCard;
 		},
 	},
 	mounted() {
@@ -187,7 +187,7 @@ export default {
 				});
 		},
 		closeModal() {
-			this.active = false;
+			this.$emit('close', true);
 		},
 		cleanValidity(validity) {
 			const valid = validity

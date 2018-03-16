@@ -82,12 +82,17 @@
 							</li>
 						</ul>
 					</div>
-					<button type="button" class="btn" @click="modalCard = true">Adicionar novo cartão</button>
+					<button
+						type="button"
+						class="btn"
+						@click="toggleModalCard(true)">
+						Adicionar novo cartão
+					</button>
 				</section>
 			</div>
 		</div>
-		<editModal :type="modal.type" :active="modal.active"/>
-		<addCard :active="modalCard"/>
+		<editModal :type="modal.type" :active="modal.active" @close="toggleModal('', false)"/>
+		<addCard :activeCard="modalCard" @close="toggleModalCard(false)"/>
 	</main>
 </template>
 
@@ -166,6 +171,9 @@ export default {
 				type,
 				active,
 			};
+		},
+		toggleModalCard(type) {
+			this.modalCard = type;
 		},
 		removeCard(id) {
 			this.$store.dispatch('REMOVE_CARD', id)
