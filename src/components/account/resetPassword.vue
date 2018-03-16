@@ -59,7 +59,7 @@ export default {
 				secret_key: this.$route.query.key,
 			};
 
-			if (password === '' && password_confirm === '') {
+			if (password === '' || password_confirm === '') {
 				this.errorMessage = 'Favor, preencher todos os campos';
 				this.toggleLoading();
 				return;
