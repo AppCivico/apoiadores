@@ -19,6 +19,7 @@
 									v-if="key === 'donation'"
 									href="#"
 									@click.prevent="setCurrentProgram(program.active ? donation : null)"
+									:class="program.active ? '' : 'disabled'"
 								>
 									{{ program.active ? 'DOE AGORA!' : 'EM BREVE' }}
 								</a>
@@ -26,6 +27,7 @@
 									v-else-if="key === 'project'"
 									href="#"
 									@click.prevent="setCurrentProgram(program.active ? '' : null)"
+									:class="program.active ? '' : 'disabled'"
 								>
 									{{ program.active ? 'DOE AGORA!!' : 'EM BREVE' }}
 								</a>
@@ -33,6 +35,7 @@
 									v-else
 									href="#"
 									@click.prevent="setCurrentProgram(program.active ? '' : null)"
+									:class="program.active ? '' : 'disabled'"
 								>
 									{{ program.active ? 'DOE AGORA!' : 'EM BREVE' }}
 								</a>
