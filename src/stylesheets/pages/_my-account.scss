@@ -84,7 +84,13 @@
 	margin: ($gutter / 4) 0 0 ($gutter / 4);
 }
 
-.my-account .history p {
+.my-account .history .empty {
+	border: 3px solid palette('success');
+	border-radius: 4px;
+	padding: $gutter / 3;
+}
+
+.my-account .history .more {
 	text-align: right;
 	margin: ($gutter / 2) 0 ($gutter * 2);
 }

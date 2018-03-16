@@ -21,7 +21,8 @@
 					</tr>
 				</tbody>
 			</table>
-			<p><router-link to="/my-account/history">ver mais</router-link></p>
+			<p v-else class="empty">Você ainda não registrou doações.</p>
+			<p class="more"><router-link to="/my-account/history">ver mais</router-link></p>
 		</section>
 
 		<div class="row">

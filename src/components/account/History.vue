@@ -21,6 +21,7 @@
 					</tr>
 				</tbody>
 			</table>
+			<p v-else class="empty">Você ainda não registrou doações.</p>
 		</section>
 	</main>
 </template>
