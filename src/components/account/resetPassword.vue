@@ -72,7 +72,7 @@ export default {
 			}
 
 
-			this.$store.dispatch('EDIT_PASSWORD', { fields })
+			this.$store.dispatch('EDIT_PASSWORD', fields)
 				.then(() => {
 					this.errorMessage = 'Sua senha foi alterada com sucesso';
 					this.password = '';
