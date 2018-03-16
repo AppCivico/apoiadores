@@ -1,5 +1,5 @@
 <template>
-	<div class="shell">
+	<div :class="`shell ${ isHome ? '' : 'intern' }`">
 		<header role="banner" :class="this.header ? 'open' : ''">
 				<div class="container">
 				<router-link to="/" tag="h1">{{ title }}</router-link>
@@ -96,6 +96,9 @@ export default {
 		},
 		user() {
 			return this.$store.state.user;
+		},
+		isHome() {
+			return this.$route.path === '/';
 		},
 	},
 	watch: {
