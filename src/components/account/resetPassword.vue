@@ -41,7 +41,8 @@ export default {
 	data() {
 		return {
 			loading: false,
-			email: '',
+			password: '',
+			password_confirm: '',
 			errorMessage: '',
 		};
 	},
@@ -55,6 +56,7 @@ export default {
 			const fields = {
 				password,
 				password_confirm,
+				secret_key: this.$route.query.secret_key,
 			};
 
 			if (password === '' && password_confirm === '') {
@@ -73,6 +75,8 @@ export default {
 			this.$store.dispatch('EDIT_PASSWORD', { fields })
 				.then(() => {
 					this.errorMessage = 'Sua senha foi alterada com sucesso';
+					this.password = '';
+					this.password_confirm = '';
 					this.toggleLoading();
 				})
 				.catch(() => {
