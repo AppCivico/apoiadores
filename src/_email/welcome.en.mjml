@@ -1,10 +1,10 @@
 <mjml>
   <mj-head>
     <mj-title>
-      Your account is almost ready
+      Welcome, [% name %]
     </mj-title>
     
-      <mj-preview>Verify your account</mj-preview>
+      <mj-preview>Welcome to Apoiadores</mj-preview>
     
     <mj-font name="Ubuntu" href="https://fonts.googleapis.com/css?family=Ubuntu" />
     <mj-attributes>
@@ -33,38 +33,42 @@
     <mj-container background-color="#eee">
       <mj-section padding="65px 0 33px 0">
         <mj-column width="100%">
-          <mj-image src="[% base_url %]/static/_email/assets/img/img-logo.png" width="171px" href="[% base_url %]/" />
+          <mj-image src="[% base_url %]/assets/img/img-logo.png" width="171px" href="[% base_url %]/" />
         </mj-column>
       </mj-section>
       <mj-wrapper background-color="#fff" padding="0" border-radius="5px">
 
-        <mj-section border-top="2px solid #00d4fd">
+        <mj-section border-radius="5px">
           <mj-column>
             <mj-text>
               <h1>
-                Your account is almost ready
+                Welcome, [% name %]
               </h1>
-              <h2>
-                Hello, [% name %]!
-              </h2>
-              <p>Just one more step before you start using your account. We have to make sure it&rsquo;s really you!</p>
+              <p>Hello ☺, [% name %]!</p>
 
-<p>Thank you!</p>
+<p>[% content %]</p>
+
+<p>If you need assistance, please reply to this email.</p>
+
+<p>Have a great day!</p>
 
             </mj-text>
-            <mj-button href="[% confirm_account_link %]">
-              Confirm my account
-            </mj-button>
           </mj-column>
         </mj-section>
-
-        <mj-section mj-class="img-wrapper" border-radius="5px">
-          <mj-column>
-            <mj-image src="[% base_url %]/static/_email/assets/img/img-rodape-padrao.png" padding="0" />
-          </mj-column>
+        <mj-section background-color="#eee" padding="0">
+          <mj-group>
+            <mj-column>
+              <mj-image padding="0 43px 10px" align="right" width="36px" height="18px" src="[% base_url %]/assets/img/bubble-dash.gif" />
+            </mj-column>
+            <mj-column>
+            </mj-column>
+          </mj-group>
         </mj-section>
-
-      </mj-wrapper>
+        <mj-section background-color="#eee" padding="0">
+          <mj-group>
+          </mj-group>
+        </mj-section>
+	</mj-wrapper>
       <mj-section>
         <mj-column width="475px">
           <mj-text align="center" font-size="13px" mj-class="footer">
@@ -80,16 +84,16 @@
           <mj-column>
           </mj-column>
           <mj-column>
-            <mj-image padding="10" width="30px" src="[% base_url %]/static/_email/assets/img/youtube.gif" href="https://www.youtube.com/channel/UCIuAzzWMogJV0r-mvFmjNNQ" />
+            <mj-image padding="10" width="30px" src="[% base_url %]/assets/img/youtube.gif" href="https://www.youtube.com/channel/UCIuAzzWMogJV0r-mvFmjNNQ" />
           </mj-column>
           <mj-column>
-            <mj-image padding="10" width="30px" src="[% base_url %]/static/_email/assets/img/facebook.gif" href="https://www.facebook.com/AppCivicoCSB" />
+            <mj-image padding="10" width="30px" src="[% base_url %]/assets/img/facebook.gif" href="https://www.facebook.com/AppCivicoCSB" />
           </mj-column>
           <mj-column>
-            <mj-image padding="10" width="29px" src="[% base_url %]/static/_email/assets/img/github.png" href="https://github.com/AppCivico/apoiadores" />
+            <mj-image padding="10" width="29px" src="[% base_url %]/assets/img/github.png" href="https://github.com/AppCivico/apoiadores" />
           </mj-column>
           <mj-column>
-            <mj-image padding="10" width="30px" src="[% base_url %]/static/_email/assets/img/twitter.gif" href="https://twitter.com/appcivico" />
+            <mj-image padding="10" width="30px" src="[% base_url %]/assets/img/twitter.gif" href="https://twitter.com/appcivico" />
           </mj-column>
           <mj-column>
           </mj-column>

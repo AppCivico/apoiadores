@@ -1,10 +1,10 @@
 <mjml>
   <mj-head>
     <mj-title>
-      Change your password
+      Your account is almost ready
     </mj-title>
     
-      <mj-preview>Change password request</mj-preview>
+      <mj-preview>Verify your account</mj-preview>
     
     <mj-font name="Ubuntu" href="https://fonts.googleapis.com/css?family=Ubuntu" />
     <mj-attributes>
@@ -33,7 +33,7 @@
     <mj-container background-color="#eee">
       <mj-section padding="65px 0 33px 0">
         <mj-column width="100%">
-          <mj-image src="[% base_url %]/static/_email/assets/img/img-logo.png" width="171px" href="[% base_url %]/" />
+          <mj-image src="[% base_url %]/assets/img/img-logo.png" width="171px" href="[% base_url %]/" />
         </mj-column>
       </mj-section>
       <mj-wrapper background-color="#fff" padding="0" border-radius="5px">
@@ -42,28 +42,29 @@
           <mj-column>
             <mj-text>
               <h1>
-                Change your password
+                Your account is almost ready
               </h1>
               <h2>
                 Hello, [% name %]!
               </h2>
-              <p>We are here to help you!</p>
+              <p>Just one more step before you start using your account. We have to make sure it&rsquo;s really you!</p>
 
-<p>We saw that you requested a new password to access Apoiadores. It&rsquo;s very easy. Just click the button below to change your password. It&rsquo;s that simple!</p>
+<p>Thank you!</p>
 
             </mj-text>
-            <mj-button href="[% reset_password_link %]">
-              I want to change my password
+            <mj-button href="[% confirm_account_link %]">
+              Confirm my account
             </mj-button>
           </mj-column>
         </mj-section>
 
         <mj-section mj-class="img-wrapper" border-radius="5px">
           <mj-column>
-            <mj-image src="[% base_url %]/static/_email/assets/img/img-rodape-padrao.png" padding="0" />
+            <mj-image src="[% base_url %]/assets/img/img-rodape-padrao.png" padding="0" />
           </mj-column>
         </mj-section>
-    </mj-wrapper>
+
+      </mj-wrapper>
       <mj-section>
         <mj-column width="475px">
           <mj-text align="center" font-size="13px" mj-class="footer">
@@ -79,16 +80,16 @@
           <mj-column>
           </mj-column>
           <mj-column>
-            <mj-image padding="10" width="30px" src="[% base_url %]/static/_email/assets/img/youtube.gif" href="https://www.youtube.com/channel/UCIuAzzWMogJV0r-mvFmjNNQ" />
+            <mj-image padding="10" width="30px" src="[% base_url %]/assets/img/youtube.gif" href="https://www.youtube.com/channel/UCIuAzzWMogJV0r-mvFmjNNQ" />
           </mj-column>
           <mj-column>
-            <mj-image padding="10" width="30px" src="[% base_url %]/static/_email/assets/img/facebook.gif" href="https://www.facebook.com/AppCivicoCSB" />
+            <mj-image padding="10" width="30px" src="[% base_url %]/assets/img/facebook.gif" href="https://www.facebook.com/AppCivicoCSB" />
           </mj-column>
           <mj-column>
-            <mj-image padding="10" width="29px" src="[% base_url %]/static/_email/assets/img/github.png" href="https://github.com/AppCivico/apoiadores" />
+            <mj-image padding="10" width="29px" src="[% base_url %]/assets/img/github.png" href="https://github.com/AppCivico/apoiadores" />
           </mj-column>
           <mj-column>
-            <mj-image padding="10" width="30px" src="[% base_url %]/static/_email/assets/img/twitter.gif" href="https://twitter.com/appcivico" />
+            <mj-image padding="10" width="30px" src="[% base_url %]/assets/img/twitter.gif" href="https://twitter.com/appcivico" />
           </mj-column>
           <mj-column>
           </mj-column>

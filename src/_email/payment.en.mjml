@@ -1,7 +1,7 @@
 <mjml>
   <mj-head>
     <mj-title>
-      Pagamento efetuado
+      Payment made
     </mj-title>
     
     <mj-font name="Ubuntu" href="https://fonts.googleapis.com/css?family=Ubuntu" />
@@ -31,7 +31,7 @@
     <mj-container background-color="#eee">
       <mj-section padding="65px 0 33px 0">
         <mj-column width="100%">
-          <mj-image src="[% base_url %]/static/_email/assets/img/img-logo.png" width="171px" href="[% base_url %]/" />
+          <mj-image src="[% base_url %]/assets/img/img-logo.png" width="171px" href="[% base_url %]/" />
         </mj-column>
       </mj-section>
       <mj-wrapper background-color="#fff" padding="0" border-radius="5px">
@@ -40,58 +40,58 @@
           <mj-column>
             <mj-text>
               <h1>
-                Pagamento efetuado
+                Payment made
               </h1>
               <h2>
-                Obrigado, [% name %]!
+                Thank you, [% name %]!
               </h2>
-              <p>Seu pagamento foi efetuado em <strong>[% payment_date %]</strong>. Confira abaixo os detalhes da transação.</p>
+              <p>Your payment was received on <strong>[% payment_date %]</strong>. Check below for your payment details.</p>
 
             </mj-text>
             <mj-table padding="10px 0">
               <tr style="border-bottom:1px solid #ecedee;">
-                <th style="text-align: left; padding: 0; color: #0cf;">Descrição</th>
+                <th style="text-align: left; padding: 0; color: #0cf;">Description</th>
                 <th style="text-align: right; padding: 0; color: #0cf;"></th>
               </tr>
               <tr>
-                <th style="font-weight: normal; text-align: left; padding: 0;">Método de pagamento</th>
+                <th style="font-weight: normal; text-align: left; padding: 0;">Payment method</th>
                 <td style="font-weight: bold; text-align: right; padding: 0;">[% payment_method %]</td>
               </tr>
               <tr>
-                <th style="font-weight: normal; text-align: left; padding: 0;">Valor</th>
+                <th style="font-weight: normal; text-align: left; padding: 0;">Value</th>
                 <td style="font-weight: bold; text-align: right; padding: 0;">[% currency %] [% payment_value %]</td>
               </tr>
               <tr>
-                <th style="font-weight: normal; text-align: left; padding: 0;">Pago até</th>
+                <th style="font-weight: normal; text-align: left; padding: 0;">Paid until</th>
                 <td style="font-weight: bold; text-align: right; padding: 0;">[% paid_until %]</td>
               </tr>
               <tr>
-                <th style="font-weight: normal; text-align: left; padding: 0;">Membros contratados</th>
+                <th style="font-weight: normal; text-align: left; padding: 0;">Available members</th>
                 <td style="font-weight: bold; text-align: right; padding: 0;">[% max_members %]</td>
               </tr>
               <tr>
-                <th style="font-weight: normal; text-align: left; padding: 0;">Periodicidade</th>
+                <th style="font-weight: normal; text-align: left; padding: 0;">Periodicity</th>
                 <td style="font-weight: bold; text-align: right; padding: 0;">[% plan_periodicity %]</td>
               </tr>
             </mj-table>
             <mj-text>
-                Tem alguma pergunta ou precisa de ajuda? Mande um <a href="mailto:contact@appcivico.com">email</a> para a gente.
+                Do you have question or need help? Send us an <a href="mailto:contact@appcivico.com">email</a>.
             </mj-text>
           </mj-column>
         </mj-section>
         <mj-section mj-class="img-wrapper" border-radius="5px">
           <mj-column>
-            <mj-image src="[% base_url %]/static/_email/assets/img/img-premium-copy.png" padding="0" />
+            <mj-image src="[% base_url %]/assets/img/img-premium-copy.png" padding="0" />
           </mj-column>
         </mj-section>
 	</mj-wrapper>
       <mj-section>
         <mj-column width="475px">
           <mj-text align="center" font-size="13px" mj-class="footer">
-            <p>Você recebeu essa mensagem por ser um usuário do serviço <a href="http://Apoiadores">Apoiadores</a>.</p>
-            <p>Copyright &copy; 2017 - Apoiadores - An <a href='http://www.eokoe.com'>Eokoe</a> Project</p>
+            <p>You&rsquo;re receiving this message because you are using <a href="https://appcivico.com/pt/apoiadores/">Apoiadores</a> app.</p>
+            <p>Copyright &copy; 2018 - Apoiadores - An <a href='http://www.eokoe.com'>Eokoe</a> Project</p>
           </mj-text>
-          </mj-column>
+        </mj-column>
       </mj-section>
       <mj-section padding="0 0 100px">
         <mj-group>
@@ -100,16 +100,16 @@
           <mj-column>
           </mj-column>
           <mj-column>
-            <mj-image padding="10" width="30px" src="[% base_url %]/static/_email/assets/img/youtube.gif" href="https://www.youtube.com/channel/UCIuAzzWMogJV0r-mvFmjNNQ" />
+            <mj-image padding="10" width="30px" src="[% base_url %]/assets/img/youtube.gif" href="https://www.youtube.com/channel/UCIuAzzWMogJV0r-mvFmjNNQ" />
           </mj-column>
           <mj-column>
-            <mj-image padding="10" width="30px" src="[% base_url %]/static/_email/assets/img/facebook.gif" href="https://www.facebook.com/AppCivicoCSB" />
+            <mj-image padding="10" width="30px" src="[% base_url %]/assets/img/facebook.gif" href="https://www.facebook.com/AppCivicoCSB" />
           </mj-column>
           <mj-column>
-            <mj-image padding="10" width="29px" src="[% base_url %]/static/_email/assets/img/github.png" href="https://github.com/AppCivico/apoiadores" />
+            <mj-image padding="10" width="29px" src="[% base_url %]/assets/img/github.png" href="https://github.com/AppCivico/apoiadores" />
           </mj-column>
           <mj-column>
-            <mj-image padding="10" width="30px" src="[% base_url %]/static/_email/assets/img/twitter.gif" href="https://twitter.com/appcivico" />
+            <mj-image padding="10" width="30px" src="[% base_url %]/assets/img/twitter.gif" href="https://twitter.com/appcivico" />
           </mj-column>
           <mj-column>
           </mj-column>
