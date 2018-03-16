@@ -10,6 +10,7 @@ import Finish from '@/components/steps/Finish';
 import MyAccount from '@/components/account/myAccount';
 import History from '@/components/account/History';
 import forgotPassword from '@/components/account/forgotPassword';
+import resetPassword from '@/components/account/resetPassword';
 
 Vue.use(Router);
 
@@ -66,6 +67,12 @@ export default new Router({
 			path: '/my-account/password',
 			name: 'forgotPassword',
 			component: forgotPassword,
+		},
+		{
+			path: '/my-account/reset-password',
+			name: 'resetPassword',
+			component: resetPassword,
+			query: { secret_key: true },
 		},
 	],
 	scrollBehavior() {
