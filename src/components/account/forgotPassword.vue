@@ -52,6 +52,7 @@ export default {
 			this.$store.dispatch('SEND_TOKEN', { email })
 				.then(() => {
 					this.errorMessage = `Um e-mail com instruções foi enviado para o endereço ${email}`;
+					this.email = '';
 					this.toggleLoading();
 				})
 				.catch(() => {
