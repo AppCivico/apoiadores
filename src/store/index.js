@@ -216,6 +216,23 @@ const store = new Vuex.Store({
 					});
 			});
 		},
+		// eslint-disable-next-line
+		EDIT_PASSWORD({ state }, data) {
+			return new Promise((resolve, reject) => {
+				axios({
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					url: `${config.api}/user-forgot-password/reset-password`,
+					data,
+				})
+					.then((response) => {
+						resolve(response);
+					}, (err) => {
+						reject(err);
+						console.error(err);
+					});
+			});
+		},
 	},
 	mutations: {
 		SET_PROGRAMS(state, { res }) {
