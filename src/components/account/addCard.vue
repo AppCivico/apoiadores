@@ -170,11 +170,13 @@ export default {
 				.then(() => {
 					this.$store.dispatch('REGISTER_CARD', card)
 						.then(() => {
-							this.$store.dispatch('LOAD_USER')
-								.then(() => {
-									this.toggleLoading();
-									this.closeModal();
-								});
+							setTimeout(() => {
+								this.$store.dispatch('LOAD_USER')
+									.then(() => {
+										this.toggleLoading();
+										this.closeModal();
+									});
+							}, 1000);
 						})
 						.catch(() => {
 							this.errorMessage = 'Ocorreu um erro ao salvar seu cartão';
