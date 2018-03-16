@@ -72,7 +72,7 @@ export default new Router({
 			path: '/my-account/reset-password',
 			name: 'resetPassword',
 			component: resetPassword,
-			query: { secret_key: true },
+			query: { key: true },
 		},
 	],
 	scrollBehavior() {

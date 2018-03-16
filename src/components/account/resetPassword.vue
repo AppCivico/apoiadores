@@ -56,7 +56,7 @@ export default {
 			const fields = {
 				password,
 				password_confirm,
-				secret_key: this.$route.query.secret_key,
+				secret_key: this.$route.query.key,
 			};
 
 			if (password === '' && password_confirm === '') {
