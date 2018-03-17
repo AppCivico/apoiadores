@@ -347,7 +347,7 @@ export default {
 					this.saveCard({
 						name_on_card,
 						csc,
-						number,
+						number: number.replace(/\s+/g, ''),
 						validity: this.cleanValidity(validity),
 					});
 				}
