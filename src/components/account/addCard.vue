@@ -200,6 +200,13 @@ export default {
 				});
 		},
 		closeModal() {
+			// clean values before closing modal
+			this.name_on_card = '';
+			this.csc = '';
+			this.number = '';
+			this.validity = '';
+			this.brand = '';
+
 			this.$emit('close', true);
 		},
 		cleanValidity(validity) {
