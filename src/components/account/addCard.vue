@@ -189,13 +189,13 @@ export default {
 									});
 							}, 1000);
 						})
-						.catch(() => {
-							this.errorMessage = 'Ocorreu um erro ao salvar seu cartão';
+						.catch((err) => {
+							this.errorMessage = err.data[0].message ? err.data[0].message : 'Ocorreu um erro ao salvar seu cartão';
 							this.toggleLoading();
 						});
 				})
-				.catch(() => {
-					this.errorMessage = 'Ocorreu um erro ao processar seu cartão';
+				.catch((err) => {
+					this.errorMessage = err.data[0].message ? err.data[0].message : 'Ocorreu um erro ao processar seu cartão';
 					this.toggleLoading();
 				});
 		},

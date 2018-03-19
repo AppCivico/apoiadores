@@ -416,13 +416,13 @@ export default {
 
 							this.sendSubscription();
 						})
-						.catch(() => {
-							this.errorMessage = 'Ocorreu um erro ao salvar seu cartão';
+						.catch((err) => {
+							this.errorMessage = err.data[0].message ? err.data[0].message : 'Ocorreu um erro ao salvar seu cartão';
 							this.toggleLoading();
 						});
 				})
-				.catch(() => {
-					this.errorMessage = 'Ocorreu um erro ao processar seu cartão';
+				.catch((err) => {
+					this.errorMessage = err.data[0].message ? err.data[0].message : 'Ocorreu um erro ao processar seu cartão';
 					this.toggleLoading();
 				});
 		},
@@ -437,8 +437,8 @@ export default {
 				.then(() => {
 					this.$router.push({ path: '/finish' });
 				})
-				.catch(() => {
-					this.errorMessage = 'Ocorreu um erro durante o cadastro da operação. Tente novamente!';
+				.catch((err) => {
+					this.errorMessage = err.data[0].message ? err.data[0].message : 'Ocorreu um erro durante o cadastro da operação. Tente novamente!';
 					this.toggleLoading();
 				});
 		},
