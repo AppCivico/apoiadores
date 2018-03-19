@@ -333,6 +333,16 @@ export default {
 			const validationContact = validate(fieldsContact);
 			let validationCard = { valid: true };
 
+			if (fieldsCard.validity.length < 6) {
+				this.validationCard = {
+					errors: {
+						validity: 'Formato de validade do cartão incorreto. Utilize MM/AAAA',
+					},
+				};
+				this.toggleLoading();
+				return;
+			}
+
 			if (!this.useRegisteredCard) {
 				validationCard = validate(fieldsCard);
 			}

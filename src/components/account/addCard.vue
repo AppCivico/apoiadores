@@ -141,6 +141,16 @@ export default {
 				validity,
 			};
 
+			if (fields.validity.length < 6) {
+				this.validation = {
+					errors: {
+						validity: 'Formato de validade do cartão incorreto. Utilize MM/AAAA',
+					},
+				};
+				this.toggleLoading();
+				return;
+			}
+
 			const validation = validate(fields);
 			if (validation.valid) {
 				fields.brand = this.getBrand(number);
