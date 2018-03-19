@@ -7,6 +7,10 @@ footer {
 footer .container {
 	display: table;
 	padding: $gutter * 2;
+
+	@media (max-width: 767px) {
+		padding: $gutter * 2 $gutter / 2;
+	}
 }
 
 footer h1 {
@@ -17,6 +21,10 @@ footer h1 {
 	height: 39px;
 	background-repeat: no-repeat;
 	margin-right: $gutter;
+
+	@media (max-width: 767px) {
+		float: none;
+	}
 }
 
 footer h2 {
@@ -26,6 +34,11 @@ footer h2 {
 	letter-spacing: 0.2em;
 	color: palette('white');
 	margin-bottom: $gutter * 3;
+
+	@media (max-width: 767px) {
+		float: none;
+		margin: $gutter 0;
+	}
 }
 
 footer .partners {

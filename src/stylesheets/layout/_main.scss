@@ -4,6 +4,11 @@ main {
 	display: table;
 	padding-top: $gutter * 5;
 	min-height: 800px;
+
+	@media (max-width: 767px) {
+		min-height: 0;
+		padding-bottom: $gutter;
+	}
 }
 
 main .content {
@@ -12,6 +17,13 @@ main .content {
 	border-right: 1px solid palette('primary', 'x-light');
 	padding-right: $gutter;
 	margin-bottom: $gutter;
+
+	@media (max-width: 767px) {
+		width: 100%;
+		float: none;
+		border-right: 0;
+		padding-right: 0;
+	}
 }
 
 main .content h2 {
@@ -28,6 +40,10 @@ main .content h3 {
 	font-weight: 700;
 	margin-bottom: $gutter / 2;
 	clear: both;
+
+	@media (max-width: 767px) {
+		font-size: 2em;
+	}
 }
 
 main aside {
@@ -52,4 +68,9 @@ main blockquote {
 	padding: $gutter / 2;
 	border-radius: 4px;
 	margin-bottom: $gutter;
+
+	@media (max-width: 767px) {
+		font-size: 2em;
+		padding: $gutter / 3;
+	}
 }
