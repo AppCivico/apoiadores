@@ -301,7 +301,13 @@ export default {
 				return;
 			}
 
-			this.validateForm(fields);
+			const validation = validate(fields);
+			if (validation.valid) {
+				this.editUser(fields);
+			} else {
+				this.validation = validation;
+				this.toggleLoading();
+			}
 		},
 		getContactFields() {
 			this.toggleLoading();
@@ -314,6 +320,7 @@ export default {
 				address_state,
 				address_street,
 				address_zip,
+				address_observation,
 			} = this;
 
 			const fields = {
@@ -326,11 +333,10 @@ export default {
 				address_zip: this.cleanZip(address_zip),
 			};
 
-			this.validateForm(fields);
-		},
-		validateForm(fields) {
 			const validation = validate(fields);
 			if (validation.valid) {
+				fields.address_observation = address_observation;
+
 				this.editUser(fields);
 			} else {
 				this.validation = validation;
