@@ -17,7 +17,10 @@
 	}
 
 	@media (max-width: 767px) {
-		position: absolute;
+		&.active {
+			padding: $gutter 0 $gutter * 2;
+			overflow: auto;
+		}
 	}
 }
 
@@ -34,6 +37,10 @@
 	padding: $gutter;
 
 	@media (max-width: 767px) {
+		position: relative;
+		top: auto;
+		left: auto;
+		transform: none;
 		min-width: 0;
 		width: 100%;
 		padding: $gutter / 4;
