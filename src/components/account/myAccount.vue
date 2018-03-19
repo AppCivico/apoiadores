@@ -79,7 +79,7 @@
 							<li class="card" v-for="card in user.credit_cards" :key="card.id">
 								Final {{ endNumber(card.mask) }}
 								<button type="button" @click="removeCard(card.id)">&#215;</button>
-								<span>{{ niceType(card.brand) }}</span>
+								<span>{{ niceType(card.conjecture_brand !== undefined ? card.conjecture_brand : card.brand) }}</span>
 							</li>
 						</ul>
 					</div>

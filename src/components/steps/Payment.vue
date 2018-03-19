@@ -83,7 +83,7 @@
 								:value="card.id"
 								v-for="card in user.credit_cards"
 								:key="card.id">
-								{{ niceType(card.brand) }} com final {{ endNumber(card.mask) }}
+								{{ niceType(niceType(card.conjecture_brand !== undefined ? card.conjecture_brand : card.brand)) }} com final {{ endNumber(card.mask) }}
 							</option>
 						</select>
 					</div>
@@ -289,6 +289,9 @@ export default {
 		user() {
 			return this.$store.state.user;
 		},
+		apiKey() {
+			return this.$store.state.apiKey;
+		},
 		newCard() {
 			return this.$store.state.newCard;
 		},
@@ -401,6 +404,16 @@ export default {
 					this.$store.dispatch('REGISTER_CARD', card)
 						.then(() => {
 							this.selectedCard = this.newCard.id;
+
+							// save user info with card
+							const updateUser = this.user;
+							updateUser.credit_cards.push(this.newCard);
+							const newData = {
+								api_key: this.apiKey,
+								user: updateUser,
+							};
+							this.$store.commit('SET_USER', { data: newData });
+
 							this.sendSubscription();
 						})
 						.catch(() => {
