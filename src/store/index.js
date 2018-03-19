@@ -61,7 +61,7 @@ const store = new Vuex.Store({
 			});
 		},
 		EDIT_USER({ commit, state }, data) {
-			return new Promise((resolve) => {
+			return new Promise((resolve, reject) => {
 				axios({
 					method: 'PUT',
 					headers: { 'Content-Type': 'application/json' },
