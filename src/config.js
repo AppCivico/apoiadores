@@ -62,7 +62,7 @@ const config = {
 			id:
 				'Pqs6-rLmqWI',
 			text:
-				'Desde a campanha presidencial de 2010, com uma intensificação em 2014, Marina Silva é alvo de notícias falsas e ataques mentirosos. Estas investidas partem de membros de diferentes campos políticos. Apoie a “REDE no combate às fake news”, um projeto inovador com o objetivo se contrapor às mentiras virtuais sobre Marina Silva e a Rede Sustentabilidade nas eleições de 2018. <a href="https://drive.google.com/file/d/1Cdjg_Zc8wSTwM3uQxh6sGjmNwxOMbRRh/view?usp=sharing" target="_blank">Conheça o projeto</a>',
+				'Desde a campanha presidencial de 2010, com uma intensificação em 2014, Marina Silva é alvo de notícias falsas e ataques mentirosos. Estas investidas partem de membros de diferentes campos políticos. Apoie a “REDE no combate às fake news”, um projeto inovador com o objetivo se contrapor às mentiras virtuais sobre Marina Silva e a Rede Sustentabilidade nas eleições de 2018. <a href="./static/fake_news.pdf" target="_blank">Conheça o projeto</a>',
 		},
 	},
 };
