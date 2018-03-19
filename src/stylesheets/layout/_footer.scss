@@ -60,6 +60,10 @@ footer .partners ul {
 footer .partners li {
 	display: inline-block;
 	margin-left: $gutter;
+
+	@media (max-width: 767px) {
+		margin-bottom: $gutter / 2;
+	}
 }
 
 footer .partners img {
