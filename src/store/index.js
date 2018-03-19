@@ -44,7 +44,7 @@ const store = new Vuex.Store({
 			});
 		},
 		CREATE_USER({ commit }, data) {
-			return new Promise((resolve) => {
+			return new Promise((resolve, reject) => {
 				axios({
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },
@@ -55,8 +55,8 @@ const store = new Vuex.Store({
 						commit('SET_USER', { data: response.data });
 						resolve();
 					}, (err) => {
-						console.error(err);
-						reject(err);
+						console.error(err.response);
+						reject(err.response);
 					});
 			});
 		},
