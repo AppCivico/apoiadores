@@ -47,13 +47,13 @@
 		</section>
 		<section class="video">
 			<div class="container">
+				<h2 v-html="video.title"></h2>
 				<a
 					@click.prevent="toggleModal"
 					class="video__link"
 				>
 					<img :src="`https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg`" :alt="video.text">
 				</a>
-				<h2 v-html="video.title"></h2>
 				<h3 v-if="donation">
 						{{ donation.summary.captured_count }}
 						pessoas já doaram,
@@ -69,13 +69,15 @@
 			@click.self="toggleModal"
 		>
 			<div class="modal__content">
-				<iframe
-					width="560"
-					height="315"
-					:src="`https://www.youtube.com/embed/${video.id}?rel=0&amp;showinfo=0`"
-					frameborder="0"
-					allowfullscreen>
-				</iframe>
+				<div class="iframe">
+					<iframe
+						width="560"
+						height="315"
+						:src="`https://www.youtube.com/embed/${video.id}?rel=0&amp;showinfo=0`"
+						frameborder="0"
+						allowfullscreen>
+					</iframe>
+				</div>
 			</div>
 		</div>
 	</main>

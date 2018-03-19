@@ -1,5 +1,9 @@
 aside {
 	max-width: 360px;
+
+	@media (max-width: 767px) {
+		display: none;
+	}
 }
 
 aside h2 {

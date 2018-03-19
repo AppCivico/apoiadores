@@ -15,6 +15,10 @@
 		max-height: 9999px;
 		opacity: 1;
 	}
+
+	@media (max-width: 767px) {
+		position: absolute;
+	}
 }
 
 .modal__content {
@@ -28,6 +32,12 @@
 	transform: translateX(-50%) translateY(-50%);
 	border-radius: 4px;
 	padding: $gutter;
+
+	@media (max-width: 767px) {
+		min-width: 0;
+		width: 100%;
+		padding: $gutter / 4;
+	}
 }
 
 .modal__content h3 {
@@ -36,6 +46,10 @@
 	font-weight: 700;
 	margin-bottom: $gutter / 2;
 	clear: both;
+
+	@media (max-width: 767px) {
+		font-size: 2em;
+	}
 }
 
 .modal__content .btn {
