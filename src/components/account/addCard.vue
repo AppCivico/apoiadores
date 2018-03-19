@@ -14,7 +14,8 @@
 					<input
 						type="text"
 						v-model="name_on_card"
-						name="name_on_card">
+						name="name_on_card"
+						maxlength="26">
 					<div class="error" v-if="validation.errors.name_on_card">
 						{{ validation.errors.name_on_card }}
 					</div>
