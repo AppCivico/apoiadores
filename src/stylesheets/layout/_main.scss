@@ -1,0 +1,55 @@
+main {
+	position: relative;
+	width: 100%;
+	display: table;
+	padding-top: $gutter * 5;
+	min-height: 800px;
+}
+
+main .content {
+	float: left;
+	width: 55%;
+	border-right: 1px solid palette('primary', 'x-light');
+	padding-right: $gutter;
+	margin-bottom: $gutter;
+}
+
+main .content h2 {
+	color: palette('blue', 'light');
+	font-size: 1.4em;
+	font-weight: 800;
+	margin-bottom: $gutter / 2;
+	text-transform: uppercase;
+}
+
+main .content h3 {
+	color: palette('black', 'light');
+	font-size: 2.4em;
+	font-weight: 700;
+	margin-bottom: $gutter / 2;
+	clear: both;
+}
+
+main aside {
+	float: left;
+	width: 45%;
+	padding-left: $gutter;
+}
+
+main p {
+	font-size: 1.8em;
+	margin-bottom: $gutter / 2;
+}
+main p a {
+	color: palette('blue', 'light');
+	font-weight: 600;
+}
+
+main blockquote {
+	background-color: palette('white', 'dark');
+	font-size: 3em;
+	font-weight: 300;
+	padding: $gutter / 2;
+	border-radius: 4px;
+	margin-bottom: $gutter;
+}

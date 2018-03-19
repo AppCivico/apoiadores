@@ -1,0 +1,42 @@
+.btn,
+[type="submit"] {
+	position: relative;
+	display: inline-block;
+	font-size: 1.8em;
+	font-weight: 800;
+	color: palette('white');
+	text-transform: uppercase;
+	text-decoration: none;
+	text-align: left;
+	background-color: palette('blue', 'light');
+	border: 0;
+	margin-bottom: $gutter;
+	padding: $gutter / 2 $gutter;
+	padding-right: $gutter * 2;
+	min-width: 250px;
+	cursor: pointer;
+	transition: background-color 300ms;
+
+	&:hover {
+		background-color: palette('blue', 'dark');
+	}
+	&:disabled {
+		background-color: palette('blue', 'dark');
+		color: palette('blue', 'dark');
+
+		&:after {
+			content: '\21bb';
+			position: absolute;
+			top: 50%;
+			left: 0;
+			width: 100%;
+			text-align: center;
+			font-size: 2.5em;
+			line-height: 0;
+			color: palette('white');
+			animation: spin 2s linear infinite;
+		}
+	}
+}
+
+@keyframes spin { 100% { transform:rotate(360deg); } };

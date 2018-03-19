@@ -1,0 +1,96 @@
+.my-account .content {
+	width: 100%;
+	float: none;
+	border-right: 0;
+	padding-right: 0;
+}
+
+.my-account .content h2,
+.my-account .content p a,
+.my-account table thead {
+	color: palette('secundary');
+}
+
+.my-account .content .btn {
+	background-color: palette('secundary');
+	padding: $gutter / 4 $gutter / 2;
+	font-size: 1.6em;
+	min-width: 0;
+}
+
+.my-account .row {
+	margin-left: -$gutter / 3;
+	margin-right: -$gutter / 3;
+}
+
+.my-account .row__box {
+	width: 33.33%;
+	float: left;
+	padding: 0 $gutter / 3;
+}
+
+.my-account .row__box h3 {
+	font-size: 1.8em;
+}
+
+.my-account .row__box div {
+	background-color: palette('white', 'dark');
+	padding: $gutter / 2;
+	margin-bottom: $gutter / 2;
+	font-size: 0.8em;
+}
+
+.my-account .row__box div p {
+	font-size: 1.7em;
+}
+
+.my-account .row__box div ul {
+	list-style: none;
+	font-size: 1.8em;
+}
+
+.my-account .row__box div li {
+	display: table;
+	width: 100%;
+	margin-bottom: $gutter / 2;
+}
+
+.my-account .row__box strong {
+	font-weight: 300;
+	color: palette('primary', 'light');
+	margin-bottom: $gutter / 4;
+}
+
+.my-account .row__box .card span {
+	display: block;
+	background-color: palette('primary', 'x-light');
+	color: palette('white');
+	font-size: 0.8em;
+	font-weight: 600;
+	padding: $gutter / 3;
+	border-radius: 4px;
+	float: right;
+}
+
+.my-account .row__box .card button {
+	float: right;
+	border: 0;
+	border-radius: 50%;
+	cursor: pointer;
+	background-color: palette('secundary');
+	color: palette('white');
+	font-size: 1.5em;
+	padding: 0 6px;
+	margin: ($gutter / 4) 0 0 ($gutter / 4);
+}
+
+.my-account .history .empty {
+	border: 3px solid palette('success');
+	border-radius: 4px;
+	padding: $gutter / 3;
+}
+
+.my-account .history .more {
+	text-align: right;
+	margin: ($gutter / 2) 0 ($gutter * 2);
+}

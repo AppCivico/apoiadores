@@ -1,0 +1,38 @@
+/// @access private
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are pure colors or the returned value of functions
+// this is a variable! A variable map!
+// scss-lint:disable ColorVariable
+$_palettes: (
+	'white': (
+		'base': rgb(255, 255, 255),
+		'dark': rgb(245, 245, 245)
+	),
+	'black': (
+		'base': rgb(0, 0, 0),
+		'light': rgb(51, 51, 51)
+	),
+	'primary': (
+		'base': rgb(80, 80, 80),
+		'light': rgb(153, 153, 153),
+		'x-light': rgb(218, 218, 218)
+	),
+	'secundary': (
+		'base': rgb(255, 101, 51),
+		'light': rgb(255, 153, 102)
+	),
+	'blue': (
+		'base': rgb(16, 241, 245),
+		'light': rgb(51, 204, 204),
+		'dark': rgb(74, 174, 188)
+	),
+	'warning': (
+		'base': rgb(255, 0, 0)
+	),
+	'success': (
+		'base': rgb(100, 212, 134)
+	)
+);
+
+$gutter: 40px;
+$fontFamily: 'Open Sans', sans-serif;

@@ -1,0 +1,179 @@
+form fieldset {
+	border: 0;
+	margin-bottom: $gutter;
+}
+
+form .input-wrapper {
+	position: relative;
+	width: 100%;
+	margin-bottom: $gutter / 2;
+	clear: both;
+}
+
+form .input-wrapper.half {
+	width: 47.5%;
+	margin-right: 5%;
+	float: left;
+	clear: right;
+
+	& + .half {
+		margin-right: 0;
+	}
+}
+
+form .input-wrapper.has-error input {
+	border-color: palette('warning');
+}
+
+form .input-wrapper .error {
+	color: palette('warning');
+	text-align: right;
+	font-size: 1.4em;
+}
+
+form p.error {
+	color: palette('warning');
+}
+
+form label {
+	position: absolute;
+	top: 3px;
+	left: 7px;
+	font-size: 1.5em;
+	color: palette('primary', 'light');
+	z-index: 1;
+}
+
+form input[type="radio"] ~ label,
+form input[type="checkbox"] ~ label {
+	position: relative;
+	top: auto;
+	left: auto;
+	font-size: 2.4em;
+	font-weight: 300;
+	color: palette('black', 'light');
+
+	&.bigger {
+		font-size: 3em;
+	}
+	&.smaller {
+		font-size: 1.6em;
+	}
+}
+
+form input[type="radio"],
+form input[type="checkbox"] {
+	position: relative;
+	z-index: 1;
+	opacity: 0;
+	width: 20px;
+	height: 20px;
+	margin-right: $gutter / 2;
+}
+
+form input[type="checkbox"] {
+	margin-right: $gutter / 4;
+}
+
+form .checkbox,
+form .radio {
+	position: absolute;
+	z-index: 0;
+	top: 11px;
+	left: 0;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	border: 1px solid palette('primary', 'x-light');
+
+	&:after {
+		content: '';
+		position: absolute;
+		top: 4px;
+		left: 4px;
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		background-color: palette('blue', 'light');
+		opacity: 0;
+		transition: opacity 300ms;
+	}
+}
+
+form .checkbox {
+	border-radius: 6px;
+	top: 1px;
+
+	&:after {
+		border-radius: 6px;
+	}
+}
+
+form input[type="checkbox"]:checked ~ .checkbox,
+form input[type="radio"]:checked ~ .radio {
+	&:after {
+		opacity: 1;
+	}
+}
+
+form input[type="radio"]:checked ~ label {
+	font-weight: 600;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="tel"],
+form select {
+	position: relative;
+	display: block;
+	width: 100%;
+	border: 1px solid palette('primary', 'x-light');
+	background-color: palette('white');
+	color: palette('primary', 'light');
+	font-size: 1.8em;
+	font-family: $fontFamily;
+	padding: 30px 20px 10px;
+	border-radius: 4px;
+	margin-bottom: $gutter / 4;
+
+	&::placeholder {
+		color: inherit;
+	}
+	&:disabled {
+		background-color: palette('primary', 'x-light');
+	}
+}
+
+form select {
+	appearance: none;
+	padding: ($gutter / 4) ($gutter / 2);
+	background-image: url('../assets/img/select-seta.png');
+	background-repeat: no-repeat;
+	background-position: right 10px center;
+}
+
+form .has-real-value input {
+	z-index: 1;
+	opacity: 0;
+	padding-bottom: 0;
+}
+
+form .input-wrapper .real-value {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	font-size: 2em;
+	color: palette('primary', 'light');
+	padding: 30px 20px 10px;
+	border: 1px solid palette('primary', 'x-light');
+	border-radius: 4px;
+	z-index: 0;
+	transition: background-color 300ms;
+}
+
+form input:disabled ~ .real-value {
+	background-color: palette('primary', 'x-light');
+}

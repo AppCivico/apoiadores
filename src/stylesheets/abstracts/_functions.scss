@@ -1,0 +1,28 @@
+// scss-lint:enable ColorVariable
+
+/// @access public
+/// @param {String} $palette - Palette name
+/// @param {String} $tone - tone name
+/// @require {String} $palette
+/// @link http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
+@function palette($palette, $tone: null) {
+	@if not map-has-key($_palettes, $palette) {
+		@error "unknown color sent to `palette` function: #{$palette}.";
+	}
+
+	$color: map-get($_palettes, $palette);
+
+	@if $tone != null {
+		@if not map-has-key($color, $tone) {
+			@error "unknown tone sent to `palette` function: #{$tone}.";
+		} @else {
+			@return map-get(map-get($_palettes, $palette), $tone);
+		}
+	} @else {
+		@if type-of($color) == 'color' {
+			@return $color;
+		} @else {
+			@return map-get($color, 'base');
+		}
+	}
+}

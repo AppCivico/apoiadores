@@ -1,0 +1,91 @@
+[role="banner"] {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	color: palette('primary');
+	background-image: linear-gradient(90deg, palette('primary') 30%, palette('primary') 70%);
+	background-size: 100% 0;
+	background-repeat: no-repeat;
+	transition: background-size 300ms ease-in 200ms, color 300ms;
+	z-index: 3;
+}
+
+[role="banner"] .container {
+	display: table;
+	padding: $gutter * 2;
+}
+
+[role="banner"] h1 {
+	@extend .hide-text;
+	float: left;
+	display: block;
+	width: 240px;
+	height: 44px;
+	background-repeat: no-repeat;
+	margin-right: $gutter;
+	cursor: pointer;
+}
+
+[role="banner"] .login-wrapper {
+	float: right;
+	max-width: 350px;
+}
+
+[role="banner"] .login .login__options .input-wrapper,
+[role="banner"] .login .login__disclaimer {
+	display: none;
+}
+
+[role="banner"] .login [type="submit"] {
+	background-color: palette('secundary');
+	width: 100%;
+
+	&:hover {
+		background-color: palette('secundary', 'light');
+	}
+
+	&:disabled {
+		background-color: palette('secundary', 'light');
+		color: palette('secundary');
+	}
+}
+
+[role="banner"] .login a {
+	color: palette('secundary');
+	font-size: 1.4em;
+	margin-bottom: $gutter / 3;
+	text-decoration: none;
+}
+
+[role="banner"] .login .error {
+	color: palette('white');
+	margin-bottom: $gutter / 3;
+}
+
+[role="banner"] .secundary,
+[role="banner"] .login-wrapper {
+	overflow: hidden;
+	max-height: 0;
+	opacity: 0;
+	transition: opacity 300ms 300ms, max-height 200ms 100ms;
+}
+
+[role="banner"].open {
+	background-size: 100% 100%;
+	color: palette('white');
+
+	.active {
+		max-height: 1000px;
+		opacity: 1;
+	}
+
+	.unselected {
+		visibility: hidden;
+		cursor: default;
+	}
+
+	li ul {
+		color: palette('primary');
+	}
+}
