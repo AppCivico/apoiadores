@@ -245,7 +245,7 @@ import { mask } from 'vue-the-mask';
 /* eslint-disable camelcase */
 import creditCardType from 'credit-card-type';
 
-import { validate, getAddress, cleanPhone } from '../../utilities';
+import { validate, getAddress, cleanPhone, removeAccented } from '../../utilities';
 import config from '../../config';
 
 export default {
@@ -356,7 +356,7 @@ export default {
 					fieldsCard.brand = this.getBrand(number);
 
 					this.saveCard({
-						name_on_card,
+						name_on_card: removeAccented(name_on_card),
 						csc,
 						number: number.replace(/\s+/g, ''),
 						validity: this.cleanValidity(validity),

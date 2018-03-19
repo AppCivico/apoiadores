@@ -78,7 +78,7 @@
 /* eslint-disable camelcase */
 import creditCardType from 'credit-card-type';
 import { mask } from 'vue-the-mask';
-import { validate } from '../../utilities';
+import { validate, removeAccented } from '../../utilities';
 
 export default {
 	name: 'addCard',
@@ -157,7 +157,7 @@ export default {
 				fields.brand = this.getBrand(number);
 
 				this.saveCard({
-					name_on_card,
+					name_on_card: removeAccented(name_on_card),
 					csc,
 					number: number.replace(/\s+/g, ''),
 					validity: this.cleanValidity(validity),
