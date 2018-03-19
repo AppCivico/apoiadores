@@ -85,5 +85,26 @@ function formatDate(data) {
 	return `${weekDay}, ${day} de ${month} de ${year} - ${time}`;
 }
 
+function removeAccented(value) {
+	let newString = value.toLowerCase();
+	const mapaAcentosHex = {
+		a: /[\xE0-\xE6]/g,
+		e: /[\xE8-\xEB]/g,
+		i: /[\xEC-\xEF]/g,
+		o: /[\xF2-\xF6]/g,
+		u: /[\xF9-\xFC]/g,
+		c: /\xE7/g,
+		n: /\xF1/g,
+	};
+	const keys = Object.keys(mapaAcentosHex);
+
+	keys.map((item) => {
+		const expressaoRegular = mapaAcentosHex[item];
+		newString = newString.replace(expressaoRegular, item);
+	});
+
+	return newString;
+}
+
 // eslint-disable-next-line
-export { validate, getAddress, formatBRL, cleanPhone, formatDate };
+export { validate, getAddress, formatBRL, cleanPhone, formatDate, removeAccented };
