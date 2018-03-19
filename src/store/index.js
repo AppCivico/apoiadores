@@ -84,7 +84,6 @@ const store = new Vuex.Store({
 		LOAD_USER({ commit, state }) {
 			return new Promise((resolve, reject) => {
 				axios.get(`${config.api}/user/${state.user.id}?api_key=${state.apiKey}`).then((response) => {
-					console.log('user', response.data);
 					const newData = {
 						api_key: state.apiKey,
 						user: response.data,
