@@ -29,7 +29,7 @@
 			<div class="row__box">
 				<section class="content">
 					<h3>Meus dados de acesso</h3>
-					<div :style="{ height: `${finalHeight}px`}">
+					<div :style="{ minHeight: `${finalHeight}px`}">
 						<p>
 							<strong>Email cadastrado</strong><br>
 							{{ user.email }}
@@ -49,7 +49,7 @@
 			<div class="row__box">
 				<section class="content">
 					<h3>Meus dados de contato</h3>
-					<div :style="{ height: `${finalHeight}px`}">
+					<div :style="{ minHeight: `${finalHeight}px`}">
 						<p>
 							<strong>Telefone</strong><br>
 							{{ maskPhone(user.cellphone_number) }}
@@ -71,7 +71,7 @@
 			<div class="row__box">
 				<section class="content">
 					<h3>Meus dados financeiros</h3>
-					<div :style="{ height: `${finalHeight}px`}">
+					<div :style="{ minHeight: `${finalHeight}px`}">
 						<p>
 							<strong>Cartão de Crédito</strong><br>
 						</p>
@@ -116,7 +116,7 @@ export default {
 				captured: 'Confirmada',
 				cancelled: 'Cancelada',
 			},
-			finalHeight: 250,
+			finalHeight: 0,
 			modal: {
 				type: 'access',
 				active: false,
@@ -157,6 +157,8 @@ export default {
 			return this.status[type] ? this.status[type] : type;
 		},
 		alignBoxes() {
+			this.finalHeight = 0;
+
 			const boxes = Array.from(document.querySelectorAll('.row__box'));
 			let highest = 0;
 			boxes.map((box) => {
@@ -175,11 +177,15 @@ export default {
 		},
 		toggleModalCard(type) {
 			this.modalCard = type;
+			this.alignBoxes();
 		},
 		removeCard(id) {
 			this.$store.dispatch('REMOVE_CARD', id)
 				.then(() => {
-					this.$store.dispatch('LOAD_USER');
+					this.$store.dispatch('LOAD_USER')
+						.then(() => {
+							this.alignBoxes();
+						});
 				});
 		},
 	},
