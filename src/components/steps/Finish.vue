@@ -2,8 +2,9 @@
 	<main class="container">
 		<section class="content">
 			<h2>Doação</h2>
-			<h3>Contribuição realizada com sucesso!</h3>
-			<p>Você contribuiu com o valor de R$ {{ donation.amount | formatBRL }} para a {{ name }}</p>
+			<h3>Contribuição registrada com sucesso!</h3>
+			<p>Você contribuiu com o valor de R$ {{ donation.amount | formatBRL }}
+				para a {{ name }}. O pagamento esta sendo processado, confirmaremos em breve.</p>
 			<p><router-link to="/">voltar a página inicial</router-link></p>
 		</section>
 		<aside>
