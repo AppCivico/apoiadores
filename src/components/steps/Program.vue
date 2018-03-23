@@ -182,7 +182,7 @@ export default {
 		},
 		cleanOther(value) {
 			return value.replace(/\d{2}$/g, '00');
-		}
+		},
 	},
 };
 </script>
