@@ -26,7 +26,7 @@ const store = new Vuex.Store({
 					commit('SET_PROGRAMS', { res: response.data });
 					resolve();
 				}, (err) => {
-					reject(err);
+					reject(err.response);
 					console.error(err);
 				});
 			});
@@ -61,7 +61,7 @@ const store = new Vuex.Store({
 			});
 		},
 		EDIT_USER({ commit, state }, data) {
-			return new Promise((resolve) => {
+			return new Promise((resolve, reject) => {
 				axios({
 					method: 'PUT',
 					headers: { 'Content-Type': 'application/json' },
@@ -77,7 +77,7 @@ const store = new Vuex.Store({
 						resolve();
 					}, (err) => {
 						console.error(err);
-						reject(err);
+						reject(err.response);
 					});
 			});
 		},
@@ -91,7 +91,7 @@ const store = new Vuex.Store({
 					commit('SET_USER', { data: newData });
 					resolve();
 				}, (err) => {
-					reject(err);
+					reject(err.response);
 					console.error(err);
 				});
 			});
@@ -108,7 +108,7 @@ const store = new Vuex.Store({
 						commit('SET_USER', { data: response.data });
 						resolve();
 					}, (err) => {
-						reject(err);
+						reject(err.response);
 						console.error(err);
 					});
 			});
@@ -136,7 +136,7 @@ const store = new Vuex.Store({
 						commit('SET_FLOTUM', { data: response.data });
 						resolve();
 					}, (err) => {
-						reject(err);
+						reject(err.response);
 						console.error(err);
 					});
 			});
@@ -153,7 +153,7 @@ const store = new Vuex.Store({
 						commit('SET_NEW_CARD', { data: response.data });
 						resolve();
 					}, (err) => {
-						reject(err);
+						reject(err.response);
 						console.error(err);
 					});
 			});
@@ -168,7 +168,7 @@ const store = new Vuex.Store({
 					.then((response) => {
 						resolve(response);
 					}, (err) => {
-						reject(err);
+						reject(err.response);
 						console.error(err);
 					});
 			});
@@ -184,7 +184,7 @@ const store = new Vuex.Store({
 					.then(() => {
 						resolve();
 					}, (err) => {
-						reject(err);
+						reject(err.response);
 						console.error(err);
 					});
 			});
@@ -210,7 +210,7 @@ const store = new Vuex.Store({
 					.then((response) => {
 						resolve(response);
 					}, (err) => {
-						reject(err);
+						reject(err.response);
 						console.error(err);
 					});
 			});
@@ -227,7 +227,7 @@ const store = new Vuex.Store({
 					.then((response) => {
 						resolve(response);
 					}, (err) => {
-						reject(err);
+						reject(err.response);
 						console.error(err);
 					});
 			});

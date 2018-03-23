@@ -159,7 +159,7 @@ export default {
 		},
 		saveStep(values) {
 			const data = {
-				amount: values.amount !== 'other' ? values.amount : values.other,
+				amount: values.amount !== 'other' ? values.amount : this.cleanOther(values.other),
 				is_recurring: values.frequency !== 'once' ? 1 : 0,
 				merchant_program_id: this.program.id,
 			};
@@ -179,6 +179,9 @@ export default {
 		},
 		formatOther() {
 			this.formatedOther = formatBRL(this.other);
+		},
+		cleanOther(value) {
+			return value.replace(/\d{2}$/g, '00');
 		},
 	},
 };

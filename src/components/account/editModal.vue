@@ -350,8 +350,8 @@ export default {
 					this.populateFields();
 					this.closeModal();
 				})
-				.catch(() => {
-					this.errorMessage = 'Ocorreu um erro ao tentar atualizar seu cadastro. Tente novamente';
+				.catch((err) => {
+					this.errorMessage = err.data[0].message ? err.data[0].message : 'Ocorreu um erro ao tentar atualizar seu cadastro. Tente novamente';
 					this.toggleLoading();
 				});
 		},

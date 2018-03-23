@@ -356,9 +356,7 @@ export default {
 					this.$router.push({ path: '/payment' });
 				})
 				.catch((err) => {
-					// exemplo de erro no axios feito direito, laís
-					console.log(err);
-					this.errorMessage = 'Ocorreu um erro ao tentar criar seu registro. Tente novamente';
+					this.errorMessage = err.data[0].message ? err.data[0].message : 'Ocorreu um erro ao tentar criar seu registro. Tente novamente';
 					this.toggleLoading();
 				});
 		},

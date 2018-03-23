@@ -50,6 +50,7 @@ module.exports = {
     'no-tabs': 0,
     'indent': ['error', 'tab'],
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
-    'array-callback-return': 0
+    'array-callback-return': 0,
+    'max-len': 0
   }
 }

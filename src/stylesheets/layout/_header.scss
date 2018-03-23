@@ -29,6 +29,7 @@
 	background-repeat: no-repeat;
 	margin-right: $gutter;
 	cursor: pointer;
+	transition: background-image 300ms 300ms;
 
 	@media (max-width: 470px) {
 		float: none;

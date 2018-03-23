@@ -84,8 +84,8 @@ export default {
 					this.toggleLoading();
 					this.$router.push({ path: this.route });
 				})
-				.catch(() => {
-					this.errorMessage = 'Email ou senha incorretos. Tenta novamente.';
+				.catch((err) => {
+					this.errorMessage = err.data[0].message ? err.data[0].message : 'Email ou senha incorretos. Tenta novamente.';
 					this.toggleLoading();
 				});
 		},
