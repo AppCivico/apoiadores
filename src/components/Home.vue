@@ -26,10 +26,10 @@
 								<a
 									v-else-if="key === 'project'"
 									href="#"
-									@click.prevent="setCurrentProgram(program.active ? '' : null)"
+									@click.prevent="setCurrentProgram(program.active ? 'projects' : null)"
 									:class="program.active ? '' : 'disabled'"
 								>
-									{{ program.active ? 'DOE AGORA!!' : 'EM BREVE' }}
+									{{ program.active ? 'AJUDE UM PROJETO' : 'EM BREVE' }}
 								</a>
 								<a
 									v-else
@@ -109,11 +109,13 @@ export default {
 			this.modal = !this.modal;
 		},
 		setCurrentProgram(program) {
-			if (program) {
+			if (program.id) {
 				this.$store.dispatch('CHANGE_SELECTED_PROGRAM', program)
 					.then(() => {
 						this.$router.push({ path: `/program/${program.id}` });
 					});
+			} else {
+				this.$router.push({ path: `/${program}` });
 			}
 		},
 	},
