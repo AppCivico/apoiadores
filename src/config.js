@@ -39,7 +39,7 @@ const config = {
 					'Seja parceiro dos nossos <strong>Projetos</strong>',
 				text:
 					'Acreditamos em ferramentas de financiamento inovadoras e participativas. Seja um parceiro financeiro dos nossos projetos.',
-				active: false,
+				active: true,
 			},
 			service: {
 				title:
