@@ -2,6 +2,8 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import Home from '@/components/Home';
+import Projects from '@/components/Projects';
+import Project from '@/components/Project';
 import Program from '@/components/steps/Program';
 import IsRegistered from '@/components/steps/IsRegistered';
 import Register from '@/components/steps/Register';
@@ -20,6 +22,17 @@ export default new Router({
 			path: '/',
 			name: 'Home',
 			component: Home,
+		},
+		{
+			path: '/projects',
+			name: 'Projects',
+			component: Projects,
+		},
+		{
+			path: '/project/:id',
+			name: 'Project',
+			component: Project,
+			props: true,
 		},
 		{
 			path: '/program/:id',
