@@ -15,6 +15,7 @@ const store = new Vuex.Store({
 		merchant: {},
 		newCard: {},
 		programs: [],
+		projects: [],
 		selectedProgram: {},
 		logged: false,
 		user: {},
@@ -238,6 +239,7 @@ const store = new Vuex.Store({
 			const merchant = res.merchants.find(item => item.domain === config.domain);
 			state.merchant = merchant;
 			state.programs = merchant.merchant_programs;
+			state.projects = merchant.merchant_projects;
 		},
 		SET_SELECTED_PROGRAM(state, { program }) {
 			state.selectedProgram = program;
