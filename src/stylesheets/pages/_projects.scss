@@ -22,22 +22,22 @@
 	margin-bottom: $gutter * 2;
 }
 
-.projects__content {
+.project__content {
 	background-color: palette('white', 'dark');
 	padding: $gutter;
 }
 
-.projects__content h4 {
+.project__content h4 {
 	font-size: 1.8em;
 	font-weight: 700;
 	margin-bottom: $gutter / 2;
 }
 
-.projects__content p {
+.project__content p {
 	font-size: 1.5em;
 }
 
-.projects__content span {
+.project__content span {
 	font-size: 1.8em;
 	font-weight: 700;
 	color: palette('success', 'dark');
@@ -88,4 +88,37 @@
 	display: block;
 	background-color: palette('success', 'dark');
 	height: 15px;
+}
+
+.project__main {
+	position: relative;
+	width: 100%;
+	float: none;
+	padding: 0;
+	text-align: right;
+}
+
+.project__main .project__thumbnail {
+	position: absolute;
+	width: 60%;
+	height: 100%;
+	text-align: left;
+}
+
+.project__main .project__content {
+	display: inline-block;
+	width: 40%;
+	text-align: left;
+}
+
+.project__main .project__content h4 {
+	font-size: 3em;
+}
+
+.project__main .project__content a {
+	font-size: 1.8em;
+	font-weight: 800;
+	color: palette('success', 'dark');
+	text-transform: uppercase;
+	text-decoration: none;
 }
