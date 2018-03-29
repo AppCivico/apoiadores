@@ -22,22 +22,22 @@
 	margin-bottom: $gutter * 2;
 }
 
-.project__content {
+.projects__content {
 	background-color: palette('white', 'dark');
 	padding: $gutter;
 }
 
-.project__content h4 {
+.projects__content h4 {
 	font-size: 1.8em;
 	font-weight: 700;
 	margin-bottom: $gutter / 2;
 }
 
-.project__content p {
+.projects__content p {
 	font-size: 1.5em;
 }
 
-.project__content span {
+.projects__content span {
 	font-size: 1.8em;
 	font-weight: 700;
 	color: palette('success', 'dark');
@@ -46,7 +46,7 @@
 .projects__project .btn {
 	background-color: palette('success', 'dark');
 }
-.project__thumbnail {
+.projects__thumbnail {
 	position: relative;
 	min-height: 197px;
 	background-size: cover;
@@ -90,7 +90,7 @@
 	height: 15px;
 }
 
-.project__main {
+.projects__main {
 	position: relative;
 	width: 100%;
 	float: none;
@@ -98,24 +98,24 @@
 	text-align: right;
 }
 
-.project__main .project__thumbnail {
+.projects__main .projects__thumbnail {
 	position: absolute;
 	width: 60%;
 	height: 100%;
 	text-align: left;
 }
 
-.project__main .project__content {
+.projects__main .projects__content {
 	display: inline-block;
 	width: 40%;
 	text-align: left;
 }
 
-.project__main .project__content h4 {
+.projects__main .projects__content h4 {
 	font-size: 3em;
 }
 
-.project__main .project__content a {
+.projects__main .projects__content a {
 	font-size: 1.8em;
 	font-weight: 800;
 	color: palette('success', 'dark');
