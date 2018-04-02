@@ -1,31 +1,50 @@
 <template>
 	<main class="container project">
-		<section class="content">
-			<h2>COMPARTILHE UM SONHOS</h2>
+		<section class="content" v-if="project">
+			<h2>COMPARTILHE UM SONHO</h2>
 			<h3>{{ project.name }}</h3>
 			<header>
-				<div :style="{ backgroundImage: 'url(https://78.media.tumblr.com/tumblr_m2q8lrcojk1qfvoueo1_1280.jpg)'}"></div>
+				<div
+					class="project__thumbnail"
+					:style="{ backgroundImage: 'url(https://78.media.tumblr.com/tumblr_m2q8lrcojk1qfvoueo1_1280.jpg)'}"
+				></div>
 				<div class="project__header">
-					<p><strong>{{ project.count }}</strong> pessoas já ajudaram</p>
-					<p><strong>{{ project.count }}</strong> dias restantes</p>
+					<p><strong>{{ project.summary.captured_count }}</strong> pessoas já ajudaram</p>
+					<p><strong>{{ project.summary.captured_count }}</strong> dias restantes</p>
+
+					<h4>R$<br>
+						<strong>{{ project.summary.captured_amount | formatBRL }}</strong>
+					</h4>
 
 					<div class="project__percentage">
-						{{ getPercentage(project) }}%
 						<span
 							:style="{ width: `${getPercentage(project)}%`}"
 						></span>
 					</div>
+
+					<strong>{{ getPercentage(project) }}% arrecadados da meta de R$ {{ project.goal | formatBRL }}</strong><br>
+					<em>Esta campanha irá receber todas as contribuições em {{ project.end_ts | formatDateBasic }}</em>
+
+					<router-link to="/payment" class="btn">QUERO AJUDAR</router-link>
 				</div>
 			</header>
+			<div class="project__content">
+				<p>{{ project.description }}</p>
+			</div>
 		</section>
 	</main>
 </template>
 
 <script>
 export default {
-	name: 'Projects',
+	name: 'Project',
 	props: {
 		id: String,
+	},
+	mounted() {
+		if (this.projects.length < 1) {
+			this.$store.dispatch('LOAD_MERCHANTS');
+		}
 	},
 	computed: {
 		projects() {
