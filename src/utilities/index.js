@@ -110,10 +110,8 @@ function removeAccented(value) {
 }
 
 function formatDateBasic(date) {
-	console.log('data', date);
 	if (date) {
 		const newDate = date.split(' ')[0].split('-');
-		console.log('newDate', newDate);
 		return newDate.reverse().join('/');
 	}
 	return date;
