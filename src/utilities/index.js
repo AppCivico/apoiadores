@@ -6,7 +6,7 @@ function validate(fields) {
 	let valid = true;
 
 	// eslint-disable-next-line
-	keys.map((item) => {
+	keys.map(item => {
 		if (fields[item] === '') {
 			valid = false;
 			errors[item] = 'Campo obrigatório';
@@ -19,11 +19,14 @@ function validate(fields) {
 function getAddress(zip) {
 	return new Promise((resolve, reject) => {
 		if (zip !== '') {
-			axios.get(`https://api.postmon.com.br/v1/cep/${zip}`).then((response) => {
-				resolve(response.data);
-			}, (err) => {
-				reject(err);
-			});
+			axios.get(`https://api.postmon.com.br/v1/cep/${zip}`).then(
+				(response) => {
+					resolve(response.data);
+				},
+				(err) => {
+					reject(err);
+				},
+			);
 		}
 	});
 }
@@ -106,5 +109,23 @@ function removeAccented(value) {
 	return newString;
 }
 
+function formatDateBasic(date) {
+	console.log('data', date);
+	if (date) {
+		const newDate = date.split(' ')[0].split('-');
+		console.log('newDate', newDate);
+		return newDate.reverse().join('/');
+	}
+	return date;
+}
+
 // eslint-disable-next-line
-export { validate, getAddress, formatBRL, cleanPhone, formatDate, removeAccented };
+export {
+	validate,
+	getAddress,
+	formatBRL,
+	cleanPhone,
+	formatDate,
+	removeAccented,
+	formatDateBasic,
+};
