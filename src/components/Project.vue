@@ -25,7 +25,13 @@
 					<strong>{{ getPercentage(project) }}% arrecadados da meta de R$ {{ project.goal | formatBRL }}</strong><br>
 					<em>Esta campanha irá receber todas as contribuições em {{ project.end_ts | formatDateBasic }}</em>
 
-					<router-link to="/payment" class="btn">QUERO AJUDAR</router-link>
+					<a
+						href="#"
+						@click.prevent="setCurrentProgram(project)"
+						class="btn"
+					>
+						QUERO AJUDAR
+					</a>
 				</div>
 			</header>
 			<div class="project__content">
@@ -57,6 +63,12 @@ export default {
 	methods: {
 		getPercentage(project) {
 			return (project.summary.captured_amount * 100) / project.goal;
+		},
+		setCurrentProgram(project) {
+			this.$store.dispatch('CHANGE_SELECTED_PROGRAM', project)
+				.then(() => {
+					this.$router.push({ path: `/program/${project.id}` });
+				});
 		},
 	},
 };
