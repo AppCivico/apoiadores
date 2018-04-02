@@ -51,6 +51,11 @@
 <script>
 export default {
 	name: 'Projects',
+	mounted() {
+		if (this.projects.length < 1) {
+			this.$store.dispatch('LOAD_MERCHANTS');
+		}
+	},
 	computed: {
 		projects() {
 			return this.$store.state.projects;
