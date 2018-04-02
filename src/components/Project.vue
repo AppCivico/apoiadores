@@ -27,21 +27,17 @@ export default {
 	props: {
 		id: String,
 	},
-	data() {
-		return {
-			project: {
-				id: 4,
-				name: 'Sozinhas podemos ser gotas, mas juntas somos um oceano',
-				description: 'Vivamus finibus neque vitae diam efficitur, nec tempus augue hendrerit. Vestibulum condimentum ullamcorper turpis, ut auctor nulla facilisis at. Finibus neque vitae diam efficitur, nec tempus augue hendrerit. Vestibulum condimentum ullamcorper turpis, ut auctor nulla facilisis at.',
-				count: 100,
-				amount: 50,
-				goal: 100,
-			},
-		};
+	computed: {
+		projects() {
+			return this.$store.state.projects;
+		},
+		project() {
+			return this.projects.find(item => `${item.id}` === this.id);
+		},
 	},
 	methods: {
 		getPercentage(project) {
-			return (project.amount * 100) / project.goal;
+			return (project.summary.captured_amount * 100) / project.goal;
 		},
 	},
 };
