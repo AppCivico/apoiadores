@@ -7,11 +7,12 @@ import App from './App';
 import router from './router';
 import store from './store';
 
-import { formatBRL, formatDate } from './utilities';
+import { formatBRL, formatDate, formatDateBasic } from './utilities';
 
 Vue.config.productionTip = false;
 Vue.filter('formatBRL', formatBRL);
 Vue.filter('formatDate', formatDate);
+Vue.filter('formatDateBasic', formatDateBasic);
 Vue.filter('upperCase', value => value.toUpperCase());
 
 // Some middleware to help ensure the program was selected
@@ -28,8 +29,10 @@ router.beforeEach((to, from, next) => {
 		}
 	}
 
-	if (to.matched.some(record => record.meta.requiresProgram) &&
-		(!store.state.selectedProgram.name)) {
+	if (
+		to.matched.some(record => record.meta.requiresProgram) &&
+		!store.state.selectedProgram.name
+	) {
 		window.console.log('No program selected');
 		next({
 			path: '/',
@@ -39,8 +42,10 @@ router.beforeEach((to, from, next) => {
 		next();
 	}
 
-	if (to.matched.some(record => record.meta.requiresLogin) &&
-		(!store.state.logged)) {
+	if (
+		to.matched.some(record => record.meta.requiresLogin) &&
+		!store.state.logged
+	) {
 		window.console.log('Not authorized!');
 		next({
 			path: '/',
