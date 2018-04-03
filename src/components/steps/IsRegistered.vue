@@ -1,7 +1,7 @@
 <template>
 	<main class="container">
 		<section class="content">
-			<h2>Doação</h2>
+			<h2>{{ selectedType === 'donation' ? 'Doação' : 'Compartilhe um sonho' }}</h2>
 			<h3>Já tem cadastro?</h3>
 
 			<Login route="/payment"/>
@@ -41,6 +41,11 @@ export default {
 		return {
 			name: config.name,
 		};
+	},
+	computed: {
+		selectedType() {
+			return this.$store.state.selectedOption.type;
+		},
 	},
 };
 </script>
