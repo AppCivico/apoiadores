@@ -118,7 +118,8 @@ export default {
 		saveStep(values) {
 			const data = {
 				amount: values.amount !== 'other' ? values.amount : this.cleanOther(values.other),
-				merchant_project_pledge_id: this.selectedOption.id,
+				is_recurring: 0,
+				merchant_project_id: this.selectedOption.id,
 			};
 
 			this.$store.dispatch('CHANGE_DONATION', data)
