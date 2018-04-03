@@ -14,7 +14,7 @@
 				<h3>Escolha um projeto e ajude</h3>
 			</template>
 
-			<div class="projects__project projects__main">
+			<div class="projects__project projects__main" v-if="mainProject">
 				<div
 					class="projects__thumbnail"
 					:style="{ backgroundImage: `url(${mainProject.image_url})`}"
