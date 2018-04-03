@@ -6,7 +6,7 @@
 			<header>
 				<div
 					class="project__thumbnail"
-					:style="{ backgroundImage: 'url(https://78.media.tumblr.com/tumblr_m2q8lrcojk1qfvoueo1_1280.jpg)'}"
+					:style="{ backgroundImage: `url(${project.image_url})`}"
 				></div>
 				<div class="project__header">
 					<p><strong>{{ project.summary.captured_count }}</strong> pessoas já ajudaram</p>

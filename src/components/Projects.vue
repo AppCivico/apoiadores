@@ -17,7 +17,7 @@
 			<div class="projects__project projects__main">
 				<div
 					class="projects__thumbnail"
-					:style="{ backgroundImage: 'url(https://78.media.tumblr.com/tumblr_m2q8lrcojk1qfvoueo1_1280.jpg)'}"
+					:style="{ backgroundImage: `url(${mainProject.image_url})`}"
 				>
 					<div class="thumbnail__percentage">
 						{{ getPercentage(mainProject) }}%
