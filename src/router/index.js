@@ -15,14 +15,21 @@ import History from '@/components/account/History';
 import forgotPassword from '@/components/account/forgotPassword';
 import resetPassword from '@/components/account/resetPassword';
 
+import config from '../config';
+
 Vue.use(Router);
+
+const customHomepage = {
+	projects: Projects,
+};
 
 export default new Router({
 	routes: [
 		{
 			path: '/',
 			name: 'Home',
-			component: Home,
+			component:
+				config.homepage === '' ? Home : customHomepage[config.homepage],
 		},
 		{
 			path: '/projects',

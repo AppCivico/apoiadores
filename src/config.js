@@ -8,6 +8,7 @@ const config = {
 		'site-apoiadores.eokoe.com',
 	name:
 		'Rede Sustentabilidade',
+	homepage: 'projects',
 	partners: [
 		{
 			id: 1,
