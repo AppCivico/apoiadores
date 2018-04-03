@@ -5,6 +5,7 @@ import Home from '@/components/Home';
 import Projects from '@/components/Projects';
 import Project from '@/components/Project';
 import Program from '@/components/steps/Program';
+import Rewards from '@/components/steps/Rewards';
 import IsRegistered from '@/components/steps/IsRegistered';
 import Register from '@/components/steps/Register';
 import Payment from '@/components/steps/Payment';
@@ -39,6 +40,11 @@ export default new Router({
 			name: 'Program',
 			component: Program,
 			props: true,
+		},
+		{
+			path: '/rewards',
+			name: 'Rewards',
+			component: Rewards,
 		},
 		{
 			path: '/is-registered',
