@@ -9,7 +9,9 @@
 	}
 
 	.btn,
-	[type="submit"] {
+	[type="submit"],
+	form .checkbox:after,
+	form .radio:after {
 		background-color: palette('success');
 	}
 
