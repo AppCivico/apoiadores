@@ -115,6 +115,7 @@ export default {
 			status: {
 				captured: 'Confirmada',
 				cancelled: 'Cancelada',
+				'not-authorized': 'Não autorizada',
 			},
 			finalHeight: 0,
 			modal: {
