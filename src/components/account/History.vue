@@ -10,6 +10,7 @@
 						<td>Periodicidade</td>
 						<td>Valor</td>
 						<td>Status</td>
+						<td>Projeto</td>
 					</tr>
 				</thead>
 				<tbody>
@@ -18,6 +19,7 @@
 						<td>{{ charge.is_recurring ? 'Mensal' : 'Única' }}</td>
 						<td><strong>R$ {{ charge.charge_amount | formatBRL }}</strong></td>
 						<td>{{ statusType(charge.charge_transaction_status) }}</td>
+						<td>{{ charge.origin === 'Default' ? 'Padrão' : charge.origin }}</td>
 					</tr>
 				</tbody>
 			</table>
