@@ -110,7 +110,11 @@ export default {
 		},
 		setCurrentProgram(program) {
 			if (program.id) {
-				this.$store.dispatch('CHANGE_SELECTED_PROGRAM', program)
+				const payload = {
+					type: 'donation',
+					data: program,
+				};
+				this.$store.dispatch('CHANGE_SELECTED_OPTION', payload)
 					.then(() => {
 						this.$router.push({ path: `/program/${program.id}` });
 					});
