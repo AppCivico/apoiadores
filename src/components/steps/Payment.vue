@@ -302,6 +302,9 @@ export default {
 		newCard() {
 			return this.$store.state.newCard;
 		},
+		selectedType() {
+			return this.$store.state.selectedOption.type;
+		},
 	},
 	methods: {
 		validateForm() {
@@ -438,8 +441,14 @@ export default {
 				amount: this.donation.amount,
 				credit_card_id: this.selectedCard,
 				is_recurring: this.donation.is_recurring,
-				merchant_program_id: this.donation.merchant_program_id,
 			};
+
+			if (this.selectedType === 'donation') {
+				data.merchant_program_id = this.donation.merchant_program_id;
+			} else {
+				data.merchant_project_pledge_id = this.donation.merchant_project_id;
+			}
+
 			this.$store.dispatch('SEND_SUBSCRIPTION', data)
 				.then(() => {
 					this.$router.push({ path: '/finish' });
