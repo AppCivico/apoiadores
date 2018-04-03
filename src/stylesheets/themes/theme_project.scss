@@ -1,0 +1,19 @@
+.theme_project {
+	.content h2,
+	p a,
+	.login a,
+	aside h2,
+	aside ul li:before,
+	.steps span.active {
+		color: palette('success');
+	}
+
+	.btn,
+	[type="submit"] {
+		background-color: palette('success');
+	}
+
+	.steps span.active {
+		border: 3px solid palette('success');
+	}
+}
