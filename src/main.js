@@ -31,7 +31,7 @@ router.beforeEach((to, from, next) => {
 
 	if (
 		to.matched.some(record => record.meta.requiresProgram) &&
-		!store.state.selectedProgram.name
+		!store.state.selectedOption.type
 	) {
 		window.console.log('No program selected');
 		next({

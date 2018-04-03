@@ -16,25 +16,31 @@ const store = new Vuex.Store({
 		newCard: {},
 		programs: [],
 		projects: [],
-		selectedProgram: {},
+		selectedOption: {
+			type: '',
+			data: {},
+		},
 		logged: false,
 		user: {},
 	},
 	actions: {
 		LOAD_MERCHANTS({ commit }) {
 			return new Promise((resolve, reject) => {
-				axios.get(`${config.api}/public/merchant-programs`).then((response) => {
-					commit('SET_PROGRAMS', { res: response.data });
-					resolve();
-				}, (err) => {
-					reject(err.response);
-					console.error(err);
-				});
+				axios.get(`${config.api}/public/merchant-programs`).then(
+					(response) => {
+						commit('SET_PROGRAMS', { res: response.data });
+						resolve();
+					},
+					(err) => {
+						reject(err.response);
+						console.error(err);
+					},
+				);
 			});
 		},
-		CHANGE_SELECTED_PROGRAM({ commit }, program) {
+		CHANGE_SELECTED_OPTION({ commit }, payload) {
 			return new Promise((resolve) => {
-				commit('SET_SELECTED_PROGRAM', { program });
+				commit('SET_SELECTED_OPTION', { payload });
 				resolve();
 			});
 		},
@@ -51,14 +57,16 @@ const store = new Vuex.Store({
 					headers: { 'Content-Type': 'application/json' },
 					url: `${config.api}/signup`,
 					data,
-				})
-					.then((response) => {
+				}).then(
+					(response) => {
 						commit('SET_USER', { data: response.data });
 						resolve();
-					}, (err) => {
+					},
+					(err) => {
 						console.error(err.response);
 						reject(err.response);
-					});
+					},
+				);
 			});
 		},
 		EDIT_USER({ commit, state }, data) {
@@ -68,33 +76,40 @@ const store = new Vuex.Store({
 					headers: { 'Content-Type': 'application/json' },
 					url: `${config.api}/user/${state.user.id}?api_key=${state.apiKey}`,
 					data,
-				})
-					.then((response) => {
+				}).then(
+					(response) => {
 						const newData = {
 							api_key: state.apiKey,
 							user: response.data,
 						};
 						commit('SET_USER', { data: newData });
 						resolve();
-					}, (err) => {
+					},
+					(err) => {
 						console.error(err);
 						reject(err.response);
-					});
+					},
+				);
 			});
 		},
 		LOAD_USER({ commit, state }) {
 			return new Promise((resolve, reject) => {
-				axios.get(`${config.api}/user/${state.user.id}?api_key=${state.apiKey}`).then((response) => {
-					const newData = {
-						api_key: state.apiKey,
-						user: response.data,
-					};
-					commit('SET_USER', { data: newData });
-					resolve();
-				}, (err) => {
-					reject(err.response);
-					console.error(err);
-				});
+				axios
+					.get(`${config.api}/user/${state.user.id}?api_key=${state.apiKey}`)
+					.then(
+						(response) => {
+							const newData = {
+								api_key: state.apiKey,
+								user: response.data,
+							};
+							commit('SET_USER', { data: newData });
+							resolve();
+						},
+						(err) => {
+							reject(err.response);
+							console.error(err);
+						},
+					);
 			});
 		},
 		LOGIN({ commit }, data) {
@@ -104,14 +119,16 @@ const store = new Vuex.Store({
 					headers: { 'Content-Type': 'application/json' },
 					url: `${config.api}/login`,
 					data,
-				})
-					.then((response) => {
+				}).then(
+					(response) => {
 						commit('SET_USER', { data: response.data });
 						resolve();
-					}, (err) => {
+					},
+					(err) => {
 						reject(err.response);
 						console.error(err);
-					});
+					},
+				);
 			});
 		},
 		CHANGE_USER({ commit }, data) {
@@ -131,15 +148,19 @@ const store = new Vuex.Store({
 				axios({
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },
-					url: `${config.api}/user/${state.user.id}/credit-cards?api_key=${state.apiKey}`,
-				})
-					.then((response) => {
+					url: `${config.api}/user/${state.user.id}/credit-cards?api_key=${
+						state.apiKey
+					}`,
+				}).then(
+					(response) => {
 						commit('SET_FLOTUM', { data: response.data });
 						resolve();
-					}, (err) => {
+					},
+					(err) => {
 						reject(err.response);
 						console.error(err);
-					});
+					},
+				);
 			});
 		},
 		REGISTER_CARD({ commit, state }, data) {
@@ -149,14 +170,16 @@ const store = new Vuex.Store({
 					headers: { 'Content-Type': 'application/json' },
 					url: state.flotum,
 					data,
-				})
-					.then((response) => {
+				}).then(
+					(response) => {
 						commit('SET_NEW_CARD', { data: response.data });
 						resolve();
-					}, (err) => {
+					},
+					(err) => {
 						reject(err.response);
 						console.error(err);
-					});
+					},
+				);
 			});
 		},
 		REMOVE_CARD({ state }, id) {
@@ -164,14 +187,18 @@ const store = new Vuex.Store({
 				axios({
 					method: 'DELETE',
 					headers: { 'Content-Type': 'application/json' },
-					url: `${config.api}/user/${state.user.id}/credit-cards/${id}?api_key=${state.apiKey}`,
-				})
-					.then((response) => {
+					url: `${config.api}/user/${
+						state.user.id
+					}/credit-cards/${id}?api_key=${state.apiKey}`,
+				}).then(
+					(response) => {
 						resolve(response);
-					}, (err) => {
+					},
+					(err) => {
 						reject(err.response);
 						console.error(err);
-					});
+					},
+				);
 			});
 		},
 		SEND_SUBSCRIPTION({ state }, data) {
@@ -179,25 +206,39 @@ const store = new Vuex.Store({
 				axios({
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },
-					url: `${config.api}/user/${state.user.id}/subscriptions?api_key=${state.apiKey}`,
+					url: `${config.api}/user/${state.user.id}/subscriptions?api_key=${
+						state.apiKey
+					}`,
 					data,
-				})
-					.then(() => {
+				}).then(
+					() => {
 						resolve();
-					}, (err) => {
+					},
+					(err) => {
 						reject(err.response);
 						console.error(err);
-					});
+					},
+				);
 			});
 		},
 		LOAD_CHARGES({ commit, state }, rows) {
 			// eslint-disable-next-line
-			const url = rows > 0 ? `${config.api}/user/${state.user.id}/charges?rows=${rows}&api_key=${state.apiKey}` : `${config.api}/user/${state.user.id}/charges?api_key=${state.apiKey}`;
-			axios.get(url).then((response) => {
-				commit('SET_CHARGES', { data: response.data.charges });
-			}, (err) => {
-				console.error(err);
-			});
+			const url =
+				rows > 0
+					? `${config.api}/user/${state.user.id}/charges?rows=${rows}&api_key=${
+						state.apiKey
+					}`
+					: `${config.api}/user/${state.user.id}/charges?api_key=${
+						state.apiKey
+					}`;
+			axios.get(url).then(
+				(response) => {
+					commit('SET_CHARGES', { data: response.data.charges });
+				},
+				(err) => {
+					console.error(err);
+				},
+			);
 		},
 		// eslint-disable-next-line
 		SEND_TOKEN({ state }, data) {
@@ -207,13 +248,15 @@ const store = new Vuex.Store({
 					headers: { 'Content-Type': 'application/json' },
 					url: `${config.api}/user-forgot-password/email`,
 					data,
-				})
-					.then((response) => {
+				}).then(
+					(response) => {
 						resolve(response);
-					}, (err) => {
+					},
+					(err) => {
 						reject(err.response);
 						console.error(err);
-					});
+					},
+				);
 			});
 		},
 		// eslint-disable-next-line
@@ -224,25 +267,29 @@ const store = new Vuex.Store({
 					headers: { 'Content-Type': 'application/json' },
 					url: `${config.api}/user-forgot-password/reset-password`,
 					data,
-				})
-					.then((response) => {
+				}).then(
+					(response) => {
 						resolve(response);
-					}, (err) => {
+					},
+					(err) => {
 						reject(err.response);
 						console.error(err);
-					});
+					},
+				);
 			});
 		},
 	},
 	mutations: {
 		SET_PROGRAMS(state, { res }) {
-			const merchant = res.merchants.find(item => item.domain === config.domain);
+			const merchant = res.merchants.find(
+				item => item.domain === config.domain,
+			);
 			state.merchant = merchant;
 			state.programs = merchant.merchant_programs;
 			state.projects = merchant.merchant_projects;
 		},
-		SET_SELECTED_PROGRAM(state, { program }) {
-			state.selectedProgram = program;
+		SET_SELECTED_OPTION(state, { payload }) {
+			state.selectedOption = payload;
 		},
 		SET_DONATION(state, { data }) {
 			state.donation = data;
