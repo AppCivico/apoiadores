@@ -1,5 +1,5 @@
 <template>
-	<main class="container project">
+	<main class="container project theme_project">
 		<section class="content" v-if="project">
 			<h2>COMPARTILHE UM SONHO</h2>
 			<h3>{{ project.name }}</h3>

@@ -1,5 +1,5 @@
 <template>
-	<main class="container projects">
+	<main class="container projects theme_project">
 		<section class="content">
 			<h2>Compartilhe um sonho</h2>
 			<h3>Escolha um projeto e ajude</h3>
