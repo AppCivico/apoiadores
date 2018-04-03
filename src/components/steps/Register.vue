@@ -1,7 +1,7 @@
 <template>
-	<main class="container">
+	<main  :class="`container ${selectedType === 'donation' ? '' : 'theme_project'}`">
 		<section class="content">
-			<h2>Doação</h2>
+			<h2>{{ selectedType === 'donation' ? 'Doação' : 'Compartilhe um sonho' }}</h2>
 
 			<form @submit.prevent="validateForm">
 				<fieldset>
@@ -224,7 +224,14 @@
 				<span>5</span>
 			</div>
 			<hr>
-			<img src="../../assets/img/donation/step_register.png" alt="Icon">
+			<img
+				v-if="selectedType === 'donation'"
+				src="../../assets/img/donation/step_register.png"
+				alt="Icon">
+			<img
+				v-else
+				src="../../assets/img/project/step_register.png"
+				alt="Icon">
 			<h2>Informações pessoais</h2>
 			<p>Você não precisa ser filiado para colaborar financeiramente com a {{ name }}.</p>
 		</aside>

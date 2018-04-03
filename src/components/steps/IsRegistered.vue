@@ -1,5 +1,5 @@
 <template>
-	<main class="container">
+	<main :class="`container ${selectedType === 'donation' ? '' : 'theme_project'}`">
 		<section class="content">
 			<h2>{{ selectedType === 'donation' ? 'Doação' : 'Compartilhe um sonho' }}</h2>
 			<h3>Já tem cadastro?</h3>
@@ -21,7 +21,14 @@
 				<span>5</span>
 			</div>
 			<hr>
-			<img src="../../assets/img/donation/step_login.png" alt="Icon">
+			<img
+				v-if="selectedType === 'donation'"
+				src="../../assets/img/donation/step_login.png"
+				alt="Icon">
+			<img
+				v-else
+				src="../../assets/img/project/step_login.png"
+				alt="Icon">
 			<h2>Faça seu login</h2>
 			<p>Você não precisa ser filiado para colaborar financeiramente com a {{ name }}.</p>
 		</aside>
