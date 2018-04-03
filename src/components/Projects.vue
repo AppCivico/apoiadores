@@ -34,6 +34,18 @@
 			</div>
 
 			<template v-if="homepage === 'projects'">
+				<ul class="projects__nav">
+					<li v-for="(program, key) in programs" :key="key">
+						<a
+							href="#"
+							@click.prevent="setCurrentProgram(program.active ? key : null)"
+							:class="program.active ? '' : 'disabled'"
+							v-html="program.title"
+						>
+						</a>
+					</li>
+				</ul>
+
 				<h3>Mais projetos</h3>
 			</template>
 
@@ -71,7 +83,7 @@ export default {
 		return {
 			header: config.content.header,
 			homepage: config.homepage,
-			modal: false,
+			programs: config.content.programs,
 		};
 	},
 	computed: {
@@ -80,6 +92,9 @@ export default {
 		},
 		mainProject() {
 			return this.projects.find(item => item.is_main);
+		},
+		donation() {
+			return this.$store.state.programs[0];
 		},
 	},
 	mounted() {
@@ -90,6 +105,18 @@ export default {
 	methods: {
 		getPercentage(project) {
 			return (project.summary.captured_amount * 100) / project.goal;
+		},
+		setCurrentProgram(program) {
+			if (program === 'donation') {
+				const payload = {
+					type: 'donation',
+					data: this.donation,
+				};
+				this.$store.dispatch('CHANGE_SELECTED_OPTION', payload)
+					.then(() => {
+						this.$router.push({ path: `/program/${this.donation.id}` });
+					});
+			}
 		},
 	},
 };
