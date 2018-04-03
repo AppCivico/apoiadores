@@ -41,6 +41,9 @@ export default {
 		name() {
 			return config.name;
 		},
+		selectedType() {
+			return this.$store.state.selectedOption.type;
+		},
 	},
 };
 </script>

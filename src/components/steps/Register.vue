@@ -277,6 +277,9 @@ export default {
 		merchant() {
 			return this.$store.state.merchant;
 		},
+		selectedType() {
+			return this.$store.state.selectedOption.type;
+		},
 	},
 	methods: {
 		setAddress() {
