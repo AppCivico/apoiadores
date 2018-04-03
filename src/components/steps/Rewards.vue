@@ -1,5 +1,5 @@
 <template>
-	<main class="container">
+	<main class="container theme_project">
 		<section class="content">
 			<h2>Compartilhe um sonho</h2>
 			<form @submit.prevent="validateForm">
