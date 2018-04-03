@@ -18,7 +18,7 @@
 				</div>
 				<div class="projects__content">
 					<h4>{{ mainProject.name }}</h4>
-					<p>{{ mainProject.description }}</p>
+					<p>{{ mainProject.short_description }}</p>
 					<router-link :to="`/projects/${mainProject.id}`">QUERO AJUDAR</router-link>
 				</div>
 			</div>
@@ -38,7 +38,7 @@
 					</div>
 					<div class="projects__content">
 						<h4>{{ project.name }}</h4>
-						<p>{{ project.description }}</p>
+						<p>{{ project.short_description }}</p>
 						<span>{{ project.summary.captured_count }} pessoas já ajudaram</span>
 					</div>
 					<router-link :to="`/projects/${project.id}`" class="btn">QUERO AJUDAR</router-link>
