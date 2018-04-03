@@ -127,7 +127,7 @@ export default {
 			return this.$store.state.programs;
 		},
 		program() {
-			return this.$store.state.selectedProgram;
+			return this.$store.state.selectedOption.data;
 		},
 	},
 	mounted() {
@@ -135,7 +135,11 @@ export default {
 			this.$store.dispatch('LOAD_MERCHANTS')
 				.then(() => {
 					const program = this.programs.find(item => item.id === this.id);
-					this.$store.dispatch('CHANGE_SELECTED_PROGRAM', program);
+					const payload = {
+						type: 'donation',
+						data: program,
+					};
+					this.$store.dispatch('CHANGE_SELECTED_OPTION', payload);
 				});
 		}
 	},
