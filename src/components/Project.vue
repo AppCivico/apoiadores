@@ -65,9 +65,13 @@ export default {
 			return (project.summary.captured_amount * 100) / project.goal;
 		},
 		setCurrentProgram(project) {
-			this.$store.dispatch('CHANGE_SELECTED_PROGRAM', project)
+			const payload = {
+				type: 'project',
+				data: project,
+			};
+			this.$store.dispatch('CHANGE_SELECTED_OPTION', payload)
 				.then(() => {
-					this.$router.push({ path: `/program/${project.id}` });
+					this.$router.push({ path: '/rewards' });
 				});
 		},
 	},
