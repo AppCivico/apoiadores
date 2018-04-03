@@ -1,8 +1,18 @@
 <template>
 	<main class="container projects theme_project">
+		<section
+			v-if="homepage === 'projects'"
+			class="slogan">
+			<div class="container">
+				<h2 v-html="header.title"></h2>
+				<p v-html="header.text"></p>
+			</div>
+		</section>
 		<section class="content">
-			<h2>Compartilhe um sonho</h2>
-			<h3>Escolha um projeto e ajude</h3>
+			<template v-if="homepage !== 'projects'">
+				<h2>Compartilhe um sonho</h2>
+				<h3>Escolha um projeto e ajude</h3>
+			</template>
 
 			<div class="projects__project projects__main">
 				<div
@@ -22,6 +32,10 @@
 					<router-link :to="`/projects/${mainProject.id}`">QUERO AJUDAR</router-link>
 				</div>
 			</div>
+
+			<template v-if="homepage === 'projects'">
+				<h3>Mais projetos</h3>
+			</template>
 
 			<div class="projects__row">
 				<div class="projects__project" v-for="project in projects" :key="project.id">
@@ -49,12 +63,16 @@
 </template>
 
 <script>
+import config from '../config';
+
 export default {
 	name: 'Projects',
-	mounted() {
-		if (this.projects.length < 1) {
-			this.$store.dispatch('LOAD_MERCHANTS');
-		}
+	data() {
+		return {
+			header: config.content.header,
+			homepage: config.homepage,
+			modal: false,
+		};
 	},
 	computed: {
 		projects() {
@@ -63,6 +81,11 @@ export default {
 		mainProject() {
 			return this.projects.find(item => item.is_main);
 		},
+	},
+	mounted() {
+		if (this.projects.length < 1) {
+			this.$store.dispatch('LOAD_MERCHANTS');
+		}
 	},
 	methods: {
 		getPercentage(project) {
