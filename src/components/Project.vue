@@ -34,9 +34,7 @@
 					</a>
 				</div>
 			</header>
-			<div class="project__content">
-				<p>{{ project.description }}</p>
-			</div>
+			<div class="project__content" v-html="project.description"></div>
 		</section>
 	</main>
 </template>
