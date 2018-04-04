@@ -35,7 +35,7 @@
 
 			<template v-if="homepage === 'projects'">
 				<ul class="projects__nav">
-					<li v-for="(program, key) in programs" :key="key">
+					<li v-for="(program, key) in programs" v-if="key !== 'project'" :key="key">
 						<a
 							href="#"
 							@click.prevent="setCurrentProgram(program.active ? key : null)"
