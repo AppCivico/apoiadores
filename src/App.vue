@@ -47,6 +47,13 @@
 									Faça uma Doação
 								</router-link>
 						</li>
+						<li>
+							<router-link
+								to="/projects"
+								@click.native="toggleHeader('')">
+									Projetos
+								</router-link>
+						</li>
 					</ul>
 				</nav>
 
