@@ -104,7 +104,8 @@ export default {
 	},
 	methods: {
 		getPercentage(project) {
-			return (project.summary.captured_amount * 100) / project.goal;
+			const perc = (project.summary.captured_amount * 100) / project.goal;
+			return perc.toFixed(0);
 		},
 		setCurrentProgram(program) {
 			if (program === 'donation') {
