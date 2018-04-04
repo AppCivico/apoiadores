@@ -9,8 +9,21 @@
 	font-size: 4.6em;
 	font-weight: 300;
 }
+
+.project__content h4 {
+	font-size: 2.5em;
+	margin-bottom: $gutter / 2;
+}
+
 .project__content p {
 	font-size: 1.8em;
+}
+
+.project__content ul,
+.project__content ol {
+	font-size: 1.8em;
+	padding-left: $gutter / 2;
+	margin-left: $gutter / 2;
 }
 
 .project header {
