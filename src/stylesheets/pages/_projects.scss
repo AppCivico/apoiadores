@@ -14,7 +14,7 @@
 	margin-left: -$gutter / 3;
 	margin-right: -$gutter / 3;
 
-	@media (max-width: 1109px) {
+	@media (max-width: 767px) {
 		margin-left: 0;
 		margin-right: 0;
 	}
@@ -25,6 +25,11 @@
 	float: left;
 	padding: 0 $gutter / 3;
 	margin-bottom: $gutter * 2;
+
+	@media (max-width: 767px) {
+		width: 100%;
+		padding: 0;
+	}
 }
 
 .projects__content {
@@ -105,6 +110,11 @@
 	width: 60%;
 	height: 100%;
 	text-align: left;
+
+	@media (max-width: 767px) {
+		width: 100%;
+		position: relative;
+	}
 }
 
 .projects__main .projects__content {
@@ -112,6 +122,12 @@
 	width: 40%;
 	min-height: 350px;
 	text-align: left;
+
+	@media (max-width: 767px) {
+		width: 100%;
+		min-height: 0;
+		display: block;
+	}
 }
 
 .projects__main .projects__content h4 {
@@ -170,4 +186,8 @@
 	font-size: 4.2em;
 	font-weight: 300;
 	text-transform: none;
+
+	@media (max-width: 460px) {
+		font-size: 2.5em;
+	}
 }
