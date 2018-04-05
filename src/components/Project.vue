@@ -10,7 +10,7 @@
 				></div>
 				<div class="project__header">
 					<p><strong>{{ project.summary.captured_count }}</strong> pessoas já ajudaram</p>
-					<p><strong>{{ project.summary.captured_count }}</strong> dias restantes</p>
+					<p><strong>{{ getRemainingDays(project.end_ts) }}</strong> dias restantes</p>
 
 					<h4>R$<br>
 						<strong>{{ project.summary.captured_amount | formatBRL }}</strong>
@@ -40,6 +40,8 @@
 </template>
 
 <script>
+import moment from 'moment';
+
 export default {
 	name: 'Project',
 	props: {
@@ -72,6 +74,10 @@ export default {
 				.then(() => {
 					this.$router.push({ path: '/rewards' });
 				});
+		},
+		getRemainingDays(date) {
+			const endDate = moment(date);
+			return endDate.diff(moment(), 'days')
 		},
 	},
 };
