@@ -385,11 +385,11 @@ export default {
 			if (this.address_zip !== '') {
 				getAddress(this.address_zip)
 					.then((res) => {
-						const { bairro, cidade, estado_info, logradouro } = res;
-						this.address_neighbourhood = bairro;
-						this.address_state = estado_info.nome;
-						this.address_street = logradouro;
-						this.address_city = cidade;
+						const { district, city, state, street } = res;
+						this.address_neighbourhood = district;
+						this.address_state = state;
+						this.address_street = street;
+						this.address_city = city;
 					})
 					.catch(() => {
 						this.validation = {
