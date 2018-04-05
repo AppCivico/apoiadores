@@ -10,6 +10,10 @@
 	font-weight: 300;
 }
 
+.project__content {
+	padding-bottom: $gutter;
+}
+
 .project__content h4 {
 	font-size: 2.5em;
 	margin-bottom: $gutter / 2;
@@ -26,6 +30,10 @@
 	margin-left: $gutter / 2;
 }
 
+.project__content li {
+	margin-bottom: $gutter / 4;
+}
+
 .project header {
 	position: relative;
 	width: 100%;
@@ -36,10 +44,9 @@
 
 .project__thumbnail {
 	position: absolute;
-	width: 60%;
+	width: 65%;
 	height: 100%;
 	background-size: cover;
-	width: 60%;
 
 	&:before {
 		content: '';
@@ -55,7 +62,7 @@
 
 .project__header {
 	position: relative;
-	width: 40%;
+	width: 35%;
 	float: right;
 	text-align: right;
 	font-size: 1.5em;
@@ -86,6 +93,7 @@
 .project__header .btn {
 	margin-top: $gutter;
 	margin-bottom: 0;
+	font-size: 1em;
 }
 
 .project__header em {
@@ -96,7 +104,7 @@
 	position: relative;
 	width: 110%;
 	height: 30px;
-	background-color: palette('success');
+	background-color: rgba(32, 211, 134, 0.5);
 	margin-bottom: $gutter / 2;
 	margin-left: -10%;
 }
@@ -107,5 +115,5 @@
 	left: 0;
 	display: block;
 	background-color: palette('success', 'dark');
-	height: 15px;
+	height: 100%;
 }
