@@ -27,7 +27,7 @@ export default new Router({
 	routes: [
 		{
 			path: '/',
-			name: 'Home',
+			name: config.homepage === '' ? 'Home' : customHomepage[config.homepage],
 			component:
 				config.homepage === '' ? Home : customHomepage[config.homepage],
 		},

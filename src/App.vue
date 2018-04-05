@@ -105,7 +105,7 @@ export default {
 			return this.$store.state.user;
 		},
 		isHome() {
-			return this.$route.path === '/';
+			return this.$route.name === 'Home';
 		},
 	},
 	watch: {
