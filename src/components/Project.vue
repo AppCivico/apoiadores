@@ -77,7 +77,7 @@ export default {
 		},
 		getRemainingDays(date) {
 			const endDate = moment(date);
-			return endDate.diff(moment(), 'days')
+			return endDate.diff(moment(), 'days');
 		},
 	},
 };
