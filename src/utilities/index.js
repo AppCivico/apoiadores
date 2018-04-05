@@ -1,4 +1,5 @@
 import axios from 'axios';
+import config from '../config';
 
 function validate(fields) {
 	const keys = Object.keys(fields);
@@ -19,7 +20,7 @@ function validate(fields) {
 function getAddress(zip) {
 	return new Promise((resolve, reject) => {
 		if (zip !== '') {
-			axios.get(`https://api.postmon.com.br/v1/cep/${zip}`).then(
+			axios.get(`${config.api}/cep?cep=${zip}`).then(
 				(response) => {
 					resolve(response.data);
 				},
