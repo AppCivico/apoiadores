@@ -93,7 +93,12 @@ export default {
 			}
 		},
 		saveStep(values) {
-			const selectedPlegde = this.selectedOption.pledges.find(el => el.amount === values.amount);
+			let selectedPlegde = '';
+			if (values.amount !== 'other') {
+				selectedPlegde = this.selectedOption.pledges.find(el => el.amount === values.amount);
+			} else {
+				selectedPlegde = this.selectedOption.pledges.find(el => el.amount === null);
+			}
 			const data = {
 				amount: values.amount !== 'other' ? values.amount : this.cleanOther(values.other),
 				is_recurring: 0,
