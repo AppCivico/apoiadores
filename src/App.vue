@@ -1,5 +1,5 @@
 <template>
-	<div :class="`shell ${ isHome ? '' : 'intern' }`">
+	<div class="shell">
 		<header role="banner" :class="this.header ? 'open' : ''">
 				<div class="container">
 				<router-link to="/" tag="h1">{{ title }}</router-link>
