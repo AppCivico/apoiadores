@@ -3,7 +3,7 @@ import logoAppCivico from './assets/img/customization/partners/logo_appcivico.pn
 
 const config = {
 	api:
-		location.hostname === 'testerede.appcivico.com'
+		location.hostname === 'doe.redesustentabilidade.org.br'
 			? 'https://api-apoiadores.appcivico.com'
 			: 'https://dev-apoiadores-api.eokoe.com',
 	domain: 'site-apoiadores.eokoe.com',
