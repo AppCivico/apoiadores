@@ -43,8 +43,12 @@
 	margin-bottom: $gutter / 2;
 }
 
-.projects__content p {
+.projects__content div {
 	font-size: 1.5em;
+}
+
+.projects__content div b {
+	font-weight: 700;
 }
 
 .projects__content span {
