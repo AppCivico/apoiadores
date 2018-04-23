@@ -47,3 +47,30 @@ footer h1 {
 		}
 	}
 }
+
+[role="banner"] {
+	border-bottom: 2px solid palette('primary');
+}
+
+[role="banner"] .container {
+	display: table;
+	padding: $gutter;
+}
+
+[role="banner"].open {
+	border-bottom: 0;
+}
+
+.main > ul > li:nth-child(2) {
+	@media (min-width: 768px) {
+		position: absolute;
+		top: $gutter;
+		right: 0;
+	}
+}
+
+[role="banner"].open .active {
+	@media (min-width: 768px) {
+		margin-top: $gutter;
+	}
+}
