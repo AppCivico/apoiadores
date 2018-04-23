@@ -25,7 +25,7 @@ const config = {
 	],
 	content: {
 		header: {
-			title: 'MUITOS <strong>DOANDO</strong> <span>POUCO</span>',
+			title: '<strong>MUITOS DOANDO UM POUCO</strong>',
 			text:
 				'A Rede Sustentabilidade é um espaço de mobilização e inovação na política. Contribua.',
 		},
