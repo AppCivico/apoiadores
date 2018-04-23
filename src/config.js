@@ -6,7 +6,7 @@ const config = {
 		location.hostname === 'doe.redesustentabilidade.org.br'
 			? 'https://api-apoiadores.appcivico.com'
 			: 'https://dev-apoiadores-api.eokoe.com',
-	domain: 'site-apoiadores.eokoe.com',
+	domain: 'doe.redesustentabilidade.org.br',
 	name: 'Rede Sustentabilidade',
 	homepage: 'projects',
 	partners: [
