@@ -8,6 +8,7 @@ main {
 	@media (max-width: 767px) {
 		min-height: 0;
 		padding-bottom: $gutter;
+		padding-top: $gutter * 4.5;
 	}
 }
 
