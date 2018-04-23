@@ -40,13 +40,13 @@
 				<nav :class="`secundary ${this.target === 'nav' ? 'active' : ''}`">
 					<ul>
 						<li><router-link to="/" @click.native="toggleHeader('')">Home</router-link></li>
-						<li v-if="donation">
+						<!--<li v-if="donation">
 							<router-link
 								:to="`/program/${donation.id}`"
 								@click.native="toggleHeader('')">
 									Faça uma Doação
 								</router-link>
-						</li>
+						</li>-->
 						<li>
 							<router-link
 								to="/projects"
