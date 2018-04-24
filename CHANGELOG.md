@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.0.1][] - 2018-04-24
+
 ### Added
 
 - `legal_name` on every project
@@ -21,4 +23,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 [Unreleased]: https://github.com/AppCivico/apoiadores/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/AppCivico/apoiadores/compare/v1.0.1...v1.0.1
 [1.0.1]: https://github.com/AppCivico/apoiadores/tree/v1.0.1
