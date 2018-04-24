@@ -182,7 +182,7 @@
 							name="address_neighbourhood"
 							v-model="address_neighbourhood"
 							placeholder="Bairro"
-							disabled>
+							readonly>
 						<div class="error" v-if="validationContact.errors.address_neighbourhood">
 							{{ validationContact.errors.address_neighbourhood }}
 						</div>
@@ -197,7 +197,7 @@
 							name="address_city"
 							v-model="address_city"
 							placeholder="Cidade"
-							disabled>
+							readonly>
 						<div class="error" v-if="validationContact.errors.address_city">
 							{{ validationContact.errors.address_city }}
 						</div>
@@ -212,7 +212,7 @@
 							name="address_state"
 							v-model="address_state"
 							placeholder="Estado"
-							disabled>
+							readonly>
 						<div class="error" v-if="validationContact.errors.address_state">
 							{{ validationContact.errors.address_state }}
 						</div>
