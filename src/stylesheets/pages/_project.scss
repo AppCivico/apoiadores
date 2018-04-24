@@ -137,3 +137,18 @@
 	background-color: palette('success', 'dark');
 	height: 100%;
 }
+
+.project__footer {
+	text-align: right;
+	background: none;
+	color: inherit;
+}
+
+.project__footer dt {
+	font-weight: inherit;
+}
+
+.project__footer dd {
+	font-weight: bolder;
+}
+

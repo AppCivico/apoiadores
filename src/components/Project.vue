@@ -35,6 +35,14 @@
 				</div>
 			</header>
 			<div class="project__content" v-html="project.description"></div>
+			<footer v-if="project.legal_name || project.legal_document" class="project__footer">
+				<dl class="legal-info">
+					<dt v-if="project.legal_name">Razão Social</dt>
+					<dd v-if="project.legal_name">{{ project.legal_name }}</dd>
+					<dt v-if="project.legal_document">CNPJ</dt>
+					<dd v-if="project.legal_document">{{ project.legal_document }}</dd>
+				</dl>
+			</footer>
 		</section>
 	</main>
 </template>
