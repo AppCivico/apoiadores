@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- project thumb reserved space on narrow screens
+
 ## [1.0.1][] - 2018-04-24
 
 ### Added

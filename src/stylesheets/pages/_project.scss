@@ -62,16 +62,21 @@
 		height: 100%;
 		background-color: palette('black');
 		opacity: 0.3;
+		z-index: 1;
 	}
 
 	@media (max-width: 767px) {
 		width: 100%;
 		position: relative;
-		min-height: 300px;
+		// min-height: 300px;
 	}
 }
 
 .project__thumbnail--video {
+	&:before {
+		content: none;
+	}
+
 	@media (max-width: 767px) {
 		height: 0;
 		padding-bottom: 56.25%;
@@ -81,15 +86,17 @@
 
 .project__thumbnail img,
 .project__thumbnail iframe {
-	position: absolute;
+	display: block;
 	width: 100%;
 }
 
 .project__thumbnail img {
 	height: auto;
 	max-width: 100%;
+	position: relative;
 
 	@media (min-width: 768px) {
+		position: absolute;
 		height: 100%;
 		width: auto;
 		max-width: none;
@@ -97,6 +104,7 @@
 }
 
 .project__thumbnail iframe {
+	position: absolute;
 	height: 100%;
 }
 
