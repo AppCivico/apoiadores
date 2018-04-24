@@ -9,7 +9,7 @@
     "start": "npm run dev",
     "lint": "eslint --ext .js,.vue src",
     "build": "node build/build.js",
-    "preversion": "git checkout master && git merge develop",
+    "preversion": "git checkout master && git pull && git merge develop",
     "version": "version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md",
     "postversion": "git checkout develop && git merge master"
   },

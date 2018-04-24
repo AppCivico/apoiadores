@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- header animation
+
+### Changed
+- sidebar content in payments steps components
+- use readonly instead of disabled in inputs
+- HTML structure for better semantics
+
+### Added
+- redirect to project if there's only one project
+- sidebar content in forgotPassword component
+- prevent donations lower than 30 reais
+
+### Removed
+- unused imports
+
 ## [1.0.3][] - 2018-04-24
 
 ### Fixed
