@@ -37,7 +37,6 @@
 
 <script>
 import Login from '../Login';
-import config from '../../config';
 
 export default {
 	name: 'IsRegistered',

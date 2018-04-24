@@ -99,7 +99,6 @@
 
 <script>
 import { validate, formatBRL } from '../../utilities';
-import config from '../../config';
 
 export default {
 	name: 'Program',
@@ -151,7 +150,7 @@ export default {
 			const values = amount === 'other' ? { amount, frequency, other } : { amount, frequency };
 			const validation = validate(values);
 
-			if(amount === 'other' && other < 3000) {
+			if (amount === 'other' && other < 3000) {
 				this.toggleLoading();
 				this.errorMessage = 'O valor mínimo da doação é de R$ 30,00';
 				return;
