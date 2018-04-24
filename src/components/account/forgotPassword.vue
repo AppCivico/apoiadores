@@ -21,6 +21,7 @@
 		<aside>
 			<img src="../../assets/img/donation/step_login.png" alt="Icon">
 			<h2>Recuperação de senha</h2>
+			<p>Esqueceu sua senha? Informe seu e-mail no campo ao lado que enviaremos instruções.</p>
 		</aside>
 	</main>
 </template>
