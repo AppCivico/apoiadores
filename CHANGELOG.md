@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.0.3][] - 2018-04-24
+
 ### Fixed
 
 - project thumb reserved space on narrow screens
@@ -26,6 +28,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - production API url
 
 
-[Unreleased]: https://github.com/AppCivico/apoiadores/compare/v1.0.2...HEAD
+[Unreleased]: https://github.com/AppCivico/apoiadores/compare/v1.0.3...HEAD
+[1.0.3]: https://github.com/AppCivico/apoiadores/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/AppCivico/apoiadores/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/AppCivico/apoiadores/tree/v1.0.1
