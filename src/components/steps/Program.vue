@@ -90,10 +90,8 @@
 			<hr>
 			<h2>Como funciona?</h2>
 			<ul>
-				<li>Você não precisa ser filiado para colaborar financeiramente com a {{ name }}.</li>
-				<li>Há três formas de fazer esta contribuição:
-					cartão de crédito, boleto bancário e transferência bancária.</li>
-				<li>Os desafios são grandes. Nossos sonhos são maiores.</li>
+				<li>Para doar, basta selecionar o valor desejado na lista ao lado.</li>
+				<li>As doações serão feitas via cartão de crédito.</li>
 			</ul>
 		</aside>
 	</main>
@@ -116,7 +114,6 @@ export default {
 			frequency: '',
 			other: '',
 			formatedOther: '',
-			name: config.name,
 		};
 	},
 	computed: {
@@ -153,6 +150,12 @@ export default {
 			const { amount, frequency, other } = this;
 			const values = amount === 'other' ? { amount, frequency, other } : { amount, frequency };
 			const validation = validate(values);
+
+			if(amount === 'other' && other < 3000) {
+				this.toggleLoading();
+				this.errorMessage = 'O valor mínimo da doação é de R$ 30,00';
+				return;
+			}
 
 			if (validation.valid) {
 				this.saveStep(values);

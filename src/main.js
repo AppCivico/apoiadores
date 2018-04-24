@@ -7,11 +7,12 @@ import App from './App';
 import router from './router';
 import store from './store';
 
-import { formatBRL, formatDate, formatDateBasic } from './utilities';
+import { formatBRL, formatDate, formatCNPJ, formatDateBasic } from './utilities';
 
 Vue.config.productionTip = false;
 Vue.filter('formatBRL', formatBRL);
 Vue.filter('formatDate', formatDate);
+Vue.filter('formatCNPJ', formatCNPJ);
 Vue.filter('formatDateBasic', formatDateBasic);
 Vue.filter('upperCase', value => value.toUpperCase());
 
