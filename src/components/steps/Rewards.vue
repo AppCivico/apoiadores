@@ -41,10 +41,8 @@
 			<hr>
 			<h2>Como funciona?</h2>
 			<ul>
-				<li>Você não precisa ser filiado para colaborar financeiramente com a {{ name }}.</li>
-				<li>Há três formas de fazer esta contribuição:
-					cartão de crédito, boleto bancário e transferência bancária.</li>
-				<li>Os desafios são grandes. Nossos sonhos são maiores.</li>
+				<li>Para doar, basta selecionar o valor desejado na lista ao lado.</li>
+				<li>As doações serão feitas via cartão de crédito.</li>
 			</ul>
 		</aside>
 	</main>
@@ -63,7 +61,6 @@ export default {
 			amount: '',
 			other: '',
 			formatedOther: '',
-			name: config.name,
 		};
 	},
 	computed: {
