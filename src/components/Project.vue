@@ -40,7 +40,7 @@
 					<dt v-if="project.legal_name">Razão Social</dt>
 					<dd v-if="project.legal_name">{{ project.legal_name }}</dd>
 					<dt v-if="project.legal_document">CNPJ</dt>
-					<dd v-if="project.legal_document">{{ project.legal_document }}</dd>
+					<dd v-if="project.legal_document">{{ project.legal_document | formatCNPJ }}</dd>
 				</dl>
 			</footer>
 		</section>
