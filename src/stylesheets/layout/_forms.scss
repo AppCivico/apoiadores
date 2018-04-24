@@ -146,7 +146,7 @@ form select {
 	&::placeholder {
 		color: inherit;
 	}
-	&:disabled {
+	&[readonly] {
 		background-color: palette('primary', 'x-light');
 	}
 }

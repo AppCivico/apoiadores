@@ -175,7 +175,7 @@
 							type="text"
 							name="address_neighbourhood"
 							v-model="address_neighbourhood"
-							disabled>
+							readonly>
 						<div class="error" v-if="validation.errors.address_neighbourhood">
 							{{ validation.errors.address_neighbourhood }}
 						</div>
@@ -189,7 +189,7 @@
 							type="text"
 							name="address_city"
 							v-model="address_city"
-							disabled>
+							readonly>
 						<div class="error" v-if="validation.errors.address_city">
 							{{ validation.errors.address_city }}
 						</div>
@@ -203,7 +203,7 @@
 							type="text"
 							name="address_state"
 							v-model="address_state"
-							disabled>
+							readonly>
 						<div class="error" v-if="validation.errors.address_state">
 							{{ validation.errors.address_state }}
 						</div>
