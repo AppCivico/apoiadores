@@ -30,24 +30,18 @@
 				src="../../assets/img/project/step_login.png"
 				alt="Icon">
 			<h2>Faça seu login</h2>
-			<p>Você não precisa ser filiado para colaborar financeiramente com a {{ name }}.</p>
+			<p>Para realizar a emissão do recibo eleitoral é necessário realizar um cadastro na plataforma. Ele é simples e rápido.</p>
 		</aside>
 	</main>
 </template>
 
 <script>
 import Login from '../Login';
-import config from '../../config';
 
 export default {
 	name: 'IsRegistered',
 	components: {
 		Login,
-	},
-	data() {
-		return {
-			name: config.name,
-		};
 	},
 	computed: {
 		selectedType() {

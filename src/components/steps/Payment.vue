@@ -10,6 +10,19 @@
 			</blockquote>
 			<form @submit.prevent="validateForm">
 				<fieldset>
+					<div v-if="user.credit_cards.length > 0">
+						<h3>Utilizar um cartão já cadastrado</h3>
+						<select name="credit_cards" id="credit_cards" v-model="selectedCard" @change="useCard">
+							<option value="">Selecionar cartão</option>
+							<option
+								:value="card.id"
+								v-for="card in user.credit_cards"
+								:key="card.id">
+								{{ niceType(niceType(card.conjecture_brand !== undefined ? card.conjecture_brand : card.brand)) }} com final {{ endNumber(card.mask) }}
+							</option>
+						</select>
+					</div>
+
 					<template v-if="!useRegisteredCard">
 						<h3>Preencha os dados de pagamento</h3>
 						<div :class="`input-wrapper
@@ -74,19 +87,6 @@
 							</div>
 						</div>
 					</template>
-
-					<div v-if="user.credit_cards.length > 0">
-						<h3>Utilizar um cartão já cadastrado</h3>
-						<select name="credit_cards" id="credit_cards" v-model="selectedCard" @change="useCard">
-							<option value="">Selecionar cartão</option>
-							<option
-								:value="card.id"
-								v-for="card in user.credit_cards"
-								:key="card.id">
-								{{ niceType(niceType(card.conjecture_brand !== undefined ? card.conjecture_brand : card.brand)) }} com final {{ endNumber(card.mask) }}
-							</option>
-						</select>
-					</div>
 				</fieldset>
 
 				<fieldset>
@@ -182,7 +182,7 @@
 							name="address_neighbourhood"
 							v-model="address_neighbourhood"
 							placeholder="Bairro"
-							disabled>
+							readonly>
 						<div class="error" v-if="validationContact.errors.address_neighbourhood">
 							{{ validationContact.errors.address_neighbourhood }}
 						</div>
@@ -197,7 +197,7 @@
 							name="address_city"
 							v-model="address_city"
 							placeholder="Cidade"
-							disabled>
+							readonly>
 						<div class="error" v-if="validationContact.errors.address_city">
 							{{ validationContact.errors.address_city }}
 						</div>
@@ -212,7 +212,7 @@
 							name="address_state"
 							v-model="address_state"
 							placeholder="Estado"
-							disabled>
+							readonly>
 						<div class="error" v-if="validationContact.errors.address_state">
 							{{ validationContact.errors.address_state }}
 						</div>

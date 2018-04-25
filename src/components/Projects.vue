@@ -99,7 +99,12 @@ export default {
 	},
 	mounted() {
 		if (this.projects.length < 1) {
-			this.$store.dispatch('LOAD_MERCHANTS');
+			this.$store.dispatch('LOAD_MERCHANTS')
+				.then(() => {
+					if (this.projects.length === 1) {
+						this.$router.push({ path: `/projects/${this.projects[0].id}` });
+					}
+				});
 		}
 	},
 	methods: {

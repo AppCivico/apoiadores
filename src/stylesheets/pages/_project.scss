@@ -38,7 +38,7 @@
 	margin-bottom: $gutter / 4;
 }
 
-.project header {
+.project .project__header {
 	position: relative;
 	width: 100%;
 	display: table;
@@ -108,7 +108,7 @@
 	height: 100%;
 }
 
-.project__header {
+.header__content {
 	position: relative;
 	width: 35%;
 	float: right;
@@ -121,35 +121,35 @@
 	}
 }
 
-.project__header p {
+.header__content p {
 	font-size: 1.2em;
 }
 
-.project__header p strong {
+.header__content p strong {
 	font-size: 2em;
 	font-weight: 700;
 	display: block;
 }
 
-.project__header h4 {
+.header__content h4 {
 	text-align: left;
 	color: palette('success');
 	font-size: 1.6em;
 	padding-left: $gutter / 2;
 }
 
-.project__header h4 strong {
+.header__content h4 strong {
 	font-size: 2em;
 	line-height: 1.5em;
 }
 
-.project__header .btn {
+.header__content .btn {
 	margin-top: $gutter;
 	margin-bottom: 0;
 	font-size: 1em;
 }
 
-.project__header em {
+.header__content em {
 	font-size: 0.8em;
 }
 
