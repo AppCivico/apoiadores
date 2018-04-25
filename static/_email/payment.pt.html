@@ -255,13 +255,14 @@
                                       <td style="font-weight: bold; text-align: right; padding: 0;">[% currency %] [% payment_value %]</td>
                                     </tr>
                                     <tr>
-                                      <th style="font-weight: normal; text-align: left; padding: 0;">Pago até</th>
-                                      <td style="font-weight: bold; text-align: right; padding: 0;">[% paid_until %]</td>
-                                    </tr>
-				    [% IF is_recurring %]
-                                    <tr>
                                       <th style="font-weight: normal; text-align: left; padding: 0;">Periodicidade</th>
                                       <td style="font-weight: bold; text-align: right; padding: 0;">[% plan_periodicity %]</td>
+                                    </tr>
+				    
+				    [% IF is_recurring %]				    
+                                    <tr>
+                                      <th style="font-weight: normal; text-align: left; padding: 0;">Pago até</th>
+                                      <td style="font-weight: bold; text-align: right; padding: 0;">[% paid_until %]</td>
                                     </tr>
 				    [% END %]				    
                                   </table>
