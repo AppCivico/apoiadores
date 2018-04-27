@@ -14,7 +14,7 @@
 				<tbody>
 					<tr v-for="(donation, key) in donations" :key="key">
 						<td>{{ donation.name }}</td>
-						<td>{{ donation.created_at }}</td>
+						<td>{{ donation.created_at | formatDate }}</td>
 						<td><strong>R$ {{ donation.amount | formatBRL }}</strong></td>
 					</tr>
 				</tbody>
