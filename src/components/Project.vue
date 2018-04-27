@@ -10,6 +10,7 @@
 				</div>
 				<div class="header__content">
 					<p><strong>{{ project.summary.captured_count }}</strong> pessoas já ajudaram</p>
+					<router-link :to="`/projects/${this.id}/donations`">Transparência</router-link>
 					<p><strong>{{ getRemainingDays(project.end_ts) }}</strong> dias restantes</p>
 
 					<h4>R$<br>
