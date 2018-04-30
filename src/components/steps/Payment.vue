@@ -222,6 +222,7 @@
 					{{ errorMessage }}
 				</p>
 				<button type="submit" :disabled="loading">Finalizar</button>
+				<p class="disclaimer">As doações são limitadas a 10% dos rendimentos brutos auferidos pelo doador no ano-calendário anterior à eleição, com limite diário de R$1064,10.</p>
 			</form>
 		</section>
 		<aside>
