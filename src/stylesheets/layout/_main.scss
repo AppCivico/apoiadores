@@ -57,6 +57,11 @@ main p {
 	font-size: 1.8em;
 	margin-bottom: $gutter / 2;
 }
+
+main p.disclaimer {
+	font-size: 1.2em;
+}
+
 main p a {
 	color: palette('blue', 'light');
 	font-weight: 600;
