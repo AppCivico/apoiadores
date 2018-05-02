@@ -213,17 +213,17 @@
                               <tr>
                                 <td align="left" style="font-size:0px;padding:0px;word-break:break-word;">
                                   <div style="font-family:Ubuntu, sans-serif;font-size:13px;line-height:1;text-align:left;color:#000000;">
-                                    <h2 style="font-size: 14px;">Dados do doador:</h2>				    
+                                    <h2 style="font-size: 14px;">Dados do doador:</h2>                              
                                     <p><strong>Nome: </strong>[% user_name %]</p>
                                     <p><strong>CPF: </strong>[% user_cpf %]</p>
-                                    <p><strong>Endereço: </strong>[% user_address %]</p>				    
+                                    <p><strong>Endereço: </strong>[% user_address %]</p>                                    
                                   </div>
                                 </td>
                               </tr>
-			      <tr>
+                              <tr>
                                 <td align="left" style="font-size:0px;padding:0px;word-break:break-word;">
                                   <div style="font-family:Ubuntu, sans-serif;font-size:13px;line-height:1;text-align:left;color:#000000;">
-                                    <h2 style="font-size: 14px;">Doação para partido político:</h2>				    
+                                    <h2 style="font-size: 14px;">Doação para partido político:</h2>                                 
                                   </div>
                                 </td>
                               </tr>
@@ -234,18 +234,38 @@
                                       <th style="text-align: left; padding: 0; color: #0cf;">Projeto</th>
                                       <th style="text-align: right; padding: 0; color: #0cf;">[% description %]</th>
                                     </tr>
-				    [% IF legal_name %]
-                                    <tr style="border-bottom:1px solid #ecedee;">				      
-				      <th style="text-align: left; padding: 0; color: #0cf;">Razão social (partido)</th>
-				      <th style="text-align: right; padding: 0; color: #0cf;">[% legal_name %]</th>
-				    </tr>
-				    [% END %]
-				    [% IF legal_document %]
-                                    <tr style="border-bottom:1px solid #ecedee;">				      
-				      <th style="text-align: left; padding: 0; color: #0cf;">CNPJ (partido)</th>
-				      <th style="text-align: right; padding: 0; color: #0cf;">[% legal_document %]</th>
-				    </tr>
-				    [% END %]
+                                    [% IF legal_name %]
+                                    <tr style="border-bottom:1px solid #ecedee;">                                     
+                                      <th style="text-align: left; padding: 0; color: #0cf;">Razão social (partido)</th>
+                                      <th style="text-align: right; padding: 0; color: #0cf;">[% legal_name %]</th>
+                                    </tr>
+                                    [% END %]
+                                    [% IF legal_document %]
+                                    <tr style="border-bottom:1px solid #ecedee;">                                     
+                                      <th style="text-align: left; padding: 0; color: #0cf;">CNPJ (partido)</th>
+                                      <th style="text-align: right; padding: 0; color: #0cf;">[% legal_document %]</th>
+                                    </tr>
+                                    [% END %]
+                                    [% IF extra_info.project.candidate_info %]
+                                    <tr style="border-bottom:1px solid #ecedee;">                                     
+                                      <th style="text-align: left; padding: 0; color: #0cf;">Informações do candidato</th>
+                                      <th style="text-align: right; padding: 0; color: #0cf;">[% extra_info.project.candidate_info %]</th>
+                                    </tr>
+                                    [% END %]
+                                    
+                                    [% IF extra_info.project.electoral_unit %]
+                                    <tr style="border-bottom:1px solid #ecedee;">                                     
+                                      <th style="text-align: left; padding: 0; color: #0cf;">Unidade eleitoral</th>
+                                      <th style="text-align: right; padding: 0; color: #0cf;">[%  extra_info.project.electoral_unit %]</th>
+                                    </tr>
+                                    [% END %]
+                                    
+                                    [% IF extra_info.project.invoice_number_template %]
+                                    <tr style="border-bottom:1px solid #ecedee;">                                     
+                                      <th style="text-align: left; padding: 0; color: #0cf;">Recibo</th>
+                                      <th style="text-align: right; padding: 0; color: #0cf;">[% FILTER format(extra_info.project.invoice_number_template) %][% subscription_id %][[% END %]</th>
+                                    </tr>
+                                    [% END %]
                                     <tr>
                                       <th style="font-weight: normal; text-align: left; padding: 0;">Método de pagamento</th>
                                       <td style="font-weight: bold; text-align: right; padding: 0;">[% payment_method %]</td>
@@ -258,13 +278,13 @@
                                       <th style="font-weight: normal; text-align: left; padding: 0;">Periodicidade</th>
                                       <td style="font-weight: bold; text-align: right; padding: 0;">[% plan_periodicity %]</td>
                                     </tr>
-				    
-				    [% IF is_recurring %]				    
+                                    
+                                    [% IF is_recurring %]                                   
                                     <tr>
                                       <th style="font-weight: normal; text-align: left; padding: 0;">Pago até</th>
                                       <td style="font-weight: bold; text-align: right; padding: 0;">[% paid_until %]</td>
                                     </tr>
-				    [% END %]				    
+                                    [% END %]                               
                                   </table>
                                 </td>
                               </tr>
