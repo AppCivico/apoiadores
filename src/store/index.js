@@ -11,6 +11,7 @@ const store = new Vuex.Store({
 	state: {
 		charges: [],
 		donation: {},
+		donations: [],
 		flotum: '',
 		merchant: {},
 		newCard: {},
@@ -48,6 +49,20 @@ const store = new Vuex.Store({
 			return new Promise((resolve) => {
 				commit('SET_DONATION', { data });
 				resolve();
+			});
+		},
+		LOAD_DONATIONS({ state, commit }, id) {
+			return new Promise((resolve, reject) => {
+				axios.get(`${config.api}/public/merchants/${state.merchant.id}/projects/${id}/donors`).then(
+					(response) => {
+						commit('SET_DONATIONS', { res: response.data });
+						resolve();
+					},
+					(err) => {
+						reject(err.response);
+						console.error(err);
+					},
+				);
 			});
 		},
 		CREATE_USER({ commit }, data) {
@@ -293,6 +308,9 @@ const store = new Vuex.Store({
 		},
 		SET_DONATION(state, { data }) {
 			state.donation = data;
+		},
+		SET_DONATIONS(state, { res }) {
+			state.donations = res.donors;
 		},
 		SET_USER(state, { data }) {
 			state.apiKey = data.api_key;

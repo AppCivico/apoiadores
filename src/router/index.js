@@ -4,6 +4,7 @@ import Router from 'vue-router';
 import Home from '@/components/Home';
 import Projects from '@/components/Projects';
 import Project from '@/components/Project';
+import Donations from '@/components/Donations';
 import Program from '@/components/steps/Program';
 import Rewards from '@/components/steps/Rewards';
 import IsRegistered from '@/components/steps/IsRegistered';
@@ -40,6 +41,12 @@ export default new Router({
 			path: '/projects/:id',
 			name: 'Project',
 			component: Project,
+			props: true,
+		},
+		{
+			path: '/projects/:id/donations',
+			name: 'Donations',
+			component: Donations,
 			props: true,
 		},
 		{
