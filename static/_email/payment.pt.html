@@ -263,7 +263,7 @@
                                     [% IF extra_info.project.invoice_number_template %]
                                     <tr style="border-bottom:1px solid #ecedee;">                                     
                                       <th style="text-align: left; padding: 0; color: #0cf;">Recibo</th>
-                                      <th style="text-align: right; padding: 0; color: #0cf;">[% FILTER format(extra_info.project.invoice_number_template) %][% subscription_id %][% END %]</th>
+                                      <th style="text-align: right; padding: 0; color: #0cf;">[% extra_info.project.invoice_number_template %]</th>
                                     </tr>
                                     [% END %]
                                     <tr>

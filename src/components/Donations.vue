@@ -3,7 +3,7 @@
 		<article class="content">
 			<h2>TRANSPARÊNCIA</h2>
 			<h3 v-if="project">{{ project.name }}</h3>
-			<table v-if="donations.length > 0">
+			<table class="donations-table" v-if="donations.length > 0">
 				<thead>
 					<tr>
 						<td>Doador</td>
