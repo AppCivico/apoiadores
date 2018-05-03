@@ -131,6 +131,26 @@
 	display: block;
 }
 
+.text-before-link {
+	margin-bottom: 0;
+}
+
+.text-before-link + a {
+	color: palette('success');
+	font-size: 0.875rem;
+	font-weight: bold;
+	text-decoration: none;
+	margin-bottom: 0;
+
+	&:hover {
+		text-decoration: underline;
+	}
+
+	& + p {
+		margin-top: 1.25rem;
+	}
+}
+
 .header__content h4 {
 	text-align: left;
 	color: palette('success');
