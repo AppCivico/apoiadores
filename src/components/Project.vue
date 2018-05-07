@@ -9,8 +9,8 @@
 					<img v-else :src="project.image_url" :alt="project.image_alt">
 				</div>
 				<div class="header__content">
-					<p><strong>{{ project.summary.captured_count }}</strong> pessoas já ajudaram</p>
-					<!-- <router-link :to="`/projects/${this.id}/donations`">Transparência</router-link>-->
+					<p class="text-before-link"><strong>{{ project.summary.captured_count }}</strong> pessoas já ajudaram</p>
+					<router-link :to="`/projects/${this.id}/donations`">veja quem doou</router-link>
 					<p><strong>{{ getRemainingDays(project.end_ts) }}</strong> dias restantes</p>
 
 					<h4>R$<br>
