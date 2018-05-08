@@ -24,7 +24,6 @@
 					</div>
 
 					<strong>{{ getPercentage(project) }}% arrecadados da meta de R$ {{ project.goal | formatBRL }}</strong><br>
-					<em>Esta campanha irá receber todas as contribuições em {{ project.end_ts | formatDateBasic }}</em>
 
 					<a
 						href="#"

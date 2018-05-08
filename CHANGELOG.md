@@ -7,10 +7,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-### Changed
-- enable donation route link
-- update email structure
-
 ## [1.1.2][] - 2018-04-30
 
 ### Added
