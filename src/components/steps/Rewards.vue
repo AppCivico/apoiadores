@@ -85,7 +85,11 @@ export default {
 				this.toggleLoading();
 				this.errorMessage = 'O valor mínimo da doação é de R$ 30,00';
 				return;
-			}
+			} else if (amount === 'other' && other > 106400) {
+				this.toggleLoading();
+				this.errorMessage = 'O valor máximo da doação é de R$ 1.064,10';
+				return;
+			} 
 
 			if (validation.valid) {
 				this.saveStep(values);
