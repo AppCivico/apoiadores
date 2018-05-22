@@ -89,7 +89,7 @@ export default {
 				this.toggleLoading();
 				this.errorMessage = 'O valor máximo da doação é de R$ 1.064,10';
 				return;
-			} 
+			}
 
 			if (validation.valid) {
 				this.saveStep(values);
