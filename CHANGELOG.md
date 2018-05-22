@@ -8,12 +8,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ### Changed
 - enable donation route link
 - update email structure
 
 =======
 >>>>>>> develop
+=======
+>>>>>>> master
 ## [1.1.2][] - 2018-04-30
 
 ### Added
