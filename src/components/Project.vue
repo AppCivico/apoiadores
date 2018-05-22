@@ -24,7 +24,6 @@
 					</div>
 
 					<strong>{{ getPercentage(project) }}% arrecadados da meta de R$ {{ project.goal | formatBRL }}</strong><br>
-					<em>Esta campanha irá receber todas as contribuições em {{ project.end_ts | formatDateBasic }}</em>
 
 					<a
 						href="#"
@@ -72,7 +71,7 @@ export default {
 	methods: {
 		getPercentage(project) {
 			const perc = (project.summary.captured_amount * 100) / project.goal;
-			return perc.toFixed(0);
+			return Math.ceil(perc);
 		},
 		setCurrentProgram(project) {
 			const payload = {
