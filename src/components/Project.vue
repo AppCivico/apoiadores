@@ -71,7 +71,7 @@ export default {
 	methods: {
 		getPercentage(project) {
 			const perc = (project.summary.captured_amount * 100) / project.goal;
-			return perc.toFixed(0);
+			return Math.ceil(perc);
 		},
 		setCurrentProgram(project) {
 			const payload = {
